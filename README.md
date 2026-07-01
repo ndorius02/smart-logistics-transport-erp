@@ -58,23 +58,22 @@ Angular Developer
 
 Full-Stack Developer
 
-Application Support
-
-ERP Consultant Junior
-
 Functional Analyst
+
+Application Support
 
 Supply Chain Assistant
 
+ERP Consultant Junior
+
 Back Office Supply Chain
 
-Logistics Coordinator
+Logistics Assistant
 
 Transport Coordinator
 
 Logistic Data Officer
 
-Administrative Officer
 # Database Model (V1)
 Role
 
