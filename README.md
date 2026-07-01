@@ -1,7 +1,7 @@
 # Smart Logistics & Transport ERP
 Smart Logistics & Transport ERP is a professional full-stack ERP application inspired by real logistics, transport and supply chain operations in Belgium.
 The project is designed as a portfolio to demonstrate software engineering, business analysis and enterprise application development skills using Angular, Spring Boot and PostgreSQL.
-# Main Features (V1)
+## Main Features (V1)
 Authentication
 
 Authorization
@@ -33,7 +33,7 @@ Vehicle Management
 Driver Management
 
 Reporting
-# ERP Modules
+## ERP Modules
 Administration
 
 Business Partners
@@ -51,7 +51,7 @@ Shipment Management
 Transport Management
 
 Reporting & Dashboard
-# Target Professional Roles
+## Target Professional Roles
 Java Developer
 
 Angular Developer
@@ -74,7 +74,7 @@ Transport Coordinator
 
 Logistic Data Officer
 
-# Database Model (V1)
+## Database Model (V1)
 Role
 
 User
@@ -108,8 +108,8 @@ Driver
 Vehicle
 
 Route
-# Tech Stack
-# Backend
+## Tech Stack
+### Backend
 Java 21
 
 Spring Boot 3
@@ -131,7 +131,7 @@ Lombok
 Swagger/OpenAPI
 
 Maven
-# Frontend
+## Frontend
 Angular
 
 TypeScript
@@ -143,7 +143,7 @@ RxJS
 Reactive Forms
 
 Angular Router
-# Testing
+## Testing
 JUnit 5
 
 Mockito
@@ -151,7 +151,7 @@ Mockito
 Spring Boot Test
 
 Testcontainers
-# DevOps
+## DevOps
 Docker
 
 Docker Compose
@@ -160,12 +160,12 @@ Git
 
 GitHub
 
-GitHub Actions
+GitHub Actions(CI/CD ready)
 
 Postman
-# AI-Assisted Development
+## AI-Assisted Development
 This project is developed using AI-assisted software engineering practices with Cursor AI to improve productivity, code quality and documentation. All software architecture, business analysis, implementation decisions and final validation are performed by the developer.
-# Project Status
+## Project Status
 Functional Analysis
 
 Database Design
@@ -177,7 +177,7 @@ Frontend Development
 Testing
 
 Deployment
-# Screenshots
+## Screenshots
 Ajoutera plus tard :
 
 Dashboard
@@ -192,7 +192,7 @@ Delivery
 
 Reports
 
-# Future Improvements
+## Future Improvements
 Barcode Scanner
 
 QR Code
@@ -206,5 +206,5 @@ Power BI Dashboard
 Multi-language
 
 Mobile Version
-# About the Author
+## About the Author
 Bachelor in Computer Science (Application Development) with a background in Transport & Logistics. Passionate about building enterprise applications for logistics, transport and supply chain.
