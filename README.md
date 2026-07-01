@@ -1,5 +1,5 @@
 # Smart Logistics & Transport ERP
-Smart Logistics & Transport ERP is a professional full-stack ERP application inspired by real logistics, transport and supply chain operations in Belgium.
+Smart Logistics & Transport ERP is a professional full-stack ERP application inspired by real-world logistics, transport and supply chain operations commonly found in Belgian and international companies.
 The project is designed as a portfolio to demonstrate software engineering, business analysis and enterprise application development skills using Angular, Spring Boot and PostgreSQL.
 ## Business Domain
 This project is designed around real-world business processes commonly found in:
@@ -8,7 +8,7 @@ This project is designed around real-world business processes commonly found in:
 - Supply Chain
 - Cargo Operations
 - Warehouse Management
-- Import / Export
+- Import & Export
 ## Main Features (V1)
 - Authentication
 - Authorization
@@ -20,12 +20,12 @@ This project is designed around real-world business processes commonly found in:
 - Warehouse Management
 - Inventory Tracking
 - Purchase Orders
-- Cargo Tracking
-- Shipment Tracking
-- Delivery Tracking
+- Cargo Management
+- Shipment Management
+- Delivery Management
 - Vehicle Management
 - Driver Management
-- Reporting
+- Reporting & KPI Dashboard
 ## ERP Modules
 - Administration
 - Business Partners
@@ -37,6 +37,7 @@ This project is designed around real-world business processes commonly found in:
 - Transport Management
 - Reporting & Dashboard
 ## Database Model (V1)
+### Core Business Entities
 - Role
 - User
 - Customer
@@ -85,17 +86,16 @@ This project is designed around real-world business processes commonly found in:
 - GitHub Actions(CI/CD ready)
 - Postman  (API testing)
 ## AI-Assisted Development
-This project is developed using AI-assisted software engineering practices with Cursor AI to improve productivity, code quality and documentation. All software architecture, business analysis, implementation decisions and final validation are performed by the developer.
+This project is developed using AI-assisted software engineering practices with Cursor AI to accelerate development, code quality and documentation. All software architecture, business analysis, implementation decisions, testing and final validation are performed by the developer.
 ## Project Status
-- Functional Analysis
-- Database Design
-- Backend Development
-- Frontend Development
-- Testing
-- Deployment
+- ✅ Functional Analysis
+- 🟡 Database Design
+- ⬜ Backend Development
+- ⬜ Frontend Development
+- ⬜ Testing
+- ⬜ Deployment
 ## Screenshots
-Ajoutera plus tard :
-
+Screenshots will be added as development progresses:
 - Dashboard
 - Login
 - Warehouse
@@ -108,7 +108,9 @@ Ajoutera plus tard :
 - Email Notifications
 - Google Maps API
 - Power BI Dashboard
+- Role-based access control
+- Audit Logs
 - Multi-language
 - Mobile Version
 ## About the Author
-Bachelor in Computer Science (Application Development) with a background in Transport & Logistics. Passionate about building enterprise applications for logistics, transport and supply chain.
+Bachelor in Computer Science (Application Development) with a background in Transport & Logistics. Passionate about designing enterprise applications and applying software engineering best practices to logistics, transport and supply chain management.
