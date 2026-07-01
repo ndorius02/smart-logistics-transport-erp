@@ -4,13 +4,13 @@ The project is designed as a portfolio to demonstrate software engineering, busi
 ## Main Features (V1)
 Authentication
 
-Authorization
+- Authorization
 
-Dashboard
+ Dashboard
 
-Customer Management
+- Customer Management
 
-Supplier Management
+- Supplier Management
 
 Carrier Management
 
@@ -151,18 +151,16 @@ Mockito
 Spring Boot Test
 
 Testcontainers
-### DevOps
+### DevOps & tools
 Docker
 
 Docker Compose
 
-Git
-
-GitHub
+Git & GitHub
 
 GitHub Actions(CI/CD ready)
 
-Postman
+Postman  (API testing)
 ## AI-Assisted Development
 This project is developed using AI-assisted software engineering practices with Cursor AI to improve productivity, code quality and documentation. All software architecture, business analysis, implementation decisions and final validation are performed by the developer.
 ## Project Status
