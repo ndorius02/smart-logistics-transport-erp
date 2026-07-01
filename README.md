@@ -131,7 +131,7 @@ Lombok
 Swagger/OpenAPI
 
 Maven
-## Frontend
+### Frontend
 Angular
 
 TypeScript
@@ -143,7 +143,7 @@ RxJS
 Reactive Forms
 
 Angular Router
-## Testing
+### Testing
 JUnit 5
 
 Mockito
@@ -151,7 +151,7 @@ Mockito
 Spring Boot Test
 
 Testcontainers
-## DevOps
+### DevOps
 Docker
 
 Docker Compose
