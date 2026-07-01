@@ -1,6 +1,14 @@
 # Smart Logistics & Transport ERP
 Smart Logistics & Transport ERP is a professional full-stack ERP application inspired by real logistics, transport and supply chain operations in Belgium.
 The project is designed as a portfolio to demonstrate software engineering, business analysis and enterprise application development skills using Angular, Spring Boot and PostgreSQL.
+## Business Domain
+This project is designed around real-world business processes commonly found in:
+- Logistics
+- Transport
+- Supply Chain
+- Cargo Operations
+- Warehouse Management
+- Import / Export
 ## Main Features (V1)
 - Authentication
 - Authorization
@@ -28,18 +36,6 @@ The project is designed as a portfolio to demonstrate software engineering, busi
 - Shipment Management
 - Transport Management
 - Reporting & Dashboard
-## Target Professional Roles
-- Java Developer
-- Angular Developer
-- Full-Stack Developer
-- Functional Analyst
-- Application Support
-- Supply Chain Assistant
-- ERP Consultant Junior
-- Back Office Supply Chain
-- Logistics Assistant
-- Transport Coordinator
-- Logistic Data Officer
 ## Database Model (V1)
 - Role
 - User
