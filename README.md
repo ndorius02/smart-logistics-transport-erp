@@ -86,9 +86,9 @@ This project is designed around real-world business processes commonly found in:
 - GitHub Actions(CI/CD ready)
 - Postman  (API testing)
 ## Project Status
-- ✅ Functional Analysis
-- 🟡 Database Design
-- ⬜ Backend Development
+- ✅ Functional Analysis & Business Rules
+- ✅ Database Design
+- 🟡 Backend Development
 - ⬜ Frontend Development
 - ⬜ Testing
 - ⬜ Deployment
