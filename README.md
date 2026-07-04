@@ -85,12 +85,10 @@ This project is designed around real-world business processes commonly found in:
 - Git & GitHub
 - GitHub Actions(CI/CD ready)
 - Postman  (API testing)
-## AI-Assisted Development
-This project is developed using AI-assisted software engineering practices with Cursor AI to accelerate development, code quality and documentation. All software architecture, business analysis, implementation decisions, testing and final validation are performed by the developer.
 ## Project Status
-- ✅ Functional Analysis
-- 🟡 Database Design
-- ⬜ Backend Development
+- ✅ Functional Analysis & Business Rules
+- ✅ Database Design
+- 🟡 Backend Development
 - ⬜ Frontend Development
 - ⬜ Testing
 - ⬜ Deployment
