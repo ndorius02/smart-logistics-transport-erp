@@ -1,5 +1,8 @@
 
 spring:
+  application:
+    name: smart-logistics-backend
+
   datasource:
     url: jdbc:postgresql://localhost:5432/smart_logistics
     username: postgres
@@ -8,7 +11,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-  application:
-    name: smart-logistics-backend
+    show-sql: true
 
-
+  sql:
+    init:
+      mode: never
