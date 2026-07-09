@@ -58,7 +58,7 @@ This project is designed around real-world business processes commonly found in:
 ## Tech Stack
 ### Backend
 - Java 21
-- Spring Boot 3
+- Spring Boot 3.5.16
 - Spring Security (JWT)
 - Spring Data JPA
 - Hibernate
