@@ -168,4 +168,3 @@ This project demonstrates the ability to:
 - Build REST APIs with Spring Boot
 - Build a modern frontend with Angular
 - Apply professional software engineering practices
-- Use AI-assisted development tools responsibly
