@@ -168,3 +168,4 @@ This project demonstrates the ability to:
 - Build REST APIs with Spring Boot
 - Build a modern frontend with Angular
 - Apply professional software engineering practices
+- WebSocket : Real-time bidirectional communication between client and server
