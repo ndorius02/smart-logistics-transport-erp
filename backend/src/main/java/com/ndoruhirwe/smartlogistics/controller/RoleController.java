@@ -5,6 +5,8 @@ import com.ndoruhirwe.smartlogistics.dto.response.RoleResponse;
 import com.ndoruhirwe.smartlogistics.service.RoleService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+
 
 import java.util.List;
 import java.util.UUID;
@@ -20,6 +22,7 @@ public class RoleController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public RoleResponse createRole(@Valid @RequestBody RoleRequest request) {
         return roleService.createRole(request);
     }
@@ -41,6 +44,7 @@ public class RoleController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteRole(@PathVariable UUID id) {
         roleService.deleteRole(id);
     }
