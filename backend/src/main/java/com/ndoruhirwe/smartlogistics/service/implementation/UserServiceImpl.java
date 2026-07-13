@@ -13,9 +13,11 @@ import com.ndoruhirwe.smartlogistics.repository.UserRepository;
 import com.ndoruhirwe.smartlogistics.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 import java.util.UUID;
+import java.time.LocalDateTime;
 
 @Service
 @Transactional
@@ -25,15 +27,18 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
 
     public UserServiceImpl(
             UserRepository userRepository,
             RoleRepository roleRepository,
-            UserMapper userMapper
+            UserMapper userMapper,
+            PasswordEncoder passwordEncoder
     ) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.userMapper = userMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -57,16 +62,8 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.toEntity(request);
         user.setEmail(normalizedEmail);
         user.setRole(role);
-
-        /*
-         * Temporaire :
-         * le mot de passe est actuellement repris depuis UserCreateRequest.
-         * Nous le chiffrerons avec BCrypt lorsque nous configurerons
-         * Spring Security.
-         */
-
+        user.setPassword(passwordEncoder.encode(request.password()));
         User savedUser = userRepository.save(user);
-
         return userMapper.toResponse(savedUser);
     }
 
@@ -110,6 +107,7 @@ public class UserServiceImpl implements UserService {
         user.setEmail(normalizedEmail);
         user.setRole(role);
 
+        user.setUpdatedAt(LocalDateTime.now());
         User updatedUser = userRepository.save(user);
 
         return userMapper.toResponse(updatedUser);
