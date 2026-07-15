@@ -1,6 +1,10 @@
 server:
   port: 8038
 
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: 3600000
+
 spring:
   application:
     name: smart-logistics-backend
@@ -8,7 +12,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/smart_logistics
     username: postgres
-    password: Viateur@123
+    password: ${DB_PASSWORD}
 
   jpa:
     hibernate:
@@ -18,3 +22,7 @@ spring:
   sql:
     init:
       mode: never
+
+  logging:
+    level:
+      org.springframework.security: DEBUG

@@ -11,7 +11,6 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
 @Mapper(componentModel = "spring")
-
 public interface UserMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "role", ignore = true)
@@ -19,7 +18,7 @@ public interface UserMapper {
     @Mapping(target = "active", constant = "true")
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
-    User toEntity(UserCreateRequest request);
+    User toEntity(UserCreateRequest request); 
 
     @Mapping(source = "role.id", target = "roleId")
     @Mapping(source = "role.name", target = "roleName")
