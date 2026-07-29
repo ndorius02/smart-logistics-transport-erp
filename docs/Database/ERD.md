@@ -274,3 +274,10 @@ Route 1 - N Shipment	One route can be used by several shipments
 Shipment 1 - N Delivery	One shipment can generate one or more deliveries
 Customer 1 - N Delivery	One customer can receive many deliveries
 DeliveryStatus 1 - N Delivery	One status can be used by many deliveries       
+
+Notes
+All primary keys use UUID.
+Table names are singular and written in English.
+Important business references must be unique.
+Audit fields such as createdAt and updatedAt are used for traceability.
+Soft delete is preferred using the active field where appropriate.
