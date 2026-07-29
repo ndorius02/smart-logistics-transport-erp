@@ -9,15 +9,16 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import java.util.function.Function;
 
 import javax.crypto.SecretKey;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
-import java.util.function.Function;
 
 @Service
 public class JwtService {
+
     private static final String AUTHORITIES_CLAIM = "authorities";
 
     private final SecretKey signingKey;
