@@ -85,6 +85,7 @@ This project is designed around real-world business processes commonly found in:
 - Git & GitHub
 - GitHub Actions(CI/CD ready)
 - Postman  (API testing)
+- Flyway
 ## Project Status
 - ✅ Functional Analysis & Business Rules
 - ✅ Database Design
