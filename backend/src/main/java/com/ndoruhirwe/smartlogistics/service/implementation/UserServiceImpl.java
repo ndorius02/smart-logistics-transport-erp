@@ -14,6 +14,9 @@ import com.ndoruhirwe.smartlogistics.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import static com.ndoruhirwe.smartlogistics.exception.ErrorMessages.DUPLICATE_USER_EMAIL;
+import static com.ndoruhirwe.smartlogistics.exception.ErrorMessages.USER_NOT_FOUND;
+import static com.ndoruhirwe.smartlogistics.exception.ErrorMessages.ROLE_NOT_FOUND;
 
 import java.util.List;
 import java.util.UUID;
@@ -49,14 +52,12 @@ public class UserServiceImpl implements UserService {
                 .toLowerCase();
 
         if (userRepository.existsByEmailIgnoreCase(normalizedEmail)) {
-            throw new DuplicateResourceException(
-                    "A user with this email already exists"
-            );
+            throw new DuplicateResourceException(DUPLICATE_USER_EMAIL);
         }
 
         Role role = roleRepository.findById(request.roleId())
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("Role not found")
+                        new ResourceNotFoundException(ROLE_NOT_FOUND)
                 );
 
         User user = userMapper.toEntity(request);
@@ -94,12 +95,12 @@ public class UserServiceImpl implements UserService {
         userRepository.findByEmailIgnoreCase(normalizedEmail)
                 .filter(existingUser -> !existingUser.getId().equals(id))
                 .ifPresent(existingUser -> {
-                    throw new DuplicateResourceException("A user with this email already exists" );
+                    throw new DuplicateResourceException(DUPLICATE_USER_EMAIL);
                 });
 
         Role role = roleRepository.findById(request.roleId())
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("Role not found")
+                        new ResourceNotFoundException(ROLE_NOT_FOUND)
                 );
 
         userMapper.updateEntity(request, user);
@@ -125,7 +126,7 @@ public class UserServiceImpl implements UserService {
 
         return userRepository.findById(id)
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("User not found")
+                        new ResourceNotFoundException(USER_NOT_FOUND)
                 );
     }
 

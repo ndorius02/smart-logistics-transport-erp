@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.ndoruhirwe.smartlogistics.exception.ResourceNotFoundException;
 import com.ndoruhirwe.smartlogistics.exception.DuplicateResourceException;
+import static com.ndoruhirwe.smartlogistics.exception.ErrorMessages.DUPLICATE_ROLE_NAME;
+import static com.ndoruhirwe.smartlogistics.exception.ErrorMessages.ROLE_NOT_FOUND;
 
 import java.util.List;
 import java.util.UUID;
@@ -26,7 +28,7 @@ public class RoleServiceImpl implements RoleService {
     public RoleResponse createRole(RoleRequest request) {
         String normalizedName = request.getName().trim().toUpperCase(); // ADMIN, admin et Admin ne seront pas enregistrés comme trois rôles différents
         if (roleRepository.findByNameIgnoreCase(normalizedName).isPresent()) {
-            throw new DuplicateResourceException("Role already exists");
+            throw new DuplicateResourceException(DUPLICATE_ROLE_NAME);
         }
 
         Role role = Role.builder()
@@ -52,20 +54,20 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public RoleResponse getRoleById(UUID id) {
         Role role = roleRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Role not found"));
+                .orElseThrow(() -> new ResourceNotFoundException(ROLE_NOT_FOUND));
         return mapToResponse(role);
     }
 
     @Override
     public RoleResponse updateRole(UUID id, RoleRequest request) {
         Role role = roleRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Role not found"));
+                .orElseThrow(() -> new ResourceNotFoundException(ROLE_NOT_FOUND));
 
         String normalizedName = request.getName().trim().toUpperCase();
         roleRepository.findByNameIgnoreCase(normalizedName)
                 .filter(existingRole -> !existingRole.getId().equals(id))
                 .ifPresent(existingRole -> {
-                    throw new DuplicateResourceException("Role already exists");
+                    throw new DuplicateResourceException(DUPLICATE_ROLE_NAME);
                 });
 
         role.setName(normalizedName);
@@ -76,7 +78,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void deleteRole(UUID id) {
         if (!roleRepository.existsById(id)) {
-            throw new ResourceNotFoundException("Role not found");
+            throw new ResourceNotFoundException(ROLE_NOT_FOUND);
         }
         roleRepository.deleteById(id);
     }

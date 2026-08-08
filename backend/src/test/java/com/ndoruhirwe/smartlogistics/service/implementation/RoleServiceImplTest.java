@@ -43,7 +43,6 @@ class RoleServiceImplTest {
                 .id(roleId)
                 .name("ADMIN")
                 .description("System Administrator")
-                .createdAt(LocalDateTime.now())
                 .build();
     }
 
@@ -103,7 +102,6 @@ class RoleServiceImplTest {
                 .id(UUID.randomUUID())
                 .name("MANAGER")
                 .description("Warehouse Manager")
-                .createdAt(LocalDateTime.now())
                 .build();
 
         when(roleRepository.findAll())

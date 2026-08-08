@@ -65,7 +65,6 @@ class UserServiceImplTest {
                 .id(roleId)
                 .name("MANAGER")
                 .description("Warehouse manager")
-                .createdAt(LocalDateTime.now())
                 .build();
 
         user = User.builder()
@@ -77,7 +76,6 @@ class UserServiceImplTest {
                 .phoneNumber("+32470000123")
                 .active(true)
                 .role(role)
-                .createdAt(LocalDateTime.now())
                 .build();
 
         userResponse = new UserResponse(
@@ -242,7 +240,6 @@ class UserServiceImplTest {
                 .password("$2a$10$anotherHash")
                 .active(true)
                 .role(role)
-                .createdAt(LocalDateTime.now())
                 .build();
 
         UserResponse secondResponse = new UserResponse(
