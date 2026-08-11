@@ -16,7 +16,6 @@ import java.util.UUID;
 @RequestMapping("/api/warehouses")
 
 public class WarehouseController {
-
     private final WarehouseService warehouseService;
 
     public WarehouseController(
@@ -40,6 +39,17 @@ public class WarehouseController {
         return warehouseService.getAllWarehouses(pageable);
     }
 
+    @GetMapping("/search")
+    public Page<WarehouseResponse> searchWarehousesByName(
+            @RequestParam String name,
+            Pageable pageable
+    ) {
+        return warehouseService.searchWarehousesByName(
+                name,
+                pageable
+        );
+    }
+
     @GetMapping("/{id}")
     public WarehouseResponse getWarehouseById(
             @PathVariable UUID id
@@ -55,22 +65,17 @@ public class WarehouseController {
         return warehouseService.updateWarehouse(id, request);
     }
 
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deactivateWarehouse(
+    @PatchMapping("/{id}/activate")
+    public WarehouseResponse activateWarehouse(
             @PathVariable UUID id
     ) {
-        warehouseService.deactivateWarehouse(id);
+        return warehouseService.activateWarehouse(id);
     }
 
-    @GetMapping("/search")
-    public Page<WarehouseResponse> searchWarehousesByName(
-            @RequestParam String name,
-            Pageable pageable
+    @PatchMapping("/{id}/deactivate")
+    public WarehouseResponse deactivateWarehouse(
+            @PathVariable UUID id
     ) {
-        return warehouseService.searchWarehousesByName(
-                name,
-                pageable
-        );
+        return warehouseService.deactivateWarehouse(id);
     }
 }

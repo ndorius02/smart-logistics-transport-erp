@@ -77,10 +77,8 @@ public class AuthorizationRules {
                         "/api/roles/**"
                 ).hasRole("ADMIN")
 
-
                 // =========================
                 // WAREHOUSES
-                // Temporary rules
                 // =========================
 
                 .requestMatchers(
@@ -111,8 +109,9 @@ public class AuthorizationRules {
                 )
 
                 .requestMatchers(
-                        HttpMethod.DELETE,
-                        "/api/warehouses/**"
+                        HttpMethod.PATCH,
+                        "/api/warehouses/*/activate",
+                        "/api/warehouses/*/deactivate"
                 ).hasRole("ADMIN")
 
                 // =========================
