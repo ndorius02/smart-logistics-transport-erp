@@ -12,15 +12,12 @@ import org.mapstruct.MappingTarget;
 public interface WarehouseMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "active", ignore = true)
-    @Mapping(target = "createdAt", ignore = true)
-    @Mapping(target = "updatedAt", ignore = true)
     Warehouse toEntity(WarehouseCreateRequest request);
 
     WarehouseResponse toResponse(Warehouse warehouse);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "createdAt", ignore = true)
-    @Mapping(target = "updatedAt", ignore = true)
+    @Mapping(target = "active", ignore = true)
     void updateEntity(
             WarehouseUpdateRequest request,
             @MappingTarget Warehouse warehouse
