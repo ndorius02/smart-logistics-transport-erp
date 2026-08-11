@@ -15,6 +15,7 @@ public interface WarehouseService {
     WarehouseResponse getWarehouseById(UUID id);
 
     WarehouseResponse updateWarehouse(UUID id, WarehouseUpdateRequest request);
-    void deactivateWarehouse(UUID id);
+    WarehouseResponse deactivateWarehouse(UUID id);
     Page<WarehouseResponse> searchWarehousesByName(String name, Pageable pageable);
+    WarehouseResponse activateWarehouse(UUID id);
 }

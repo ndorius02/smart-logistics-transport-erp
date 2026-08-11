@@ -89,12 +89,13 @@ public class WarehouseServiceImpl implements WarehouseService {
     }
 
     @Override
-    public void deactivateWarehouse(UUID id) {
+    public WarehouseResponse deactivateWarehouse(UUID id) {
         Warehouse warehouse = findWarehouseById(id);
 
         warehouse.setActive(false);
 
         warehouseRepository.save(warehouse);
+        return null;
     }
 
     @Override
@@ -107,6 +108,19 @@ public class WarehouseServiceImpl implements WarehouseService {
                         pageable
                 )
                 .map(warehouseMapper::toResponse);
+    }
+
+    @Override
+    public WarehouseResponse activateWarehouse(UUID id) {
+
+        Warehouse warehouse = findWarehouseById(id);
+
+        warehouse.setActive(true);
+
+        Warehouse updatedWarehouse =
+                warehouseRepository.save(warehouse);
+
+        return warehouseMapper.toResponse(updatedWarehouse);
     }
 
     private Warehouse findWarehouseById(UUID id) {
