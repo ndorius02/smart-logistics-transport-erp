@@ -77,17 +77,6 @@ Transport operations link:
 - Destination warehouse
 - Vehicle
 - Driver
-Supported lifecycle:
-```text
-PLANNED
-   |
-   +----> CANCELLED
-   |
-   v
-IN_PROGRESS
-   |
-   v
-COMPLETED
 ---
 ### Business rules include:
 - origin and destination must be different;
