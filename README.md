@@ -50,11 +50,13 @@ Examples:
 - Role
 - Authentication
 - Authorization
+---
 ### Warehouse Management
 - Warehouse creation and update
 - Pagination
 - Search
 - Activation / deactivation
+---
 ### Fleet Management
 - Vehicle creation and update
 - Vehicle types
