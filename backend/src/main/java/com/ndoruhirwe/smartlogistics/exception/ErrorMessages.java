@@ -24,4 +24,9 @@ public final class ErrorMessages {
             "Vehicle not found";
     public static final String DUPLICATE_VEHICLE_REGISTRATION =
             "A vehicle with this registration number already exists";
+
+    public static final String DRIVER_NOT_FOUND =
+            "Driver not found";
+    public static final String DUPLICATE_DRIVER_LICENSE =
+            "A driver with this license number already exists";
 }
