@@ -26,7 +26,6 @@ The current backend includes:
 - Database migrations with Flyway
 - DTO mapping with MapStruct
 - Audit fields with reusable JPA base entity
-  
 ## Implemented Roles
 Current roles include:
 - ADMIN
@@ -39,41 +38,35 @@ Examples:
 - MANAGER has read access to operational resources.
 - WAREHOUSE_OFFICER has warehouse-specific access.
 - TRANSPORT_COORDINATOR manages vehicles, drivers and transports.
-  
 ## Implemented Modules
 ### Administration
 - User
 - Role
 - Authentication
 - Authorization
-  
 ### Warehouse Management
 - Warehouse creation and update
 - Pagination
 - Search
 - Activation / deactivation
-
 ### Fleet Management
 - Vehicle creation and update
 - Vehicle types
 - Operational vehicle status
 - Activation / deactivation
 - Pagination and search
-
 ### Driver Management
 - Driver creation and update
 - Driver operational status
 - License-number uniqueness
 - Activation / deactivation
 - Pagination and search
-  
 ### Transport Management
 Transport operations link:
 - Origin warehouse
 - Destination warehouse
 - Vehicle
 - Driver
-
 ### Business rules include:
 - origin and destination must be different;
 - warehouses must be active;
@@ -81,7 +74,6 @@ Transport operations link:
 - driver must be active and available;
 - planned departure must be before planned arrival;
 - status transitions are controlled by dedicated operations.
-
 ## Planned Modules
 ### The following modules are planned for future iterations:
 - Customer Management
@@ -130,7 +122,6 @@ Planned later:
 - Git & GitHub
 - GitHub Actions(CI/CD ready)
 - Postman  (API testing)
-
 ## Project Status
 - ✅ Functional Analysis & Business Rules
 - ✅ Authentication & JWT Security
