@@ -63,12 +63,14 @@ Examples:
 - Operational vehicle status
 - Activation / deactivation
 - Pagination and search
+---
 ### Driver Management
 - Driver creation and update
 - Driver operational status
 - License-number uniqueness
 - Activation / deactivation
 - Pagination and search
+---
 ### Transport Management
 Transport operations link:
 - Origin warehouse
@@ -86,7 +88,7 @@ IN_PROGRESS
    |
    v
 COMPLETED
-
+---
 ### Business rules include:
 - origin and destination must be different;
 - warehouses must be active;
