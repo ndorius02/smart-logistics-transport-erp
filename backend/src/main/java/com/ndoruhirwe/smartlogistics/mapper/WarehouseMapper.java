@@ -18,8 +18,5 @@ public interface WarehouseMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "active", ignore = true)
-    void updateEntity(
-            WarehouseUpdateRequest request,
-            @MappingTarget Warehouse warehouse
-    );
+    void updateEntity(WarehouseUpdateRequest request, @MappingTarget Warehouse warehouse);
 }

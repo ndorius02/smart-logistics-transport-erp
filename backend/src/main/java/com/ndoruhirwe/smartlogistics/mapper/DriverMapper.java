@@ -20,8 +20,5 @@ public interface DriverMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "active", ignore = true)
-    void updateEntity(
-            DriverUpdateRequest request,
-            @MappingTarget Driver driver
-    );
+    void updateEntity(DriverUpdateRequest request, @MappingTarget Driver driver);
 }
