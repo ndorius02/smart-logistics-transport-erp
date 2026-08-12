@@ -153,11 +153,8 @@ public class AuthorizationRules {
                         "TRANSPORT_COORDINATOR"
                 )
 
-
-
                 // =========================
                 // DRIVERS
-                // Temporary rules
                 // =========================
 
                 .requestMatchers(
@@ -172,8 +169,7 @@ public class AuthorizationRules {
 
                 .requestMatchers(
                         HttpMethod.POST,
-                        "/api/drivers",
-                        "/api/drivers/**"
+                        "/api/drivers"
                 ).hasAnyRole(
                         "ADMIN",
                         "TRANSPORT_COORDINATOR"
@@ -188,9 +184,15 @@ public class AuthorizationRules {
                 )
 
                 .requestMatchers(
-                        HttpMethod.DELETE,
-                        "/api/drivers/**"
-                ).hasRole("ADMIN")
+                        HttpMethod.PATCH,
+                        "/api/drivers/*/activate",
+                        "/api/drivers/*/deactivate"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "TRANSPORT_COORDINATOR"
+                )
+
+
 
 
                 // =========================
