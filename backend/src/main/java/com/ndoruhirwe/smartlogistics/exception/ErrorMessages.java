@@ -29,4 +29,21 @@ public final class ErrorMessages {
             "Driver not found";
     public static final String DUPLICATE_DRIVER_LICENSE =
             "A driver with this license number already exists";
+
+    public static final String TRANSPORT_NOT_FOUND =
+            "Transport not found";
+    public static final String DUPLICATE_TRANSPORT_CODE =
+            "A transport with this code already exists";
+    public static final String ORIGIN_DESTINATION_MUST_DIFFER =
+            "Origin and destination warehouses must be different";
+    public static final String WAREHOUSE_INACTIVE =
+            "Warehouse must be active";
+    public static final String VEHICLE_NOT_AVAILABLE =
+            "Vehicle is not available";
+    public static final String DRIVER_NOT_AVAILABLE =
+            "Driver is not available";
+    public static final String INVALID_TRANSPORT_DATES =
+            "Planned departure must be before planned arrival";
+    public static final String INVALID_TRANSPORT_STATUS_TRANSITION =
+            "Invalid transport status transition";
 }

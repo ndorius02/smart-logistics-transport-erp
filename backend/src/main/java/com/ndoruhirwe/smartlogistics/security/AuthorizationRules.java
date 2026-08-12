@@ -192,12 +192,8 @@ public class AuthorizationRules {
                         "TRANSPORT_COORDINATOR"
                 )
 
-
-
-
                 // =========================
                 // TRANSPORTS
-                // Temporary rules
                 // =========================
 
                 .requestMatchers(
@@ -207,18 +203,17 @@ public class AuthorizationRules {
                 ).hasAnyRole(
                         "ADMIN",
                         "MANAGER",
-                        "TRANSPORT_COORDINATOR",
-                        "BACK_OFFICE_USER"
+                        "TRANSPORT_COORDINATOR"
                 )
 
                 .requestMatchers(
                         HttpMethod.POST,
-                        "/api/transports",
-                        "/api/transports/**"
+                        "/api/transports"
                 ).hasAnyRole(
                         "ADMIN",
                         "TRANSPORT_COORDINATOR"
                 )
+
 
                 .requestMatchers(
                         HttpMethod.PUT,
@@ -228,10 +223,17 @@ public class AuthorizationRules {
                         "TRANSPORT_COORDINATOR"
                 )
 
+
                 .requestMatchers(
-                        HttpMethod.DELETE,
-                        "/api/transports/**"
-                ).hasRole("ADMIN")
+                        HttpMethod.PATCH,
+                        "/api/transports/*/start",
+                        "/api/transports/*/complete",
+                        "/api/transports/*/cancel"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "TRANSPORT_COORDINATOR"
+                )
+
 
 
                 // =========================
