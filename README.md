@@ -1,9 +1,6 @@
 # Smart Logistics & Transport ERP
-
 Smart Logistics & Transport ERP is a full-stack enterprise application inspired by real-world logistics, transport, warehouse and supply chain operations.
-
 The project is designed as a professional portfolio project to demonstrate backend architecture, security, business-rule implementation, database design and full-stack development using Spring Boot, Angular and PostgreSQL.
-
 ## Business Domain
 The application models business processes commonly found in:
 - Logistics
@@ -12,7 +9,6 @@ The application models business processes commonly found in:
 - Warehouse Management
 - Cargo Operations
 - Import & Export
-
 ## Current Backend Features
 The current backend includes:
 - JWT Authentication
