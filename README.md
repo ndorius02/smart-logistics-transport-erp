@@ -34,6 +34,7 @@ Current roles include:
 - WAREHOUSE_OFFICER
 - TRANSPORT_COORDINATOR
 Authorization rules are centralized and applied at API level.
+
 Examples:
 - ADMIN can manage users and roles.
 - MANAGER has read access to operational resources.
