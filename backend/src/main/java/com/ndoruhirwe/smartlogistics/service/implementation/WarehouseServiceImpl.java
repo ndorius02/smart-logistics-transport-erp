@@ -103,7 +103,7 @@ public class WarehouseServiceImpl implements WarehouseService {
     public Page<WarehouseResponse> searchWarehousesByName(String name, Pageable pageable) {
         String normalizedName = name.trim();
         return warehouseRepository
-                .findByNameIgnoreCase(
+                .findByNameContainingIgnoreCase(
                         normalizedName,
                         pageable
                 )

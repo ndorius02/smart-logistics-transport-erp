@@ -11,5 +11,8 @@ import java.util.UUID;
 public interface WarehouseRepository extends JpaRepository<Warehouse, UUID> {
     Optional<Warehouse> findByCodeIgnoreCase(String code);
     boolean existsByCodeIgnoreCase(String code);
-    Page<Warehouse> findByNameIgnoreCase(String name, Pageable pageable);
+    Page<Warehouse> findByNameContainingIgnoreCase(
+            String name,
+            Pageable pageable
+    );
 }
