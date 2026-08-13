@@ -1,59 +1,391 @@
-# Frontend
+# Smart Logistics & Transport ERP — Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.3.
+Angular frontend for the **Smart Logistics & Transport ERP** application.
 
-## Development server
+This frontend provides the user interface for managing logistics and transport operations such as warehouses, vehicles, drivers and transports.
 
-To start a local development server, run:
+The application communicates with a Spring Boot REST API secured with JWT authentication and Role-Based Access Control (RBAC).
+
+---
+
+## Tech Stack
+
+- Angular 22
+- TypeScript
+- Angular Material
+- SCSS
+- RxJS
+- Reactive Forms
+- Angular Router
+- REST API
+- JWT Authentication
+
+---
+
+## Backend
+
+The frontend communicates with the Smart Logistics & Transport ERP Spring Boot backend.
+
+Development API:
+
+```text
+http://localhost:8038
+```
+
+The backend provides:
+
+- REST APIs
+- JWT Authentication
+- Role-Based Access Control (RBAC)
+- Business validation
+- PostgreSQL persistence
+- Flyway database migrations
+
+---
+
+## Frontend Architecture
+
+The application follows a feature-oriented Angular architecture.
+
+Planned structure:
+
+```text
+src/app/
+│
+├── core/
+│   ├── auth/
+│   ├── guards/
+│   ├── interceptors/
+│   ├── models/
+│   └── services/
+│
+├── shared/
+│   ├── components/
+│   └── material/
+│
+├── layout/
+│   ├── header/
+│   ├── sidebar/
+│   └── main-layout/
+│
+└── features/
+    ├── auth/
+    ├── dashboard/
+    ├── warehouses/
+    ├── vehicles/
+    ├── drivers/
+    └── transports/
+```
+
+### Core
+
+Contains application-wide services and infrastructure:
+
+- Authentication
+- JWT handling
+- HTTP interceptors
+- Route guards
+- Shared models
+- API services
+
+### Shared
+
+Contains reusable UI elements used across multiple features.
+
+Examples:
+
+- Reusable components
+- Angular Material imports
+- Common UI utilities
+
+### Layout
+
+Contains the main ERP application structure:
+
+- Header
+- Sidebar
+- Main content area
+- Navigation
+
+### Features
+
+Contains business-oriented application modules:
+
+- Authentication
+- Dashboard
+- Warehouse Management
+- Vehicle Management
+- Driver Management
+- Transport Management
+
+---
+
+## Authentication
+
+Authentication is handled by the Spring Boot backend using JWT.
+
+Login flow:
+
+```text
+User
+  |
+  v
+Angular Login
+  |
+  | POST credentials
+  v
+Spring Boot API
+  |
+  | JWT
+  v
+Angular Auth Service
+  |
+  v
+Authenticated Requests
+```
+
+Authenticated API requests will include:
+
+```http
+Authorization: Bearer <JWT>
+```
+
+The frontend will use:
+
+- Authentication service
+- HTTP interceptor
+- Route guards
+- Role-based navigation
+
+---
+
+## Roles
+
+The frontend will respect the backend RBAC model.
+
+Current roles include:
+
+- ADMIN
+- MANAGER
+- WAREHOUSE_OFFICER
+- TRANSPORT_COORDINATOR
+
+UI elements and routes will be displayed or protected according to the authenticated user's permissions.
+
+Backend authorization remains the final security authority.
+
+---
+
+## Main Features
+
+### Authentication
+
+- Login
+- Logout
+- JWT management
+- Protected routes
+- Role-based navigation
+
+### Dashboard
+
+Planned KPIs include:
+
+- Warehouses
+- Available vehicles
+- Available drivers
+- Planned transports
+- Transports in progress
+- Completed transports
+
+### Warehouse Management
+
+- List warehouses
+- Search
+- Pagination
+- Create
+- Update
+- Activate / deactivate
+
+### Vehicle Management
+
+- List vehicles
+- Search
+- Pagination
+- Create
+- Update
+- Activate / deactivate
+- Vehicle status
+
+### Driver Management
+
+- List drivers
+- Search
+- Pagination
+- Create
+- Update
+- Activate / deactivate
+- Driver status
+
+### Transport Management
+
+- List transports
+- Create transport
+- Update transport
+- Start transport
+- Complete transport
+- Cancel transport
+- Transport status visualization
+
+---
+
+## UI
+
+The application uses **Angular Material**.
+
+Initial theme:
+
+```text
+Azure / Blue
+```
+
+The target interface is a professional ERP-style dashboard with:
+
+- Sidebar navigation
+- Top application bar
+- Responsive content area
+- Material tables
+- Forms and dialogs
+- Status indicators
+- KPI cards
+- Loading states
+- User feedback notifications
+
+---
+
+## Development
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm start
+```
+
+or:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The application is available at:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```text
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
+## Backend Development Server
+
+During local full-stack development:
+
+```text
+Frontend
+http://localhost:4200
+
+        |
+        | REST / JSON
+        v
+
+Backend
+http://localhost:8038
+
+        |
+        v
+
+PostgreSQL
 ```
 
-## Building
+---
 
-To build the project run:
+## Project Status
 
-```bash
-ng build
+- ✅ Angular project initialized
+- ✅ Angular Material installed
+- ✅ SCSS configured
+- ✅ Angular Router configured
+- ⬜ Frontend architecture
+- ⬜ Environment configuration
+- ⬜ Authentication
+- ⬜ JWT interceptor
+- ⬜ Route guards
+- ⬜ RBAC navigation
+- ⬜ ERP layout
+- ⬜ Dashboard
+- ⬜ Warehouse UI
+- ⬜ Vehicle UI
+- ⬜ Driver UI
+- ⬜ Transport UI
+- ⬜ Backend integration
+- ⬜ Frontend testing
+
+---
+
+## Planned Development Order
+
+```text
+Project Setup
+     ↓
+Frontend Architecture
+     ↓
+Environment / API Configuration
+     ↓
+Authentication
+     ↓
+JWT Interceptor
+     ↓
+Route Guards / RBAC
+     ↓
+ERP Layout
+     ↓
+Dashboard
+     ↓
+Warehouse Management
+     ↓
+Vehicle Management
+     ↓
+Driver Management
+     ↓
+Transport Management
+     ↓
+Testing
+     ↓
+Docker / Deployment
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## Related Project
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+This frontend is part of the **Smart Logistics & Transport ERP** full-stack project.
 
-```bash
-ng test
+Repository structure:
+
+```text
+smart-logistics-transport-erp/
+│
+├── backend/
+│   └── Spring Boot
+│
+├── frontend/
+│   └── Angular
+│
+└── README.md
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The root README contains the complete business and technical overview of the project.
