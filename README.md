@@ -103,7 +103,7 @@ Transport operations link:
 - Swagger/OpenAPI
 - Maven
 ### Frontend
-- Angular
+- Angular 22
 - TypeScript
 - Angular Material
 - RxJS
