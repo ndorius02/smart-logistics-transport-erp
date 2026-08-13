@@ -1,0 +1,249 @@
+<section class="warehouse-form-page">
+
+  <div class="page-header">
+
+    <div>
+      <h1>
+        {{ isEditMode ? 'Edit Warehouse' : 'New Warehouse' }}
+      </h1>
+
+      <p>
+        {{
+          isEditMode
+            ? 'Update warehouse information'
+            : 'Create a new logistics warehouse'
+        }}
+      </p>
+    </div>
+
+  </div>
+
+  <mat-card>
+
+    <mat-card-content>
+
+      @if (errorMessage()) {
+        <div class="error-message">
+          {{ errorMessage() }}
+        </div>
+      }
+
+      @if (loading() && isEditMode) {
+
+        <div class="loading">
+          <mat-spinner diameter="40" />
+        </div>
+
+      } @else {
+
+        <form
+          [formGroup]="form"
+          (ngSubmit)="submit()"
+          class="warehouse-form"
+        >
+
+          <div class="form-grid">
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Code
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="code"
+                placeholder="WH-BRU-001"
+              >
+
+              @if (
+                form.controls.code.touched &&
+                form.controls.code.hasError('required')
+                ) {
+                <mat-error>
+                  Warehouse code is required
+                </mat-error>
+              }
+
+              @if (
+                form.controls.code.touched &&
+                form.controls.code.hasError('maxlength')
+                ) {
+                <mat-error>
+                  Maximum 50 characters
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Name
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="name"
+              >
+
+              @if (
+                form.controls.name.touched &&
+                form.controls.name.hasError('required')
+                ) {
+                <mat-error>
+                  Warehouse name is required
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+            <mat-form-field
+              appearance="outline"
+              class="full-width"
+            >
+
+              <mat-label>
+                Address
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="address"
+              >
+
+              @if (
+                form.controls.address.touched &&
+                form.controls.address.hasError('required')
+                ) {
+                <mat-error>
+                  Address is required
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                City
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="city"
+              >
+
+              @if (
+                form.controls.city.touched &&
+                form.controls.city.hasError('required')
+                ) {
+                <mat-error>
+                  City is required
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Country
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="country"
+              >
+
+              @if (
+                form.controls.country.touched &&
+                form.controls.country.hasError('required')
+                ) {
+                <mat-error>
+                  Country is required
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Capacity
+              </mat-label>
+
+              <input
+                matInput
+                type="number"
+                formControlName="capacity"
+                min="1"
+              >
+
+              @if (
+                form.controls.capacity.touched &&
+                form.controls.capacity.hasError('min')
+                ) {
+                <mat-error>
+                  Capacity must be greater than zero
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+            @if (isEditMode) {
+
+              <div class="active-toggle">
+
+                <mat-slide-toggle
+                  formControlName="active"
+                >
+                  Active warehouse
+                </mat-slide-toggle>
+
+              </div>
+            }
+
+          </div>
+
+          <div class="form-actions">
+
+            <button
+              mat-button
+              type="button"
+              (click)="cancel()"
+            >
+              Cancel
+            </button>
+
+            <button
+              mat-flat-button
+              type="submit"
+              [disabled]="loading()"
+            >
+
+              @if (loading()) {
+
+                <mat-spinner diameter="20" />
+
+              } @else {
+
+                <mat-icon>
+                  save
+                </mat-icon>
+
+                {{ isEditMode ? 'Update' : 'Create' }}
+              }
+
+            </button>
+
+          </div>
+
+        </form>
+      }
+
+    </mat-card-content>
+
+  </mat-card>
+
+</section>
