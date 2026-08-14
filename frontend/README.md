@@ -310,53 +310,32 @@ http://localhost:8038
 
 PostgreSQL
 ```
-
 ---
+### Frontend Progress
 
-## Project Status
-
-- ✅ Angular project initialized
-- ✅ Angular Material installed
-- ✅ SCSS configured
-- ✅ Angular Router configured
-- ⬜ Frontend architecture
-- ⬜ Environment configuration
-- ⬜ Authentication
-- ⬜ JWT interceptor
-- ⬜ Route guards
-- ⬜ RBAC navigation
-- ⬜ ERP layout
-- ⬜ Dashboard
-- ⬜ Warehouse UI
-- ⬜ Vehicle UI
-- ⬜ Driver UI
-- ⬜ Transport UI
-- ⬜ Backend integration
-- ⬜ Frontend testing
+- ✅ Angular project setup
+- ✅ Angular Material
+- ✅ Authentication UI
+- ✅ JWT authentication integration
+- ✅ HTTP JWT interceptor
+- ✅ Authentication guards
+- ✅ Role-based route protection
+- ✅ ERP layout and sidebar navigation
+- ✅ Warehouse list
+- ✅ Warehouse search
+- ✅ Warehouse pagination
+- ✅ Warehouse create/update
+- ✅ Warehouse activation/deactivation
+- ⬜ Vehicle Management
+- ⬜ Driver Management
+- ⬜ Transport Management
+- ⬜ Dashboard KPIs
 
 ---
 
 ## Planned Development Order
 
 ```text
-Project Setup
-     ↓
-Frontend Architecture
-     ↓
-Environment / API Configuration
-     ↓
-Authentication
-     ↓
-JWT Interceptor
-     ↓
-Route Guards / RBAC
-     ↓
-ERP Layout
-     ↓
-Dashboard
-     ↓
-Warehouse Management
-     ↓
 Vehicle Management
      ↓
 Driver Management
@@ -367,7 +346,6 @@ Testing
      ↓
 Docker / Deployment
 ```
-
 ---
 
 ## Related Project
