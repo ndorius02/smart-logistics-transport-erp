@@ -126,6 +126,8 @@ Planned later:
 - Postman  (API testing)
 ## Project Status
 - ✅ Functional Analysis & Business Rules
+- ✅ Database Design
+- 🟢 Backend Core Development
 - ✅ Authentication & JWT Security
 - ✅ Role-Based Authorization
 - ✅ User / Role Management
@@ -133,12 +135,12 @@ Planned later:
 - ✅ Vehicle Backend
 - ✅ Driver Backend
 - ✅ Transport Backend
-- 🟡 Unit Testing
-- ⬜ Angular Frontend
-- ⬜ UI Screenshots
-- ⬜ Final Integration Testing
+- 🟡 Frontend Development
+- 🟡 Testing
 - ⬜ Dockerization
+- ⬜ CI/CD
 - ⬜ Deployment
+  
 ## Screenshots
 ### Screenshots will be added during frontend development.
 ### Authentication
