@@ -144,7 +144,7 @@ Planned later:
 ## Screenshots
 The application provides secure JWT-based authentication.
 ![Smart Logistics ERP - Login](docs/screenshots/login.jpeg)
-![Login](docs/screenshots/login.jpeg)
+
 ### Dashboard
 
 ![Dashboard](docs/screenshots/dashboard.png)
