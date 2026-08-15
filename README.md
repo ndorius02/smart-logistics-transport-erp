@@ -178,6 +178,66 @@ Features include:
 
 ![Vehicle Management](frontend/docs/screenshots/vehicle-list.jpeg)
 
+### Driver Management
+
+The driver module manages drivers and their operational availability.
+
+Features include:
+
+- Driver creation and update
+- License-number uniqueness
+- Search by license number
+- Search by last name
+- Status filtering
+- Pagination
+- Activation / deactivation
+#### Driver Statuses
+- AVAILABLE
+- ASSIGNED
+- ON_LEAVE
+- SUSPENDED
+
+![Driver Management](frontend/docs/screenshots/driver-list.jpeg)
+
+### Transport Management
+
+Transport Management connects the main operational resources of the ERP.
+
+Each transport references:
+- Origin warehouse
+- Destination warehouse
+- Vehicle
+- Driver
+- Planned departure
+- Planned arrival
+- Actual departure
+- Actual arrival
+- Operational status
+
+![Transport Management](frontend/docs/screenshots/transport-list.jpeg)
+
+#### Transport Lifecycle
+
+                 ┌───────────┐
+                 │  PLANNED  │
+                 └─────┬─────┘
+                       │
+                Start transport
+                       │
+                       ▼
+                ┌─────────────┐
+                │ IN_PROGRESS │
+                └──────┬──────┘
+                       │
+               Complete transport
+                       │
+                       ▼
+                 ┌───────────┐
+                 │ COMPLETED │
+                 └───────────┘
+
+PLANNED ───────────────► CANCELLED
+
 # Smart Logistics & Transport ERP
 Smart Logistics & Transport ERP is a full-stack enterprise application inspired by real-world logistics, transport, warehouse and supply chain operations.
 
