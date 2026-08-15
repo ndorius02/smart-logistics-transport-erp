@@ -165,7 +165,6 @@ The application provides secure JWT-based authentication.
 
 ![Edit Warehouse](frontend/docs/screenshots/warehouse-edit.jpeg)
 Planned screenshots:
-- Vehicle Management
 - Driver Management
 - Transport Planning
 - Transport Status Workflow
