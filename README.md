@@ -161,7 +161,7 @@ Planned later:
 
 ### Transport Management
 
-![Driver Management](frontend/docs/screenshots/transport-list.jpeg)
+![Transport Management](frontend/docs/screenshots/transport-list.jpeg)
 
 Planned screenshots:
 - Transport Status Workflow
