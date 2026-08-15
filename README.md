@@ -10,11 +10,6 @@ vehicles, drivers and transport planning.
 The project is built as a professional portfolio project and reflects my dual
 background in **Computer Science / Application Development** and
 **Transport & Logistics**.
-
-The project is designed as a professional portfolio project to demonstrate backend architecture, 
-security, business-rule implementation, database design and full-stack development using Spring Boot, 
-Angular and PostgreSQL.
-
 Rather than implementing independent CRUD modules, the application models
 connected business processes with authentication, role-based authorization,
 resource availability, operational statuses and transport lifecycle rules.
@@ -114,16 +109,19 @@ The application follows a layered full-stack architecture.
 ```
 ## Implemented Modules
 ### Administration & Security
-The administration layer provides the security foundation of the ERP.
-Implemented features include:
+
+The application uses JWT-based authentication and Spring Security.
+The security architecture includes:
 - JWT authentication
+- Stateless API security
+- Password-based authentication
 - Role-Based Access Control (RBAC)
-- User management
-- Role management
-- Protected REST endpoints
-- Angular route guards
+- Backend endpoint authorization
+- Angular authentication guards
+- Angular role guards
 - HTTP authentication interceptor
-- Role-aware frontend actions
+Authorization rules are enforced on the backend. Frontend role checks improve
+the user experience but are not considered the security boundary.
 
 ### Roles
 
@@ -303,40 +301,60 @@ business modules rather than implementing isolated CRUD operations.
 ```
 This architecture allows business rules from multiple logistics domains to participate in the same operational workflow.
 
-# Smart Logistics & Transport ERP
-Smart Logistics & Transport ERP is a full-stack enterprise application inspired by real-world logistics, transport, warehouse and supply chain operations.
+## ERP Roadmap
 
+Smart Logistics & Transport ERP is designed as an evolving logistics and
+supply-chain platform.
 
-## Current Backend Features
-The current backend includes:
-- JWT Authentication
-- Role-Based Access Control (RBAC)
-- User Management
-- Role Management
-- Warehouse Management
-- Vehicle Management
-- Driver Management
-- Transport Management
-- Pagination
-- Search and filtering
-- Business rule validation
-- Centralized exception handling
-- Database migrations with Flyway
-- DTO mapping with MapStruct
-- Audit fields with reusable JPA base entity
+The current Warehouse, Fleet, Driver and Transport modules form the operational
+foundation for future modules.
 
-## Planned Modules
-### The following modules are planned for future iterations:
+## Planned Business Modules
+### Business Partners
 - Customer Management
 - Supplier Management
 - Carrier Management
+### Product & Inventory
 - Product Management
 - Inventory Management
-- Purchase Orders
-- Cargo & Shipment Management
+- Warehouse stock tracking
+- Stock movements
+### Procurement
+- Purchase Order Management
+- Supplier orders
+- Goods reception
+### Cargo & Shipment
+- Cargo Management
+- Shipment Management
+- Cargo-to-transport assignment
+- Shipment tracking
+### Delivery
 - Delivery Management
-- Reporting
-- KPI Dashboard
+- Delivery status tracking
+- Proof-of-delivery workflow
+### Reporting & Analytics
+- Operational reports
+- Historical transport analysis
+- Fleet utilization
+- Warehouse activity
+- Driver activity
+- Advanced KPI dashboards
+
+## Future Technical Improvements
+Planned technical improvements include:
+- Docker / Docker Compose
+- CI/CD pipeline
+- Cloud deployment
+- Expanded integration testing
+- Security integration tests
+- Audit logging
+- Email notifications
+- Barcode / QR code support
+- Advanced reporting
+- Mobile-friendly interface
+- Multi-language support
+- Mapping / geolocation integration
+  
 ## Tech Stack
 ### Backend
 - Java 21
@@ -358,74 +376,140 @@ The current backend includes:
 - RxJS
 - Reactive Forms
 - Angular Router
+- HTTP Interceptors
+- Route Guards
 ### Testing
 - JUnit 5
 - Mockito
 - Spring Boot Test
-- Testcontainers (PostgreSQL integration testing)
-Unit tests are being added progressively for service-layer business logic.
-Planned later:
-- Integration testing
-- PostgreSQL Testcontainers
-- Security / RBAC integration tests
+- Testcontainers
+- PostgreSQL integration testing
+Testing is being expanded progressively to cover service-layer business
+rules, integration scenarios and security behavior.
 ### DevOps & Tools
 - Docker & Docker Compose
 - Git & GitHub
 - GitHub Actions(CI/CD ready)
 - Postman  (API testing)
-## Project Status
-- ✅ Functional Analysis & Business Rules
-- ✅ Database Design
-- 🟢 Backend Core Development
-- ✅ Authentication & JWT Security
-- ✅ Role-Based Authorization
-- ✅ User / Role Management
-- ✅ Warehouse Backend
-- ✅ Vehicle Backend
-- ✅ Driver Backend
-- ✅ Transport Backend
-- 🟡 Frontend Development
-- 🟡 Testing
-- ⬜ Dockerization
-- ⬜ CI/CD
-- ⬜ Deployment
-  
-## Screenshots
-### Screenshots will be added during frontend development.
-### Authentication
+- IntelliJ IDEA
+- Visual Studio Code
 
-![Smart Logistics ERP - Login](frontend/docs/screenshots/login.jpeg)
+```text
+smart-logistics-transport-erp/
+│
+├── backend/
+│   └── src/
+│       ├── main/
+│       │   ├── java/
+│       │   │   └── com/ndoruhirwe/smartlogistics/
+│       │   │       ├── config/
+│       │   │       ├── controller/
+│       │   │       ├── dto/
+│       │   │       ├── entity/
+│       │   │       ├── exception/
+│       │   │       ├── mapper/
+│       │   │       ├── repository/
+│       │   │       ├── security/
+│       │   │       └── service/
+│       │   │
+│       │   └── resources/
+│       │       └── db/migration/
+│       │
+│       └── test/
+│
+├── frontend/
+│   └── src/
+│       └── app/
+│           ├── core/
+│           │   ├── auth/
+│           │   ├── guards/
+│           │   ├── interceptors/
+│           │   ├── models/
+│           │   └── services/
+│           │
+│           ├── features/
+│           │   ├── auth/
+│           │   ├── dashboard/
+│           │   ├── warehouses/
+│           │   ├── vehicles/
+│           │   ├── drivers/
+│           │   └── transports/
+│           │
+│           └── layout/
+│
+├── docs/
+│   └── screenshots/
+│
+└── README.md
+```
+## Getting Started
+### Prerequisites
+Install:
+- Java 21
+- Maven
+- Node.js
+- Angular CLI
+- PostgreSQL
 
-### Dashboard
+## Database Migrations
 
-![Smart Logistics ERP Dashboard](frontend/docs/screenshots/dashboard.jpeg)
+Database schema changes are managed with Flyway.
 
-### Warehouse Management
+Migration scripts are versioned with the application to provide reproducible
+database evolution across environments.
 
-![Warehouse Management](frontend/docs/screenshots/warehouse-list.jpeg)
+## Professional Context
+This project reflects the combination of two areas of my academic background:
 
-### Vehicle Management
+Bachelor in Computer Science – Applications Development
+Haute École de Namur-Liège-Luxembourg (Hénallux), Belgium
+2022–2026
 
-![Vehicle Management](frontend/docs/screenshots/vehicle-list.jpeg)
+Diploma in Transport & Logistics
+EAFC Namur-Cadets, Belgium
+2020–2021
 
-### Driver Management
+My objective is to apply software engineering to real operational and business
+problems, particularly in logistics, transport, supply chain and enterprise
+information systems.
 
-![Driver Management](frontend/docs/screenshots/driver-list.jpeg)
+This dual background helps me approach logistics software from both perspectives:
 
-### Transport Management
+- understanding the technical architecture required to build reliable software;
+- understanding the operational processes the software is intended to support.
 
-![Transport Management](frontend/docs/screenshots/transport-list.jpeg)
+## Skills Demonstrated by This Project
+### Software Engineering
+- Object-oriented programming
+- REST API design
+- Full-stack application development
+- Layered architecture
+- Relational database design
+- Authentication and authorization
+- Business-rule implementation
+- Exception handling
+- DTO mapping
+- Form validation
+- Frontend state and API integration
+- Git-based development workflow
 
-## Future Improvements
-- Barcode / QR Code support
-- Email Notifications
-- Google Maps integration
-- Audit Logs
-- Multi-language support
-- Mobile-friendly interface
-- Advanced Reporting
-- CI/CD
-- Docker Compose
-- Cloud Deployment
-## About the Author
-Bachelor in Computer Science (Application Development) with a background in Transport & Logistics. Passionate about designing enterprise applications and applying software engineering best practices to logistics, transport and supply chain management.
+### Logistics & Business Domain
+- Warehouse operations
+- Fleet management
+- Driver management
+- Transport planning
+- Resource allocation
+- Operational availability
+- Transport lifecycle management
+- Logistics process modeling
+- Supply-chain ERP concepts
+
+## About the Developer
+Computer Science graduate in Applications Development with an additional
+academic background in Transport & Logistics.
+
+Interested in opportunities where software engineering, enterprise applications,
+logistics, transport and supply-chain operations intersect.
+
+This project was created to demonstrate my ability to transform real business
+requirements into a structured full-stack software solution.
