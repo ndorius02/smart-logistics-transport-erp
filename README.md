@@ -394,6 +394,7 @@ rules, integration scenarios and security behavior.
 - IntelliJ IDEA
 - Visual Studio Code
 
+## Project Structure
 ```text
 smart-logistics-transport-erp/
 │
