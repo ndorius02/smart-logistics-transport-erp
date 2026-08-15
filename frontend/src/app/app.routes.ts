@@ -103,15 +103,62 @@ export const routes: Routes = [
             ).then(m => m.WarehouseList)
       },
 
-      /*
+
+      {
+        path: 'vehicles/new',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_TRANSPORT_COORDINATOR'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/vehicles/pages/vehicle-form/vehicle-form'
+            ).then(m => m.VehicleForm)
+      },
+
+      {
+        path: 'vehicles/:id/edit',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_TRANSPORT_COORDINATOR'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/vehicles/pages/vehicle-form/vehicle-form'
+            ).then(m => m.VehicleForm)
+      },
 
       {
         path: 'vehicles',
+
         loadComponent: () =>
           import(
-            './features/vehicles/vehicles'
-          ).then(m => m.Vehicles)
+            './features/vehicles/pages/vehicle-list/vehicle-list'
+            ).then(m => m.VehicleList)
       },
+
+
+
+
+
+
+      /*
 
       {
         path: 'drivers',

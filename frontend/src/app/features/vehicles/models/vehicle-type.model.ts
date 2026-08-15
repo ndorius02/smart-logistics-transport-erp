@@ -1,0 +1,6 @@
+export enum VehicleType {
+  TRUCK = 'TRUCK',
+  VAN = 'VAN',
+  SEMI_TRAILER = 'SEMI_TRAILER',
+  REFRIGERATED_TRUCK = 'REFRIGERATED_TRUCK'
+}

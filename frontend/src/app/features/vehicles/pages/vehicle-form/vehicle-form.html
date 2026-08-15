@@ -1,0 +1,316 @@
+<section class="vehicle-form-page">
+
+  <div class="page-header">
+
+    <div>
+
+      <h1>
+        {{
+          isEditMode
+            ? 'Edit Vehicle'
+            : 'New Vehicle'
+        }}
+      </h1>
+
+      <p>
+        {{
+          isEditMode
+            ? 'Update fleet vehicle information'
+            : 'Register a new vehicle in the fleet'
+        }}
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <mat-card>
+
+    <mat-card-content>
+
+      @if (errorMessage()) {
+
+        <div class="error-message">
+          {{ errorMessage() }}
+        </div>
+
+      }
+
+
+      @if (
+        loading() &&
+        isEditMode
+        ) {
+
+        <div class="loading">
+
+          <mat-spinner
+            diameter="40"
+          />
+
+        </div>
+
+      } @else {
+
+        <form
+          [formGroup]="form"
+          (ngSubmit)="submit()"
+          class="vehicle-form"
+        >
+
+          <div class="form-grid">
+
+
+            <!-- REGISTRATION -->
+
+            <mat-form-field
+              appearance="outline"
+            >
+
+              <mat-label>
+                Registration Number
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="registrationNumber"
+                placeholder="1-ABC-123"
+              >
+
+              @if (
+                form.controls.registrationNumber.touched &&
+                form.controls.registrationNumber.hasError('required')
+                ) {
+
+                <mat-error>
+                  Registration number is required
+                </mat-error>
+
+              }
+
+              @if (
+                form.controls.registrationNumber.touched &&
+                form.controls.registrationNumber.hasError('maxlength')
+                ) {
+
+                <mat-error>
+                  Maximum 50 characters
+                </mat-error>
+
+              }
+
+            </mat-form-field>
+
+
+            <!-- BRAND -->
+
+            <mat-form-field
+              appearance="outline"
+            >
+
+              <mat-label>
+                Brand
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="brand"
+                placeholder="Volvo"
+              >
+
+              @if (
+                form.controls.brand.touched &&
+                form.controls.brand.hasError('required')
+                ) {
+
+                <mat-error>
+                  Brand is required
+                </mat-error>
+
+              }
+
+            </mat-form-field>
+
+
+            <!-- MODEL -->
+
+            <mat-form-field
+              appearance="outline"
+            >
+
+              <mat-label>
+                Model
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="model"
+                placeholder="FH16"
+              >
+
+              @if (
+                form.controls.model.touched &&
+                form.controls.model.hasError('required')
+                ) {
+
+                <mat-error>
+                  Model is required
+                </mat-error>
+
+              }
+
+            </mat-form-field>
+
+
+            <!-- VEHICLE TYPE -->
+
+            <mat-form-field
+              appearance="outline"
+            >
+
+              <mat-label>
+                Vehicle Type
+              </mat-label>
+
+              <mat-select
+                formControlName="vehicleType"
+              >
+
+                @for (
+                    type of vehicleTypes;
+                  track type
+                  ) {
+
+                  <mat-option
+                    [value]="type"
+                  >
+                    {{ type }}
+                  </mat-option>
+
+                }
+
+              </mat-select>
+
+            </mat-form-field>
+
+
+            <!-- LOAD CAPACITY -->
+
+            <mat-form-field
+              appearance="outline"
+            >
+
+              <mat-label>
+                Load Capacity
+              </mat-label>
+
+              <input
+                matInput
+                type="number"
+                min="1"
+                formControlName="loadCapacity"
+              >
+
+              @if (
+                form.controls.loadCapacity.touched &&
+                form.controls.loadCapacity.hasError('min')
+                ) {
+
+                <mat-error>
+                  Load capacity must be greater than zero
+                </mat-error>
+
+              }
+
+            </mat-form-field>
+
+
+            <!-- STATUS ONLY IN EDIT -->
+
+            @if (isEditMode) {
+
+              <mat-form-field
+                appearance="outline"
+              >
+
+                <mat-label>
+                  Operational Status
+                </mat-label>
+
+                <mat-select
+                  formControlName="operationalStatus"
+                >
+
+                  @for (
+                      status of vehicleStatuses;
+                    track status
+                    ) {
+
+                    <mat-option
+                      [value]="status"
+                    >
+                      {{ status }}
+                    </mat-option>
+
+                  }
+
+                </mat-select>
+
+              </mat-form-field>
+
+            }
+
+          </div>
+
+
+          <div class="form-actions">
+
+            <button
+              mat-button
+              type="button"
+              (click)="cancel()"
+            >
+              Cancel
+            </button>
+
+
+            <button
+              mat-flat-button
+              type="submit"
+              [disabled]="loading()"
+            >
+
+              @if (loading()) {
+
+                <mat-spinner
+                  diameter="20"
+                />
+
+              } @else {
+
+                <mat-icon>
+                  save
+                </mat-icon>
+
+                {{
+                  isEditMode
+                    ? 'Update'
+                    : 'Create'
+                }}
+
+              }
+
+            </button>
+
+          </div>
+
+        </form>
+
+      }
+
+    </mat-card-content>
+
+  </mat-card>
+
+</section>
