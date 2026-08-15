@@ -11,7 +11,9 @@ The project is built as a professional portfolio project and reflects my dual
 background in **Computer Science / Application Development** and
 **Transport & Logistics**.
 
-The project is designed as a professional portfolio project to demonstrate backend architecture, security, business-rule implementation, database design and full-stack development using Spring Boot, Angular and PostgreSQL.
+The project is designed as a professional portfolio project to demonstrate backend architecture, 
+security, business-rule implementation, database design and full-stack development using Spring Boot, 
+Angular and PostgreSQL.
 
 Rather than implementing independent CRUD modules, the application models
 connected business processes with authentication, role-based authorization,
@@ -23,7 +25,7 @@ resource availability, operational statuses and transport lifecycle rules.
 
 The objective of this project is to design and progressively build a
 modular logistics ERP covering operational processes commonly found in
-transport, warehousing, Caro Operations, Import & Export and supply-chain environments.
+transport, warehousing, Cargo Operations, Import & Export and supply-chain environments.
 
 The current version implements:
 
