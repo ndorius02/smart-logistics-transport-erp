@@ -1,7 +1,6 @@
 # Smart Logistics & Transport ERP
 
-> A full-stack logistics management platform combining software engineering
-> with real-world transport and logistics business processes.
+A full-stack logistics management platform combining software engineering with real-world transport and logistics business processes.
 
 Smart Logistics & Transport ERP is a full-stack enterprise application designed
 to manage core logistics and transport operations, including warehouses,
@@ -121,8 +120,8 @@ The security architecture includes:
 - Angular role guards
 - HTTP authentication interceptor
 
-Authorization rules are enforced on the backend. Frontend role checks improve
-the user experience but are not considered the security boundary.
+Authorization rules are enforced on the backend. 
+Frontend role checks improve the user experience but are not considered the security boundary.
 
 ### Roles
 
