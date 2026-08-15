@@ -167,9 +167,6 @@ Planned later:
 
 ![Transport Management](frontend/docs/screenshots/transport-list.jpeg)
 
-Planned screenshots:
-- Transport Status Workflow
-- Reports / KPI Dashboard
 ## Future Improvements
 - Barcode / QR Code support
 - Email Notifications
