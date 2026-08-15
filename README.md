@@ -158,7 +158,34 @@ A warehouse contains operational information such as:
 - Country
 - Capacity
 - Active status
+
 ![Warehouse Management](frontend/docs/screenshots/warehouse-list.jpeg)
+
+### Fleet Management
+
+The fleet module manages vehicles used for transport operations.
+
+Features include:
+- Vehicle creation and update
+- Registration-number uniqueness
+- Search by registration number
+- Search by brand
+- Filtering by operational status
+- Pagination
+- Activation / deactivation
+
+#### Vehicle Types
+- TRUCK
+- VAN
+- SEMI_TRAILER
+- REFRIGERATED_TRUCK
+#### Vehicle Statuses
+- AVAILABLE
+- ASSIGNED
+- MAINTENANCE
+- OUT_OF_SERVICE
+
+![Vehicle Management](frontend/docs/screenshots/vehicle-list.jpeg)
 
 # Smart Logistics & Transport ERP
 Smart Logistics & Transport ERP is a full-stack enterprise application inspired by real-world logistics, transport, warehouse and supply chain operations.
