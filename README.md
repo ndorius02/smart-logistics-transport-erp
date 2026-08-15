@@ -149,16 +149,7 @@ Features include:
 - Capacity management
 - Activation / deactivation
 - Role-based access
-
-A warehouse contains operational information such as:
-- Warehouse code
-- Name
-- Address
-- City
-- Country
-- Capacity
-- Active status
-
+  
 ![Warehouse Management](frontend/docs/screenshots/warehouse-list.jpeg)
 
 ### Fleet Management
