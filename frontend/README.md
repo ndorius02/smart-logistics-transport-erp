@@ -223,13 +223,16 @@ Planned KPIs include:
 
 ### Driver Management
 
-- List drivers
-- Search
-- Pagination
-- Create
-- Update
-- Activate / deactivate
-- Driver status
+- Driver listing with server-side pagination
+- Search by license number
+- Search by last name
+- Filter by driver status
+- Create and update drivers
+- Activate/deactivate drivers
+- Driver operational status management
+- Angular Reactive Forms validation
+- Role-based UI actions
+- JWT-protected API communication
 
 ### Transport Management
 
@@ -332,7 +335,7 @@ PostgreSQL
 - ✅ Warehouse create/update
 - ✅ Warehouse activation/deactivation
 - ✅ Vehicle Management
-- ⬜ Driver Management
+- ✅ Driver Management
 - ⬜ Transport Management
 - ⬜ Dashboard KPIs
 
