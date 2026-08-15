@@ -120,6 +120,7 @@ The security architecture includes:
 - Angular authentication guards
 - Angular role guards
 - HTTP authentication interceptor
+
 Authorization rules are enforced on the backend. Frontend role checks improve
 the user experience but are not considered the security boundary.
 
