@@ -1,4 +1,467 @@
-<h1>Smart Logistics ERP</h1>
+<section class="dashboard-page">
 
-<p>Dashboard</p>
+  <div class="page-header">
 
+    <div>
+      <h1>Dashboard</h1>
+
+      <p>
+        Logistics and transport operational overview
+      </p>
+    </div>
+
+  </div>
+
+
+  @if (loading()) {
+
+    <div class="loading">
+
+      <mat-spinner
+        diameter="45"
+      />
+
+    </div>
+
+  } @else {
+
+    <!-- KPI CARDS -->
+
+    <div class="kpi-grid">
+
+      <!-- TOTAL WAREHOUSES -->
+
+      <mat-card class="kpi-card">
+
+        <mat-card-content>
+
+          <div class="kpi-icon">
+            <mat-icon>
+              warehouse
+            </mat-icon>
+          </div>
+
+          <div class="kpi-content">
+
+            <span class="kpi-label">
+              Total Warehouses
+            </span>
+
+            <strong>
+              {{ stats().totalWarehouses }}
+            </strong>
+
+          </div>
+
+        </mat-card-content>
+
+      </mat-card>
+
+
+      <!-- AVAILABLE VEHICLES -->
+
+      <mat-card class="kpi-card">
+
+        <mat-card-content>
+
+          <div class="kpi-icon">
+
+            <mat-icon>
+              local_shipping
+            </mat-icon>
+
+          </div>
+
+          <div class="kpi-content">
+
+            <span class="kpi-label">
+              Available Vehicles
+            </span>
+
+            <strong>
+              {{ stats().availableVehicles }}
+            </strong>
+
+          </div>
+
+        </mat-card-content>
+
+      </mat-card>
+
+
+      <!-- AVAILABLE DRIVERS -->
+
+      <mat-card class="kpi-card">
+
+        <mat-card-content>
+
+          <div class="kpi-icon">
+
+            <mat-icon>
+              badge
+            </mat-icon>
+
+          </div>
+
+          <div class="kpi-content">
+
+            <span class="kpi-label">
+              Available Drivers
+            </span>
+
+            <strong>
+              {{ stats().availableDrivers }}
+            </strong>
+
+          </div>
+
+        </mat-card-content>
+
+      </mat-card>
+
+
+      <!-- PLANNED TRANSPORTS -->
+
+      <mat-card class="kpi-card">
+
+        <mat-card-content>
+
+          <div class="kpi-icon">
+
+            <mat-icon>
+              schedule
+            </mat-icon>
+
+          </div>
+
+          <div class="kpi-content">
+
+            <span class="kpi-label">
+              Planned Transports
+            </span>
+
+            <strong>
+              {{ stats().plannedTransports }}
+            </strong>
+
+          </div>
+
+        </mat-card-content>
+
+      </mat-card>
+
+
+      <!-- IN PROGRESS -->
+
+      <mat-card class="kpi-card">
+
+        <mat-card-content>
+
+          <div class="kpi-icon">
+
+            <mat-icon>
+              route
+            </mat-icon>
+
+          </div>
+
+          <div class="kpi-content">
+
+            <span class="kpi-label">
+              In Progress
+            </span>
+
+            <strong>
+              {{ stats().inProgressTransports }}
+            </strong>
+
+          </div>
+
+        </mat-card-content>
+
+      </mat-card>
+
+
+      <!-- COMPLETED -->
+
+      <mat-card class="kpi-card">
+
+        <mat-card-content>
+
+          <div class="kpi-icon">
+
+            <mat-icon>
+              task_alt
+            </mat-icon>
+
+          </div>
+
+          <div class="kpi-content">
+
+            <span class="kpi-label">
+              Completed
+            </span>
+
+            <strong>
+              {{ stats().completedTransports }}
+            </strong>
+
+          </div>
+
+        </mat-card-content>
+
+      </mat-card>
+
+    </div>
+
+
+    <!-- RECENT TRANSPORTS -->
+
+    <section class="recent-section">
+
+      <div class="section-header">
+
+        <div>
+
+          <h2>
+            Recent Transports
+          </h2>
+
+          <p>
+            Latest transport operations
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="table-container">
+
+        <table
+          mat-table
+          [dataSource]="stats().recentTransports"
+        >
+
+          <!-- CODE -->
+
+          <ng-container
+            matColumnDef="code"
+          >
+
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+            >
+              Code
+            </th>
+
+            <td
+              mat-cell
+              *matCellDef="let transport"
+            >
+              {{ transport.code }}
+            </td>
+
+          </ng-container>
+
+
+          <!-- ORIGIN -->
+
+          <ng-container
+            matColumnDef="origin"
+          >
+
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+            >
+              Origin
+            </th>
+
+            <td
+              mat-cell
+              *matCellDef="let transport"
+            >
+              {{
+                transport.originWarehouseCode
+              }}
+            </td>
+
+          </ng-container>
+
+
+          <!-- DESTINATION -->
+
+          <ng-container
+            matColumnDef="destination"
+          >
+
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+            >
+              Destination
+            </th>
+
+            <td
+              mat-cell
+              *matCellDef="let transport"
+            >
+              {{
+                transport.destinationWarehouseCode
+              }}
+            </td>
+
+          </ng-container>
+
+
+          <!-- VEHICLE -->
+
+          <ng-container
+            matColumnDef="vehicle"
+          >
+
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+            >
+              Vehicle
+            </th>
+
+            <td
+              mat-cell
+              *matCellDef="let transport"
+            >
+              {{
+                transport.vehicleRegistrationNumber
+              }}
+            </td>
+
+          </ng-container>
+
+
+          <!-- DRIVER -->
+
+          <ng-container
+            matColumnDef="driver"
+          >
+
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+            >
+              Driver
+            </th>
+
+            <td
+              mat-cell
+              *matCellDef="let transport"
+            >
+              {{
+                transport.driverFirstName
+              }}
+              {{
+                transport.driverLastName
+              }}
+            </td>
+
+          </ng-container>
+
+
+          <!-- DEPARTURE -->
+
+          <ng-container
+            matColumnDef="departure"
+          >
+
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+            >
+              Departure
+            </th>
+
+            <td
+              mat-cell
+              *matCellDef="let transport"
+            >
+              {{
+                transport.plannedDepartureAt
+                  | date:'dd/MM/yyyy HH:mm'
+              }}
+            </td>
+
+          </ng-container>
+
+
+          <!-- STATUS -->
+
+          <ng-container
+            matColumnDef="status"
+          >
+
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+            >
+              Status
+            </th>
+
+            <td
+              mat-cell
+              *matCellDef="let transport"
+            >
+
+              <span
+                class="transport-status"
+                [attr.data-status]="transport.status"
+              >
+                {{ transport.status }}
+              </span>
+
+            </td>
+
+          </ng-container>
+
+
+          <!-- HEADER ROW -->
+
+          <tr
+            mat-header-row
+            *matHeaderRowDef="
+              displayedColumns
+            "
+          ></tr>
+
+
+          <!-- DATA ROW -->
+
+          <tr
+            mat-row
+            *matRowDef="
+              let row;
+              columns: displayedColumns
+            "
+          ></tr>
+
+        </table>
+
+
+        @if (
+          stats().recentTransports.length === 0
+          ) {
+
+          <div class="empty-state">
+            No recent transports.
+          </div>
+
+        }
+
+      </div>
+
+    </section>
+
+  }
+
+</section>
