@@ -147,6 +147,10 @@ Planned later:
 
 ![Smart Logistics ERP - Login](frontend/docs/screenshots/login.jpeg)
 
+### Dashboard
+
+![Smart Logistics ERP Dashboard](frontend/docs/screenshots/dashboard.jpeg)
+
 ### Warehouse Management
 
 ![Warehouse Management](frontend/docs/screenshots/warehouse-list.jpeg)
