@@ -107,7 +107,7 @@ The application follows a layered full-stack architecture.
 ┌───────────────────────────────────────┐
 │              PostgreSQL               │
 └───────────────────────────────────────┘
-```text
+```
 # Smart Logistics & Transport ERP
 Smart Logistics & Transport ERP is a full-stack enterprise application inspired by real-world logistics, transport, warehouse and supply chain operations.
 
