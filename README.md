@@ -138,6 +138,22 @@ in the Angular interface.
 
 ![Smart Logistics ERP - Login](frontend/docs/screenshots/login.jpeg)
 
+### Operational Dashboard
+
+The dashboard provides a consolidated overview of logistics operations.
+Current KPIs include:
+- Total warehouses
+- Available vehicles
+- Available drivers
+- Planned transports
+- Transports in progress
+- Completed transports
+
+The dashboard also displays recent transport operations including their
+origin, destination, assigned vehicle, driver, departure time and status.
+
+![Smart Logistics ERP Dashboard](frontend/docs/screenshots/dashboard.jpeg)
+
 ### Warehouse Management
 The warehouse module manages logistics locations used by transport operations.
 
