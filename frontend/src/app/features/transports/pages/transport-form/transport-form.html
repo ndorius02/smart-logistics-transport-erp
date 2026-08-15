@@ -1,0 +1,366 @@
+<section class="transport-form-page">
+
+  <div class="page-header">
+
+    <div>
+
+      <h1>
+        {{
+          isEditMode
+            ? 'Edit Transport'
+            : 'New Transport'
+        }}
+      </h1>
+
+      <p>
+        {{
+          isEditMode
+            ? 'Update transport planning information'
+            : 'Plan a new transport operation'
+        }}
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <mat-card>
+
+    <mat-card-content>
+
+      @if (errorMessage()) {
+
+        <div class="error-message">
+          {{ errorMessage() }}
+        </div>
+
+      }
+
+
+      @if (
+        loadingResources() ||
+        (loading() && isEditMode)
+        ) {
+
+        <div class="loading">
+
+          <mat-spinner
+            diameter="40"
+          />
+
+        </div>
+
+      } @else {
+
+        <form
+          [formGroup]="form"
+          (ngSubmit)="submit()"
+          class="transport-form"
+        >
+
+          <div class="form-grid">
+
+
+            <!-- CODE -->
+
+            <mat-form-field
+              appearance="outline"
+            >
+
+              <mat-label>
+                Transport Code
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="code"
+                placeholder="TR-2026-0001"
+              >
+
+              @if (
+                form.controls.code.touched &&
+                form.controls.code.hasError('required')
+                ) {
+
+                <mat-error>
+                  Transport code is required
+                </mat-error>
+
+              }
+
+            </mat-form-field>
+
+
+            <!-- ORIGIN -->
+
+            <mat-form-field
+              appearance="outline"
+            >
+
+              <mat-label>
+                Origin Warehouse
+              </mat-label>
+
+              <mat-select
+                formControlName="originWarehouseId"
+              >
+
+                @for (
+                    warehouse of warehouses();
+                  track warehouse.id
+                  ) {
+
+                  <mat-option
+                    [value]="warehouse.id"
+                  >
+                    {{ warehouse.code }}
+                    -
+                    {{ warehouse.name }}
+                  </mat-option>
+
+                }
+
+              </mat-select>
+
+              @if (
+                form.controls.originWarehouseId.touched &&
+                form.controls.originWarehouseId.hasError('required')
+                ) {
+
+                <mat-error>
+                  Origin warehouse is required
+                </mat-error>
+
+              }
+
+            </mat-form-field>
+
+
+            <!-- DESTINATION -->
+
+            <mat-form-field
+              appearance="outline"
+            >
+
+              <mat-label>
+                Destination Warehouse
+              </mat-label>
+
+              <mat-select
+                formControlName="destinationWarehouseId"
+              >
+
+                @for (
+                    warehouse of warehouses();
+                  track warehouse.id
+                  ) {
+
+                  <mat-option
+                    [value]="warehouse.id"
+                  >
+                    {{ warehouse.code }}
+                    -
+                    {{ warehouse.name }}
+                  </mat-option>
+
+                }
+
+              </mat-select>
+
+              @if (
+                form.controls.destinationWarehouseId.touched &&
+                form.controls.destinationWarehouseId.hasError('required')
+                ) {
+
+                <mat-error>
+                  Destination warehouse is required
+                </mat-error>
+
+              }
+
+            </mat-form-field>
+
+
+            <!-- VEHICLE -->
+
+            <mat-form-field
+              appearance="outline"
+            >
+
+              <mat-label>
+                Vehicle
+              </mat-label>
+
+              <mat-select
+                formControlName="vehicleId"
+              >
+
+                @for (
+                    vehicle of vehicles();
+                  track vehicle.id
+                  ) {
+
+                  <mat-option
+                    [value]="vehicle.id"
+                  >
+                    {{ vehicle.registrationNumber }}
+                    -
+                    {{ vehicle.brand }}
+                    {{ vehicle.model }}
+                  </mat-option>
+
+                }
+
+              </mat-select>
+
+              @if (
+                form.controls.vehicleId.touched &&
+                form.controls.vehicleId.hasError('required')
+                ) {
+
+                <mat-error>
+                  Vehicle is required
+                </mat-error>
+
+              }
+
+            </mat-form-field>
+
+
+            <!-- DRIVER -->
+
+            <mat-form-field
+              appearance="outline"
+            >
+
+              <mat-label>
+                Driver
+              </mat-label>
+
+              <mat-select
+                formControlName="driverId"
+              >
+
+                @for (
+                    driver of drivers();
+                  track driver.id
+                  ) {
+
+                  <mat-option
+                    [value]="driver.id"
+                  >
+                    {{ driver.firstName }}
+                    {{ driver.lastName }}
+                    -
+                    {{ driver.licenseNumber }}
+                  </mat-option>
+
+                }
+
+              </mat-select>
+
+              @if (
+                form.controls.driverId.touched &&
+                form.controls.driverId.hasError('required')
+                ) {
+
+                <mat-error>
+                  Driver is required
+                </mat-error>
+
+              }
+
+            </mat-form-field>
+
+
+            <!-- DEPARTURE -->
+
+            <mat-form-field
+              appearance="outline"
+            >
+
+              <mat-label>
+                Planned Departure
+              </mat-label>
+
+              <input
+                matInput
+                type="datetime-local"
+                formControlName="plannedDepartureAt"
+              >
+
+            </mat-form-field>
+
+
+            <!-- ARRIVAL -->
+
+            <mat-form-field
+              appearance="outline"
+            >
+
+              <mat-label>
+                Planned Arrival
+              </mat-label>
+
+              <input
+                matInput
+                type="datetime-local"
+                formControlName="plannedArrivalAt"
+              >
+
+            </mat-form-field>
+
+          </div>
+
+
+          <div class="form-actions">
+
+            <button
+              mat-button
+              type="button"
+              (click)="cancel()"
+            >
+              Cancel
+            </button>
+
+
+            <button
+              mat-flat-button
+              type="submit"
+              [disabled]="loading()"
+            >
+
+              @if (loading()) {
+
+                <mat-spinner
+                  diameter="20"
+                />
+
+              } @else {
+
+                <mat-icon>
+                  save
+                </mat-icon>
+
+                {{
+                  isEditMode
+                    ? 'Update'
+                    : 'Create'
+                }}
+
+              }
+
+            </button>
+
+          </div>
+
+        </form>
+
+      }
+
+    </mat-card-content>
+
+  </mat-card>
+
+</section>

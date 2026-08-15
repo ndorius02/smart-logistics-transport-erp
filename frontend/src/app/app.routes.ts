@@ -204,6 +204,56 @@ export const routes: Routes = [
       },
 
 
+      {
+        path: 'transports/new',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_TRANSPORT_COORDINATOR'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/transports/pages/transport-form/transport-form'
+            ).then(m => m.TransportForm)
+      },
+
+      {
+        path: 'transports/:id/edit',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_TRANSPORT_COORDINATOR'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/transports/pages/transport-form/transport-form'
+            ).then(m => m.TransportForm)
+      },
+
+      {
+        path: 'transports',
+
+        loadComponent: () =>
+          import(
+            './features/transports/pages/transport-list/transport-list'
+            ).then(m => m.TransportList)
+      },
+
+
 
 
 
