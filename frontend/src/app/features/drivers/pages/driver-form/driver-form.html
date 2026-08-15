@@ -1,0 +1,256 @@
+<section class="driver-form-page">
+
+  <div class="page-header">
+
+    <div>
+
+      <h1>
+        {{
+          isEditMode
+            ? 'Edit Driver'
+            : 'New Driver'
+        }}
+      </h1>
+
+      <p>
+        {{
+          isEditMode
+            ? 'Update driver information and operational status'
+            : 'Register a new driver'
+        }}
+      </p>
+
+    </div>
+
+  </div>
+
+  <mat-card>
+
+    <mat-card-content>
+
+      @if (errorMessage()) {
+
+        <div class="error-message">
+          {{ errorMessage() }}
+        </div>
+
+      }
+
+      @if (
+        loading() &&
+        isEditMode
+        ) {
+
+        <div class="loading">
+          <mat-spinner diameter="40" />
+        </div>
+
+      } @else {
+
+        <form
+          [formGroup]="form"
+          (ngSubmit)="submit()"
+          class="driver-form"
+        >
+
+          <div class="form-grid">
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                First Name
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="firstName"
+              >
+
+              @if (
+                form.controls.firstName.touched &&
+                form.controls.firstName.hasError('required')
+                ) {
+                <mat-error>
+                  First name is required
+                </mat-error>
+              }
+
+              @if (
+                form.controls.firstName.touched &&
+                form.controls.firstName.hasError('maxlength')
+                ) {
+                <mat-error>
+                  Maximum 100 characters
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Last Name
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="lastName"
+              >
+
+              @if (
+                form.controls.lastName.touched &&
+                form.controls.lastName.hasError('required')
+                ) {
+                <mat-error>
+                  Last name is required
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                License Number
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="licenseNumber"
+                placeholder="BE-DRV-2026-001"
+              >
+
+              @if (
+                form.controls.licenseNumber.touched &&
+                form.controls.licenseNumber.hasError('required')
+                ) {
+                <mat-error>
+                  License number is required
+                </mat-error>
+              }
+
+              @if (
+                form.controls.licenseNumber.touched &&
+                form.controls.licenseNumber.hasError('maxlength')
+                ) {
+                <mat-error>
+                  Maximum 50 characters
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Phone Number
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="phoneNumber"
+                placeholder="+32470000001"
+              >
+
+              @if (
+                form.controls.phoneNumber.touched &&
+                form.controls.phoneNumber.hasError('required')
+                ) {
+                <mat-error>
+                  Phone number is required
+                </mat-error>
+              }
+
+              @if (
+                form.controls.phoneNumber.touched &&
+                form.controls.phoneNumber.hasError('maxlength')
+                ) {
+                <mat-error>
+                  Maximum 30 characters
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+            @if (isEditMode) {
+
+              <mat-form-field appearance="outline">
+
+                <mat-label>
+                  Driver Status
+                </mat-label>
+
+                <mat-select
+                  formControlName="status"
+                >
+
+                  @for (
+                      status of driverStatuses;
+                    track status
+                    ) {
+
+                    <mat-option
+                      [value]="status"
+                    >
+                      {{ status }}
+                    </mat-option>
+
+                  }
+
+                </mat-select>
+
+              </mat-form-field>
+
+            }
+
+          </div>
+
+          <div class="form-actions">
+
+            <button
+              mat-button
+              type="button"
+              (click)="cancel()"
+            >
+              Cancel
+            </button>
+
+            <button
+              mat-flat-button
+              type="submit"
+              [disabled]="loading()"
+            >
+
+              @if (loading()) {
+
+                <mat-spinner
+                  diameter="20"
+                />
+
+              } @else {
+
+                <mat-icon>
+                  save
+                </mat-icon>
+
+                {{
+                  isEditMode
+                    ? 'Update'
+                    : 'Create'
+                }}
+
+              }
+
+            </button>
+
+          </div>
+
+        </form>
+
+      }
+
+    </mat-card-content>
+
+  </mat-card>
+
+</section>

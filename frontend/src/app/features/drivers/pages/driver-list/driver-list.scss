@@ -1,0 +1,97 @@
+.driver-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  h1 {
+    margin: 0;
+    font-size: 28px;
+  }
+
+  p {
+    margin: 6px 0 0;
+    color: #6b7280;
+  }
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.search-field {
+  width: 320px;
+}
+
+.table-container {
+  overflow: hidden;
+
+  background: #ffffff;
+  border-radius: 12px;
+
+  box-shadow:
+    0 1px 3px
+    rgba(0, 0, 0, 0.08);
+}
+
+table {
+  width: 100%;
+}
+
+.status {
+  display: inline-flex;
+
+  padding: 4px 10px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status.active {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.status.inactive {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+.status.operational[data-status='AVAILABLE'] {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.status.operational[data-status='ASSIGNED'] {
+  color: #1d4ed8;
+  background: #dbeafe;
+}
+
+.status.operational[data-status='ON_LEAVE'] {
+  color: #92400e;
+  background: #fef3c7;
+}
+
+.status.operational[data-status='SUSPENDED'] {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+.loading,
+.empty-state {
+  padding: 32px;
+
+  text-align: center;
+
+  color: #6b7280;
+}

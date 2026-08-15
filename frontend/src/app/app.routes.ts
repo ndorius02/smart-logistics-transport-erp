@@ -154,19 +154,61 @@ export const routes: Routes = [
       },
 
 
+      {
+        path: 'drivers/new',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_TRANSPORT_COORDINATOR'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/drivers/pages/driver-form/driver-form'
+            ).then(m => m.DriverForm)
+      },
+
+      {
+        path: 'drivers/:id/edit',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_TRANSPORT_COORDINATOR'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/drivers/pages/driver-form/driver-form'
+            ).then(m => m.DriverForm)
+      },
+
+      {
+        path: 'drivers',
+
+        loadComponent: () =>
+          import(
+            './features/drivers/pages/driver-list/driver-list'
+            ).then(m => m.DriverList)
+      },
+
+
 
 
 
 
       /*
-
-      {
-        path: 'drivers',
-        loadComponent: () =>
-          import(
-            './features/drivers/drivers'
-          ).then(m => m.Drivers)
-      },
 
       {
         path: 'transports',
