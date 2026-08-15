@@ -1,0 +1,284 @@
+.dashboard-page {
+  padding: 24px;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+
+.page-header {
+  margin-bottom: 26px;
+
+  h1 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
+    color: #111827;
+  }
+
+  p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: #64748b;
+  }
+}
+
+/* =========================
+   LOADING
+   ========================= */
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+/* =========================
+   KPI GRID
+   ========================= */
+
+.kpi-grid {
+  display: grid;
+
+  // 3 cartes par ligne
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+
+  margin-bottom: 30px;
+}
+
+/* =========================
+   KPI CARD
+   ========================= */
+
+.kpi-card {
+  border-radius: 14px;
+  min-height: 100px;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.06);
+
+  mat-card-content {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 22px 24px !important;
+  }
+}
+
+/* =========================
+   KPI ICON
+   ========================= */
+
+.kpi-icon {
+  width: 54px;
+  height: 54px;
+
+  flex-shrink: 0;
+
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eef3ff;
+
+  mat-icon {
+    width: 30px;
+    height: 30px;
+
+    font-size: 30px;
+
+    color: #111827;
+  }
+}
+
+/* =========================
+   KPI TEXT
+   ========================= */
+
+.kpi-content {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+
+  .kpi-label {
+    color: #64748b;
+    font-size: 14px;
+  }
+
+  strong {
+    font-size: 30px;
+    line-height: 1;
+
+    font-weight: 700;
+
+    color: #111827;
+  }
+}
+
+/* =========================
+   RECENT TRANSPORTS
+   ========================= */
+
+.recent-section {
+  margin-top: 8px;
+}
+
+.section-header {
+  margin-bottom: 14px;
+
+  h2 {
+    margin: 0;
+
+    font-size: 22px;
+    font-weight: 700;
+
+    color: #111827;
+  }
+
+  p {
+    margin: 3px 0 0;
+
+    font-size: 13px;
+
+    color: #64748b;
+  }
+}
+
+/* =========================
+   TABLE
+   ========================= */
+
+.table-container {
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  border: 1px solid #e5e7eb;
+
+  background: white;
+
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+table {
+  width: 100%;
+}
+
+.mat-mdc-header-cell {
+  font-weight: 600;
+  color: #111827;
+
+  background: #fafafa;
+}
+
+.mat-mdc-cell {
+  color: #334155;
+}
+
+.mat-mdc-row:hover {
+  background: #f8fafc;
+}
+
+/* =========================
+   STATUS
+   ========================= */
+
+.transport-status {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* PLANNED */
+
+.transport-status[data-status='PLANNED'] {
+  color: #1d4ed8;
+  background: #dbeafe;
+}
+
+/* IN PROGRESS */
+
+.transport-status[data-status='IN_PROGRESS'] {
+  color: #92400e;
+  background: #fef3c7;
+}
+
+/* COMPLETED */
+
+.transport-status[data-status='COMPLETED'] {
+  color: #166534;
+  background: #dcfce7;
+}
+
+/* CANCELLED */
+
+.transport-status[data-status='CANCELLED'] {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+/* =========================
+   EMPTY STATE
+   ========================= */
+
+.empty-state {
+  padding: 40px;
+
+  text-align: center;
+
+  color: #64748b;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 1100px) {
+
+  .kpi-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .dashboard-page {
+    padding: 16px;
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 900px;
+  }
+
+}
