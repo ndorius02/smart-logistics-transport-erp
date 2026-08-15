@@ -21,7 +21,7 @@ resource availability, operational statuses and transport lifecycle rules.
 
 The objective of this project is to design and progressively build a
 modular logistics ERP covering operational processes commonly found in
-transport, warehousing and supply-chain environments.
+transport, warehousing, Caro Operations, Import & Export and supply-chain environments.
 
 The current version implements:
 
@@ -269,20 +269,41 @@ Transport operations enforce rules including:
 - COMPLETED
 - CANCELLED
 
+## Cross-Module Business Workflow
 
+One of the main objectives of this project is to model relationships between
+business modules rather than implementing isolated CRUD operations.
+
+```text
+                   ┌─────────────────┐
+                   │    Transport    │
+                   └────────┬────────┘
+                            │
+          ┌─────────────────┼─────────────────┐
+          │                 │                 │
+          ▼                 ▼                 ▼
+     Warehouses          Vehicle           Driver
+          │                 │                 │
+          │                 │                 │
+     Origin /          Availability      Availability
+    Destination          & Status          & Status
+          │                 │                 │
+          └─────────────────┼─────────────────┘
+                            │
+                            ▼
+                  Transport Lifecycle
+                            │
+                  ┌─────────┴─────────┐
+                  ▼                   ▼
+             COMPLETED            CANCELLED
+```
+This architecture allows business rules from multiple logistics domains to participate in the same operational workflow.
 
 # Smart Logistics & Transport ERP
 Smart Logistics & Transport ERP is a full-stack enterprise application inspired by real-world logistics, transport, warehouse and supply chain operations.
 
 The project is designed as a professional portfolio project to demonstrate backend architecture, security, business-rule implementation, database design and full-stack development using Spring Boot, Angular and PostgreSQL.
-## Business Domain
-The application models business processes commonly found in:
-- Logistics
-- Transport
-- Supply Chain
-- Warehouse Management
-- Cargo Operations
-- Import & Export
+
 ## Current Backend Features
 The current backend includes:
 - JWT Authentication
@@ -300,55 +321,7 @@ The current backend includes:
 - Database migrations with Flyway
 - DTO mapping with MapStruct
 - Audit fields with reusable JPA base entity
-## Implemented Roles
-Current roles include:
-- ADMIN
-- MANAGER
-- WAREHOUSE_OFFICER
-- TRANSPORT_COORDINATOR
-Authorization rules are centralized and applied at API level.
 
-Examples:
-- ADMIN can manage users and roles.
-- MANAGER has read access to operational resources.
-- WAREHOUSE_OFFICER has warehouse-specific access.
-- TRANSPORT_COORDINATOR manages vehicles, drivers and transports.
-## Implemented Modules
-### Administration
-- User
-- Role
-- Authentication
-- Authorization
-### Warehouse Management
-- Warehouse creation and update
-- Pagination
-- Search
-- Activation / deactivation
-### Fleet Management
-- Vehicle creation and update
-- Vehicle types
-- Operational vehicle status
-- Activation / deactivation
-- Pagination and search
-### Driver Management
-- Driver creation and update
-- Driver operational status
-- License-number uniqueness
-- Activation / deactivation
-- Pagination and search
-### Transport Management
-Transport operations link:
-- Origin warehouse
-- Destination warehouse
-- Vehicle
-- Driver
-### Business rules include:
-- origin and destination must be different;
-- warehouses must be active;
-- vehicle must be active and available;
-- driver must be active and available;
-- planned departure must be before planned arrival;
-- status transitions are controlled by dedicated operations.
 ## Planned Modules
 ### The following modules are planned for future iterations:
 - Customer Management
