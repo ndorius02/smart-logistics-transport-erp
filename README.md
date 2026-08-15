@@ -237,6 +237,24 @@ Each transport references:
                  └───────────┘
 PLANNED ───────────────► CANCELLED
 ```
+### Business Rules
+
+Transport operations enforce rules including:
+- Origin and destination warehouses must be different
+- Warehouses must be active
+- Vehicle must be active and available
+- Driver must be active and available
+- Planned departure must occur before planned arrival
+- Transport status transitions are controlled
+- Transport execution updates operational resource availability
+#### Transport Statuses
+- PLANNED
+- IN_PROGRESS
+- COMPLETED
+- CANCELLED
+
+
+
 # Smart Logistics & Transport ERP
 Smart Logistics & Transport ERP is a full-stack enterprise application inspired by real-world logistics, transport, warehouse and supply chain operations.
 
