@@ -145,25 +145,23 @@ Planned later:
 ### Screenshots will be added during frontend development.
 ### Authentication
 
-The application provides secure JWT-based authentication.
-
 ![Smart Logistics ERP - Login](frontend/docs/screenshots/login.jpeg)
-
-### Dashboard
-
-![Dashboard](frontend/docs/screenshots/dashboard.jpeg)
 
 ### Warehouse Management
 
-![Warehouse List](frontend/docs/screenshots/warehouse-list.jpeg)
+![Warehouse Management](frontend/docs/screenshots/warehouse-list.jpeg)
 
 ### Create Warehouse
 
 ![Create Warehouse](frontend/docs/screenshots/warehouse-create.jpeg)
 
-### Edit Warehouse
+### Vehicle Management
 
-![Edit Warehouse](frontend/docs/screenshots/warehouse-edit.jpeg)
+![Vehicle Management](frontend/docs/screenshots/vehicle-list.jpeg)
+
+### Create Vehicle
+
+![Create Vehicle](frontend/docs/screenshots/vehicle-create.jpeg)
 Planned screenshots:
 - Driver Management
 - Transport Planning
