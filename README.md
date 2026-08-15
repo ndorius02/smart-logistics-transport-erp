@@ -108,6 +108,32 @@ The application follows a layered full-stack architecture.
 │              PostgreSQL               │
 └───────────────────────────────────────┘
 ```
+## Implemented Modules
+### Administration & Security
+The administration layer provides the security foundation of the ERP.
+Implemented features include:
+- JWT authentication
+- Role-Based Access Control (RBAC)
+- User management
+- Role management
+- Protected REST endpoints
+- Angular route guards
+- HTTP authentication interceptor
+- Role-aware frontend actions
+
+### Roles
+
+The application currently supports the following roles:
+
+| Role | Main Responsibility |
+|---|---|
+| `ADMIN` | Full administrative and operational access |
+| `MANAGER` | Read access to operational resources |
+| `WAREHOUSE_OFFICER` | Warehouse-related operations |
+| `TRANSPORT_COORDINATOR` | Vehicle, driver and transport operations |
+
+Authorization is enforced at API level by Spring Security and reflected
+in the Angular interface.
 # Smart Logistics & Transport ERP
 Smart Logistics & Transport ERP is a full-stack enterprise application inspired by real-world logistics, transport, warehouse and supply chain operations.
 
