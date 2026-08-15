@@ -196,25 +196,30 @@ Planned KPIs include:
 - Planned transports
 - Transports in progress
 - Completed transports
-
+  
 ### Warehouse Management
 
-- List warehouses
-- Search
-- Pagination
-- Create
-- Update
-- Activate / deactivate
+- Warehouse listing with server-side pagination
+- Search by warehouse name
+- Create and update warehouses
+- Activate/deactivate warehouses
+- Angular Reactive Forms validation
+- Role-based UI actions
+- JWT-protected API communication
 
 ### Vehicle Management
 
-- List vehicles
-- Search
-- Pagination
-- Create
-- Update
-- Activate / deactivate
-- Vehicle status
+- Vehicle listing with server-side pagination
+- Search by registration number
+- Search by brand
+- Filter by operational status
+- Create and update vehicles
+- Activate/deactivate vehicles
+- Vehicle type management
+- Operational status management
+- Angular Reactive Forms validation
+- Role-based UI actions
+- JWT-protected API communication
 
 ### Driver Management
 
