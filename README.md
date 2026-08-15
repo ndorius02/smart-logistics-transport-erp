@@ -217,7 +217,7 @@ Each transport references:
 ![Transport Management](frontend/docs/screenshots/transport-list.jpeg)
 
 #### Transport Lifecycle
-
+```text
                  ┌───────────┐
                  │  PLANNED  │
                  └─────┬─────┘
@@ -235,9 +235,8 @@ Each transport references:
                  ┌───────────┐
                  │ COMPLETED │
                  └───────────┘
-
 PLANNED ───────────────► CANCELLED
-
+```
 # Smart Logistics & Transport ERP
 Smart Logistics & Transport ERP is a full-stack enterprise application inspired by real-world logistics, transport, warehouse and supply chain operations.
 
