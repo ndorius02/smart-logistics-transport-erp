@@ -11,6 +11,8 @@ The project is built as a professional portfolio project and reflects my dual
 background in **Computer Science / Application Development** and
 **Transport & Logistics**.
 
+The project is designed as a professional portfolio project to demonstrate backend architecture, security, business-rule implementation, database design and full-stack development using Spring Boot, Angular and PostgreSQL.
+
 Rather than implementing independent CRUD modules, the application models
 connected business processes with authentication, role-based authorization,
 resource availability, operational statuses and transport lifecycle rules.
@@ -302,7 +304,6 @@ This architecture allows business rules from multiple logistics domains to parti
 # Smart Logistics & Transport ERP
 Smart Logistics & Transport ERP is a full-stack enterprise application inspired by real-world logistics, transport, warehouse and supply chain operations.
 
-The project is designed as a professional portfolio project to demonstrate backend architecture, security, business-rule implementation, database design and full-stack development using Spring Boot, Angular and PostgreSQL.
 
 ## Current Backend Features
 The current backend includes:
