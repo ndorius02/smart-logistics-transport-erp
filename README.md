@@ -1,4 +1,115 @@
 # Smart Logistics & Transport ERP
+
+> A full-stack logistics management platform combining software engineering
+> with real-world transport and logistics business processes.
+
+Smart Logistics & Transport ERP is a full-stack enterprise application designed
+to manage core logistics and transport operations, including warehouses,
+vehicles, drivers and transport planning.
+
+The project is built as a professional portfolio project and reflects my dual
+background in **Computer Science / Application Development** and
+**Transport & Logistics**.
+
+Rather than implementing independent CRUD modules, the application models
+connected business processes with authentication, role-based authorization,
+resource availability, operational statuses and transport lifecycle rules.
+
+---
+
+## Project Overview
+
+The objective of this project is to design and progressively build a
+modular logistics ERP covering operational processes commonly found in
+transport, warehousing and supply-chain environments.
+
+The current version implements:
+
+- Authentication and JWT security
+- Role-Based Access Control (RBAC)
+- User and role management
+- Warehouse management
+- Vehicle / fleet management
+- Driver management
+- Transport planning and lifecycle management
+- Operational dashboard
+- Search, filtering and pagination
+- Business-rule validation
+- Centralized exception handling
+
+The project is under active development and additional supply-chain modules
+are planned.
+
+---
+
+## Why This Project?
+
+Logistics software is not only about storing data.
+
+Real transport operations involve dependencies between warehouses, vehicles,
+drivers, schedules and operational statuses.
+
+This project demonstrates how these business constraints can be translated
+into a full-stack application.
+
+For example, creating and executing a transport operation requires:
+
+1. an origin warehouse;
+2. a different destination warehouse;
+3. an active and available vehicle;
+4. an active and available driver;
+5. valid planned departure and arrival times;
+6. controlled transport status transitions.
+
+The objective is therefore to demonstrate both **software engineering skills**
+and **understanding of logistics operations**.
+
+---
+
+## Architecture
+
+The application follows a layered full-stack architecture.
+
+```text
+┌───────────────────────────────────────┐
+│            Angular Frontend           │
+│                                       │
+│ Components • Services • Guards        │
+│ Interceptors • Reactive Forms         │
+└──────────────────┬────────────────────┘
+                   │
+                   │ REST / JSON
+                   │ JWT
+                   ▼
+┌───────────────────────────────────────┐
+│          Spring Boot REST API         │
+│                                       │
+│ Controllers • DTOs • Validation       │
+│ Security • Exception Handling         │
+└──────────────────┬────────────────────┘
+                   │
+                   ▼
+┌───────────────────────────────────────┐
+│            Service Layer              │
+│                                       │
+│ Business Rules • Transactions         │
+│ Resource Validation                   │
+└──────────────────┬────────────────────┘
+                   │
+                   ▼
+┌───────────────────────────────────────┐
+│          Persistence Layer            │
+│                                       │
+│ Spring Data JPA • Hibernate           │
+└──────────────────┬────────────────────┘
+                   │
+                   ▼
+┌───────────────────────────────────────┐
+│              PostgreSQL               │
+└───────────────────────────────────────┘
+
+
+# Smart Logistics & Transport ERP
 Smart Logistics & Transport ERP is a full-stack enterprise application inspired by real-world logistics, transport, warehouse and supply chain operations.
 
 The project is designed as a professional portfolio project to demonstrate backend architecture, security, business-rule implementation, database design and full-stack development using Spring Boot, Angular and PostgreSQL.
