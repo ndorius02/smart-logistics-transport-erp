@@ -326,7 +326,7 @@ PostgreSQL
 - ✅ Warehouse pagination
 - ✅ Warehouse create/update
 - ✅ Warehouse activation/deactivation
-- ⬜ Vehicle Management
+- ✅ Vehicle Management
 - ⬜ Driver Management
 - ⬜ Transport Management
 - ⬜ Dashboard KPIs
