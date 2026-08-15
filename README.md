@@ -134,6 +134,9 @@ The application currently supports the following roles:
 
 Authorization is enforced at API level by Spring Security and reflected
 in the Angular interface.
+### Authentication
+
+![Smart Logistics ERP - Login](frontend/docs/screenshots/login.jpeg)
 
 ### Warehouse Management
 The warehouse module manages logistics locations used by transport operations.
@@ -155,9 +158,6 @@ A warehouse contains operational information such as:
 - Country
 - Capacity
 - Active status
-
-### Warehouse Management
-
 ![Warehouse Management](frontend/docs/screenshots/warehouse-list.jpeg)
 
 # Smart Logistics & Transport ERP
