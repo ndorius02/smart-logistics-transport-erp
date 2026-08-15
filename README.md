@@ -151,19 +151,14 @@ Planned later:
 
 ![Warehouse Management](frontend/docs/screenshots/warehouse-list.jpeg)
 
-### Create Warehouse
-
-![Create Warehouse](frontend/docs/screenshots/warehouse-create.jpeg)
-
 ### Vehicle Management
 
 ![Vehicle Management](frontend/docs/screenshots/vehicle-list.jpeg)
 
-### Create Vehicle
+### Driver Management
 
-![Create Vehicle](frontend/docs/screenshots/vehicle-create.jpeg)
+![Driver Management](frontend/docs/screenshots/driver-list.jpeg)
 Planned screenshots:
-- Driver Management
 - Transport Planning
 - Transport Status Workflow
 - Reports / KPI Dashboard
