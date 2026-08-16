@@ -462,7 +462,7 @@ database evolution across environments.
 ## Professional Context
 This project reflects the combination of two areas of my academic background:
 
-Bachelor in Computer Science – Applications Development
+Recently graduated (Bachelor) with distinction in Computer Science – Applications Development
 Haute École de Namur-Liège-Luxembourg (Hénallux), Belgium
 2022–2026
 
