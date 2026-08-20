@@ -55,4 +55,13 @@ public final class ErrorMessages {
 
     public static final String DUPLICATE_CUSTOMER_VAT_NUMBER =
             "Customer VAT number already exists";
+
+    public static final String SUPPLIER_NOT_FOUND =
+            "Supplier not found";
+
+    public static final String DUPLICATE_SUPPLIER_CODE =
+            "Supplier code already exists";
+
+    public static final String DUPLICATE_SUPPLIER_VAT_NUMBER =
+            "Supplier VAT number already exists";
 }
