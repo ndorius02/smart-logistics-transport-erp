@@ -234,6 +234,47 @@ public class AuthorizationRules {
                         "TRANSPORT_COORDINATOR"
                 )
 
+                // =========================
+                // CUSTOMERS
+                // =========================
+
+                .requestMatchers(
+                        HttpMethod.GET,
+                        "/api/customers",
+                        "/api/customers/**"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER",
+                        "WAREHOUSE_OFFICER",
+                        "TRANSPORT_COORDINATOR"
+                )
+
+                .requestMatchers(
+                        HttpMethod.POST,
+                        "/api/customers"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER"
+                )
+
+                .requestMatchers(
+                        HttpMethod.PUT,
+                        "/api/customers/**"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER"
+                )
+
+                .requestMatchers(
+                        HttpMethod.PATCH,
+                        "/api/customers/*/activate",
+                        "/api/customers/*/deactivate"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER"
+                )
+
+
 
 
                 // =========================

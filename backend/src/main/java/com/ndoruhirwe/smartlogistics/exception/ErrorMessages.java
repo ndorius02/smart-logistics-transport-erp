@@ -46,4 +46,13 @@ public final class ErrorMessages {
             "Planned departure must be before planned arrival";
     public static final String INVALID_TRANSPORT_STATUS_TRANSITION =
             "Invalid transport status transition";
+
+    public static final String CUSTOMER_NOT_FOUND =
+            "Customer not found";
+
+    public static final String DUPLICATE_CUSTOMER_CODE =
+            "Customer code already exists";
+
+    public static final String DUPLICATE_CUSTOMER_VAT_NUMBER =
+            "Customer VAT number already exists";
 }
