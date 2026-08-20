@@ -4,11 +4,7 @@ import { authGuard } from './core/guards/auth.guard';
 import { roleGuard } from './core/guards/role.guard';
 
 export const routes: Routes = [
-
-  // =========================
   // PUBLIC ROUTES
-  // =========================
-
   {
     path: 'login',
     loadComponent: () =>
@@ -16,9 +12,7 @@ export const routes: Routes = [
         .then(m => m.Login)
   },
 
-  // =========================
   // PRIVATE ROUTES
-  // =========================
 
   {
     path: '',
@@ -258,16 +252,7 @@ export const routes: Routes = [
 
 
 
-      /*
 
-      {
-        path: 'transports',
-        loadComponent: () =>
-          import(
-            './features/transports/transports'
-          ).then(m => m.Transports)
-      },
-      */
 
       {
         path: '',
