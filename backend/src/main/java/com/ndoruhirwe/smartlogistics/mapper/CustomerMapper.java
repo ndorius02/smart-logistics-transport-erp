@@ -20,7 +20,6 @@ public interface CustomerMapper {
     CustomerResponse toResponse(Customer customer);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "active", ignore = true)
     void updateEntity(
             CustomerUpdateRequest request,
             @MappingTarget Customer customer
