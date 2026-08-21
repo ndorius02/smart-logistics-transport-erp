@@ -216,7 +216,7 @@ Features include:
 - ON_LEAVE
 - SUSPENDED
 
-![Driver Management](frontend/docs/screenshots/driver-list.jpeg)
+![Driver Management](frontend/docs/screenshots/driver-list.png)
 
 ### Transport Management
 
