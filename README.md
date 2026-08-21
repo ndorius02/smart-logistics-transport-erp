@@ -30,6 +30,7 @@ The current version implements:
 - Vehicle / fleet management
 - Driver management
 - Transport planning and lifecycle management
+- Business Partners Management
 - Operational dashboard
 - Search, filtering and pagination
 - Business-rule validation
