@@ -154,7 +154,7 @@ Current KPIs include:
 The dashboard also displays recent transport operations including their
 origin, destination, assigned vehicle, driver, departure time and status.
 
-![Smart Logistics ERP Dashboard](frontend/docs/screenshots/dashboard.jpeg)
+![Smart Logistics ERP Dashboard](frontend/docs/screenshots/dashboard.png)
 
 ### Warehouse Management
 The warehouse module manages logistics locations used by transport operations.
