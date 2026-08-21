@@ -64,4 +64,16 @@ public final class ErrorMessages {
 
     public static final String DUPLICATE_SUPPLIER_VAT_NUMBER =
             "Supplier VAT number already exists";
+
+    public static final String CARRIER_NOT_FOUND =
+            "Carrier not found";
+
+    public static final String DUPLICATE_CARRIER_CODE =
+            "Carrier code already exists";
+
+    public static final String DUPLICATE_CARRIER_VAT_NUMBER =
+            "Carrier VAT number already exists";
+
+    public static final String DUPLICATE_CARRIER_LICENSE_NUMBER =
+            "Carrier license number already exists";
 }
