@@ -1,0 +1,406 @@
+<section class="customer-page">
+
+  <div class="page-header">
+
+    <div>
+      <h1>Customers</h1>
+
+      <p>
+        Manage customer business partners
+      </p>
+    </div>
+
+    @if (canManageCustomers()) {
+
+      <button
+        mat-flat-button
+        type="button"
+        (click)="createCustomer()"
+      >
+        <mat-icon>add</mat-icon>
+
+        New Customer
+      </button>
+
+    }
+
+  </div>
+
+
+  <!-- FILTERS -->
+
+  <div class="filters">
+
+    <mat-form-field
+      appearance="outline"
+      class="search-type"
+    >
+
+      <mat-label>
+        Search by
+      </mat-label>
+
+      <mat-select
+        [value]="searchType()"
+        (selectionChange)="searchType.set($event.value)"
+      >
+
+        <mat-option value="companyName">
+          Company Name
+        </mat-option>
+
+        <mat-option value="code">
+          Customer Code
+        </mat-option>
+
+      </mat-select>
+
+    </mat-form-field>
+
+
+    <mat-form-field
+      appearance="outline"
+      class="search-field"
+    >
+
+      <mat-label>
+        Search customer
+      </mat-label>
+
+      <mat-icon matPrefix>
+        search
+      </mat-icon>
+
+      <input
+        matInput
+        [value]="searchTerm()"
+        (input)="searchTerm.set($any($event.target).value)"
+        (keyup.enter)="search()"
+      >
+
+    </mat-form-field>
+
+
+    <button
+      mat-flat-button
+      type="button"
+      (click)="search()"
+    >
+      Search
+    </button>
+
+
+    <button
+      mat-button
+      type="button"
+      (click)="clearFilters()"
+    >
+      Clear
+    </button>
+
+  </div>
+
+
+  <!-- TABLE -->
+
+  <div class="table-container">
+
+    @if (loading()) {
+
+      <div class="loading">
+        Loading customers...
+      </div>
+
+    } @else {
+
+      <table
+        mat-table
+        [dataSource]="customers()"
+      >
+
+        <!-- CODE -->
+
+        <ng-container matColumnDef="code">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Code
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let customer"
+          >
+            <strong>
+              {{ customer.code }}
+            </strong>
+          </td>
+
+        </ng-container>
+
+
+        <!-- COMPANY -->
+
+        <ng-container matColumnDef="companyName">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Company
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let customer"
+          >
+            {{ customer.companyName }}
+          </td>
+
+        </ng-container>
+
+
+        <!-- CONTACT -->
+
+        <ng-container matColumnDef="contact">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Contact
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let customer"
+          >
+
+            <div class="contact-cell">
+
+              <strong>
+                {{ customer.contactName || '—' }}
+              </strong>
+
+              @if (customer.email) {
+
+                <span>
+                  {{ customer.email }}
+                </span>
+
+              }
+
+              @if (customer.phoneNumber) {
+
+                <span>
+                  {{ customer.phoneNumber }}
+                </span>
+
+              }
+
+            </div>
+
+          </td>
+
+        </ng-container>
+
+
+        <!-- LOCATION -->
+
+        <ng-container matColumnDef="location">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Location
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let customer"
+          >
+
+            <div class="location-cell">
+
+              <strong>
+                {{ customer.city }}
+              </strong>
+
+              <span>
+                {{ customer.country }}
+              </span>
+
+            </div>
+
+          </td>
+
+        </ng-container>
+
+
+        <!-- VAT -->
+
+        <ng-container matColumnDef="vatNumber">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            VAT Number
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let customer"
+          >
+            {{ customer.vatNumber || '—' }}
+          </td>
+
+        </ng-container>
+
+
+        <!-- STATUS -->
+
+        <ng-container matColumnDef="status">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Status
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let customer"
+          >
+
+            <span
+              class="status"
+              [class.active]="customer.active"
+              [class.inactive]="!customer.active"
+            >
+              {{
+                customer.active
+                  ? 'Active'
+                  : 'Inactive'
+              }}
+            </span>
+
+          </td>
+
+        </ng-container>
+
+
+        <!-- ACTIONS -->
+
+        <ng-container matColumnDef="actions">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Actions
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let customer"
+          >
+
+            @if (canManageCustomers()) {
+
+              <button
+                mat-icon-button
+                type="button"
+                title="Edit customer"
+                (click)="editCustomer(customer)"
+              >
+                <mat-icon>
+                  edit
+                </mat-icon>
+              </button>
+
+
+              @if (customer.active) {
+
+                <button
+                  mat-icon-button
+                  type="button"
+                  title="Deactivate customer"
+                  (click)="deactivateCustomer(customer)"
+                >
+                  <mat-icon>
+                    block
+                  </mat-icon>
+                </button>
+
+              } @else {
+
+                <button
+                  mat-icon-button
+                  type="button"
+                  title="Activate customer"
+                  (click)="activateCustomer(customer)"
+                >
+                  <mat-icon>
+                    check_circle
+                  </mat-icon>
+                </button>
+
+              }
+
+            } @else {
+
+              <span class="read-only">
+                View only
+              </span>
+
+            }
+
+          </td>
+
+        </ng-container>
+
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns"
+        ></tr>
+
+        <tr
+          mat-row
+          *matRowDef="
+            let row;
+            columns: displayedColumns
+          "
+        ></tr>
+
+      </table>
+
+
+      @if (customers().length === 0) {
+
+        <div class="empty-state">
+          No customers found.
+        </div>
+
+      }
+
+
+      <mat-paginator
+        [length]="totalElements()"
+        [pageIndex]="pageIndex()"
+        [pageSize]="pageSize()"
+        [pageSizeOptions]="[5, 10, 20, 50]"
+        (page)="onPageChange($event)"
+        showFirstLastButtons
+      />
+
+    }
+
+  </div>
+
+</section>

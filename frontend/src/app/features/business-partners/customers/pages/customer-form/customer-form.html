@@ -1,0 +1,333 @@
+<section class="customer-form-page">
+
+  <div class="page-header">
+
+    <div>
+
+      <h1>
+        {{
+          isEditMode
+            ? 'Edit Customer'
+            : 'New Customer'
+        }}
+      </h1>
+
+      <p>
+        {{
+          isEditMode
+            ? 'Update customer business partner information'
+            : 'Create a new customer business partner'
+        }}
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <mat-card>
+
+    <mat-card-content>
+
+      @if (errorMessage()) {
+
+        <div class="error-message">
+          {{ errorMessage() }}
+        </div>
+
+      }
+
+
+      @if (loading() && isEditMode) {
+
+        <div class="loading">
+          <mat-spinner diameter="40" />
+        </div>
+
+      } @else {
+
+        <form
+          [formGroup]="form"
+          (ngSubmit)="submit()"
+          class="customer-form"
+        >
+
+          <div class="form-grid">
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Customer Code
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="code"
+                placeholder="CUS-BE-001"
+              >
+
+              @if (
+                form.controls.code.touched &&
+                form.controls.code.hasError('required')
+                ) {
+
+                <mat-error>
+                  Customer code is required
+                </mat-error>
+
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Company Name
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="companyName"
+              >
+
+              @if (
+                form.controls.companyName.touched &&
+                form.controls.companyName.hasError('required')
+                ) {
+
+                <mat-error>
+                  Company name is required
+                </mat-error>
+
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Contact Name
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="contactName"
+              >
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Email
+              </mat-label>
+
+              <input
+                matInput
+                type="email"
+                formControlName="email"
+              >
+
+              @if (
+                form.controls.email.touched &&
+                form.controls.email.hasError('email')
+                ) {
+
+                <mat-error>
+                  Enter a valid email address
+                </mat-error>
+
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Phone Number
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="phoneNumber"
+              >
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                VAT Number
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="vatNumber"
+                placeholder="BE0123456789"
+              >
+
+            </mat-form-field>
+
+
+            <mat-form-field
+              appearance="outline"
+              class="full-width"
+            >
+
+              <mat-label>
+                Address
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="address"
+              >
+
+              @if (
+                form.controls.address.touched &&
+                form.controls.address.hasError('required')
+                ) {
+
+                <mat-error>
+                  Address is required
+                </mat-error>
+
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                City
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="city"
+              >
+
+              @if (
+                form.controls.city.touched &&
+                form.controls.city.hasError('required')
+                ) {
+
+                <mat-error>
+                  City is required
+                </mat-error>
+
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Postal Code
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="postalCode"
+              >
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Country
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="country"
+              >
+
+              @if (
+                form.controls.country.touched &&
+                form.controls.country.hasError('required')
+                ) {
+
+                <mat-error>
+                  Country is required
+                </mat-error>
+
+              }
+
+            </mat-form-field>
+
+
+            @if (isEditMode) {
+
+              <div class="active-field">
+
+                <mat-slide-toggle
+                  formControlName="active"
+                >
+                  Active Customer
+                </mat-slide-toggle>
+
+              </div>
+
+            }
+
+          </div>
+
+
+          <div class="form-actions">
+
+            <button
+              mat-button
+              type="button"
+              (click)="cancel()"
+            >
+              Cancel
+            </button>
+
+
+            <button
+              mat-flat-button
+              type="submit"
+              [disabled]="loading()"
+            >
+
+              @if (loading()) {
+
+                <mat-spinner diameter="20" />
+
+              } @else {
+
+                <mat-icon>
+                  save
+                </mat-icon>
+
+                {{
+                  isEditMode
+                    ? 'Update Customer'
+                    : 'Create Customer'
+                }}
+
+              }
+
+            </button>
+
+          </div>
+
+        </form>
+
+      }
+
+    </mat-card-content>
+
+  </mat-card>
+
+</section>
