@@ -301,6 +301,33 @@ business modules rather than implementing isolated CRUD operations.
 ```
 This architecture allows business rules from multiple logistics domains to participate in the same operational workflow.
 
+## Business Partners Management
+
+The Business Partners module centralizes the external organizations involved in logistics and transport operations.
+
+### Customers
+- Customer creation and update
+- Customer activation/deactivation
+- Search by customer code and company name
+- Pagination
+- Role-based access control
+
+### Suppliers
+- Supplier creation and update
+- Supplier activation/deactivation
+- Search by supplier code and company name
+- Pagination
+- Role-based access control
+
+### Carriers
+- External carrier creation and update
+- Carrier activation/deactivation
+- Transport license management
+- Search by carrier code, company name and license number
+- Pagination
+- Role-based access control
+
+Business Partner operations are secured using JWT authentication and role-based permissions for administrative and management users.
 ## ERP Roadmap
 
 Smart Logistics & Transport ERP is designed as an evolving logistics and
@@ -310,10 +337,6 @@ The current Warehouse, Fleet, Driver and Transport modules form the operational
 foundation for future modules.
 
 ## Planned Business Modules
-### Business Partners
-- Customer Management
-- Supplier Management
-- Carrier Management
 ### Product & Inventory
 - Product Management
 - Inventory Management
