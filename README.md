@@ -311,6 +311,7 @@ The Business Partners module centralizes the external organizations involved in 
 - Search by customer code and company name
 - Pagination
 - Role-based access control
+![Customer Management](frontend/docs/screenshots/customer-list.png)
 
 ### Suppliers
 - Supplier creation and update
@@ -318,6 +319,7 @@ The Business Partners module centralizes the external organizations involved in 
 - Search by supplier code and company name
 - Pagination
 - Role-based access control
+![Supplier Management](frontend/docs/screenshots/supplier-list.png)
 
 ### Carriers
 - External carrier creation and update
@@ -326,6 +328,7 @@ The Business Partners module centralizes the external organizations involved in 
 - Search by carrier code, company name and license number
 - Pagination
 - Role-based access control
+![Carrier Management](frontend/docs/screenshots/carrier-list.png)
 
 Business Partner operations are secured using JWT authentication and role-based permissions for administrative and management users.
 ## ERP Roadmap
