@@ -168,7 +168,7 @@ Features include:
 - Activation / deactivation
 - Role-based access
   
-![Warehouse Management](frontend/docs/screenshots/warehouse-list.jpeg)
+![Warehouse Management](frontend/docs/screenshots/warehouse-list.png)
 
 ### Fleet Management
 
@@ -194,7 +194,7 @@ Features include:
 - MAINTENANCE
 - OUT_OF_SERVICE
 
-![Vehicle Management](frontend/docs/screenshots/vehicle-list.jpeg)
+![Vehicle Management](frontend/docs/screenshots/vehicle-list.png)
 
 ### Driver Management
 
@@ -232,7 +232,7 @@ Each transport references:
 - Actual arrival
 - Operational status
 
-![Transport Management](frontend/docs/screenshots/transport-list.jpeg)
+![Transport Management](frontend/docs/screenshots/transport-list.png)
 
 #### Transport Lifecycle
 ```text
