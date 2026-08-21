@@ -297,6 +297,106 @@ export const routes: Routes = [
             ).then(m => m.CustomerList)
       },
 
+      {
+        path: 'business-partners/suppliers/new',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_MANAGER'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/business-partners/suppliers/pages/supplier-form/supplier-form'
+            ).then(m => m.SupplierForm)
+      },
+
+      {
+        path: 'business-partners/suppliers/:id/edit',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_MANAGER'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/business-partners/suppliers/pages/supplier-form/supplier-form'
+            ).then(m => m.SupplierForm)
+      },
+
+      {
+        path: 'business-partners/suppliers',
+
+        loadComponent: () =>
+          import(
+            './features/business-partners/suppliers/pages/supplier-list/supplier-list'
+            ).then(m => m.SupplierList)
+      },
+
+      {
+        path: 'business-partners/carriers/new',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_MANAGER'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/business-partners/carriers/pages/carrier-form/carrier-form'
+            ).then(m => m.CarrierForm)
+      },
+
+      {
+        path: 'business-partners/carriers/:id/edit',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_MANAGER'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/business-partners/carriers/pages/carrier-form/carrier-form'
+            ).then(m => m.CarrierForm)
+      },
+
+      {
+        path: 'business-partners/carriers',
+
+        loadComponent: () =>
+          import(
+            './features/business-partners/carriers/pages/carrier-list/carrier-list'
+            ).then(m => m.CarrierList)
+      },
+
+
+
 
 
 

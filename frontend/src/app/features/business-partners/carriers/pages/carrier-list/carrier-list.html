@@ -1,0 +1,367 @@
+<section class="carrier-page">
+
+  <div class="page-header">
+
+    <div>
+      <h1>Carriers</h1>
+
+      <p>
+        Manage external transport business partners
+      </p>
+    </div>
+
+    @if (canManageCarriers()) {
+
+      <button
+        mat-flat-button
+        type="button"
+        (click)="createCarrier()"
+      >
+        <mat-icon>add</mat-icon>
+
+        New Carrier
+      </button>
+
+    }
+
+  </div>
+
+
+  <div class="filters">
+
+    <mat-form-field
+      appearance="outline"
+      class="search-type"
+    >
+
+      <mat-label>
+        Search by
+      </mat-label>
+
+      <mat-select
+        [value]="searchType()"
+        (selectionChange)="searchType.set($event.value)"
+      >
+
+        <mat-option value="companyName">
+          Company Name
+        </mat-option>
+
+        <mat-option value="code">
+          Carrier Code
+        </mat-option>
+
+        <mat-option value="licenseNumber">
+          License Number
+        </mat-option>
+
+      </mat-select>
+
+    </mat-form-field>
+
+
+    <mat-form-field
+      appearance="outline"
+      class="search-field"
+    >
+
+      <mat-label>
+        Search carrier
+      </mat-label>
+
+      <mat-icon matPrefix>
+        search
+      </mat-icon>
+
+      <input
+        matInput
+        [value]="searchTerm()"
+        (input)="searchTerm.set($any($event.target).value)"
+        (keyup.enter)="search()"
+      >
+
+    </mat-form-field>
+
+
+    <button
+      mat-flat-button
+      type="button"
+      (click)="search()"
+    >
+      Search
+    </button>
+
+
+    <button
+      mat-button
+      type="button"
+      (click)="clearFilters()"
+    >
+      Clear
+    </button>
+
+  </div>
+
+
+  <div class="table-container">
+
+    @if (loading()) {
+
+      <div class="loading">
+        Loading carriers...
+      </div>
+
+    } @else {
+
+      <table
+        mat-table
+        [dataSource]="carriers()"
+      >
+
+        <ng-container matColumnDef="code">
+
+          <th mat-header-cell *matHeaderCellDef>
+            Code
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let carrier"
+          >
+            <strong>
+              {{ carrier.code }}
+            </strong>
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="companyName">
+
+          <th mat-header-cell *matHeaderCellDef>
+            Company
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let carrier"
+          >
+            {{ carrier.companyName }}
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="contact">
+
+          <th mat-header-cell *matHeaderCellDef>
+            Contact
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let carrier"
+          >
+
+            <div class="contact-cell">
+
+              <strong>
+                {{ carrier.contactName || '—' }}
+              </strong>
+
+              @if (carrier.email) {
+                <span>
+                  {{ carrier.email }}
+                </span>
+              }
+
+              @if (carrier.phoneNumber) {
+                <span>
+                  {{ carrier.phoneNumber }}
+                </span>
+              }
+
+            </div>
+
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="location">
+
+          <th mat-header-cell *matHeaderCellDef>
+            Location
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let carrier"
+          >
+
+            <div class="location-cell">
+
+              <strong>
+                {{ carrier.city }}
+              </strong>
+
+              <span>
+                {{ carrier.country }}
+              </span>
+
+            </div>
+
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="licenseNumber">
+
+          <th mat-header-cell *matHeaderCellDef>
+            License Number
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let carrier"
+          >
+            {{ carrier.licenseNumber }}
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="status">
+
+          <th mat-header-cell *matHeaderCellDef>
+            Status
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let carrier"
+          >
+
+            <span
+              class="status"
+              [class.active]="carrier.active"
+              [class.inactive]="!carrier.active"
+            >
+              {{
+                carrier.active
+                  ? 'Active'
+                  : 'Inactive'
+              }}
+            </span>
+
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="actions">
+
+          <th mat-header-cell *matHeaderCellDef>
+            Actions
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let carrier"
+          >
+
+            @if (canManageCarriers()) {
+
+              <button
+                mat-icon-button
+                type="button"
+                title="Edit carrier"
+                (click)="editCarrier(carrier)"
+              >
+                <mat-icon>
+                  edit
+                </mat-icon>
+              </button>
+
+
+              @if (carrier.active) {
+
+                <button
+                  mat-icon-button
+                  type="button"
+                  title="Deactivate carrier"
+                  (click)="deactivateCarrier(carrier)"
+                >
+                  <mat-icon>
+                    block
+                  </mat-icon>
+                </button>
+
+              } @else {
+
+                <button
+                  mat-icon-button
+                  type="button"
+                  title="Activate carrier"
+                  (click)="activateCarrier(carrier)"
+                >
+                  <mat-icon>
+                    check_circle
+                  </mat-icon>
+                </button>
+
+              }
+
+            } @else {
+
+              <span class="read-only">
+                View only
+              </span>
+
+            }
+
+          </td>
+
+        </ng-container>
+
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns"
+        ></tr>
+
+        <tr
+          mat-row
+          *matRowDef="
+            let row;
+            columns: displayedColumns
+          "
+        ></tr>
+
+      </table>
+
+
+      @if (carriers().length === 0) {
+
+        <div class="empty-state">
+          No carriers found.
+        </div>
+
+      }
+
+
+      <mat-paginator
+        [length]="totalElements()"
+        [pageIndex]="pageIndex()"
+        [pageSize]="pageSize()"
+        [pageSizeOptions]="[5, 10, 20, 50]"
+        (page)="onPageChange($event)"
+        showFirstLastButtons
+      />
+
+    }
+
+  </div>
+
+</section>

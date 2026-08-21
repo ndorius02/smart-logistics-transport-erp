@@ -12,4 +12,6 @@ export const API_ENDPOINTS = {
   drivers: `${environment.apiUrl}/drivers`,
   transports: `${environment.apiUrl}/transports`,
   customers: `${environment.apiUrl}/customers`,
+  suppliers: `${environment.apiUrl}/suppliers`,
+  carriers: `${environment.apiUrl}/carriers`,
 } as const;
