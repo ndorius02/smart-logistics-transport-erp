@@ -138,7 +138,7 @@ Authorization is enforced at API level by Spring Security and reflected
 in the Angular interface.
 ### Authentication
 
-![Smart Logistics ERP - Login](frontend/docs/screenshots/login.jpeg)
+![Smart Logistics ERP - Login](frontend/docs/screenshots/login.png)
 
 ### Operational Dashboard
 
