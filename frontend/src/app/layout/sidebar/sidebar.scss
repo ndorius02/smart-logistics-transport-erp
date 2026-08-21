@@ -47,3 +47,16 @@ a[mat-list-item].active mat-icon,
 a[mat-list-item].active span {
   color: #ffffff;
 }
+
+.sidebar-section-title {
+  margin-top: 20px;
+  padding: 8px 16px 6px;
+
+  color: #94a3b8;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

@@ -248,6 +248,56 @@ export const routes: Routes = [
       },
 
 
+      {
+        path: 'business-partners/customers/new',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_MANAGER'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/business-partners/customers/pages/customer-form/customer-form'
+            ).then(m => m.CustomerForm)
+      },
+
+      {
+        path: 'business-partners/customers/:id/edit',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_MANAGER'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/business-partners/customers/pages/customer-form/customer-form'
+            ).then(m => m.CustomerForm)
+      },
+
+      {
+        path: 'business-partners/customers',
+
+        loadComponent: () =>
+          import(
+            './features/business-partners/customers/pages/customer-list/customer-list'
+            ).then(m => m.CustomerList)
+      },
+
+
 
 
 
