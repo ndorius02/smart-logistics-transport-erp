@@ -434,6 +434,39 @@ public class AuthorizationRules {
                         "MANAGER"
                 )
 
+                // =========================
+                // INVENTORY
+                // =========================
+
+                .requestMatchers(
+                        HttpMethod.GET,
+                        "/api/inventory",
+                        "/api/inventory/**"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER",
+                        "WAREHOUSE_OFFICER",
+                        "TRANSPORT_COORDINATOR"
+                )
+
+                .requestMatchers(
+                        HttpMethod.POST,
+                        "/api/inventory"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER",
+                        "WAREHOUSE_OFFICER"
+                )
+
+                .requestMatchers(
+                        HttpMethod.PATCH,
+                        "/api/inventory/*/minimum-stock-level"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER",
+                        "WAREHOUSE_OFFICER"
+                )
+
 
 
 
