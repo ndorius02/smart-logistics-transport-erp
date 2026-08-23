@@ -3,6 +3,7 @@
 ## Overview
 
 The Supplier Management module is part of the **Business Partners** domain of the Smart Logistics & Transport ERP.
+
 Its purpose is to manage companies or organizations that provide goods, materials or services to the company.
 
 Suppliers can later be referenced by modules such as:
@@ -60,22 +61,64 @@ A supplier contains the following information:
 ## BR-SUPPLIER-001 — Supplier code is mandatory
 
 Every supplier must have a business code.
+
+Example:
+
+```text
+SUP-BE-001
+SUP-BE-002
+SUP-DE-001
+```
+
+The supplier code must not be blank.
+
 ---
 
 ## BR-SUPPLIER-002 — Supplier code must be unique
 
 Two suppliers cannot have the same supplier code.
+
 The uniqueness rule must be case-insensitive.
+
+For example:
+
+```text
+SUP-BE-001
+sup-be-001
+Sup-Be-001
+```
+
 must be considered the same business code.
+
 ---
 
 ## BR-SUPPLIER-003 — Supplier code is normalized
 
-Before persistence, the supplier code must be normalized
+Before persistence, the supplier code must be normalized:
+
+```text
+trim leading and trailing spaces
+convert to uppercase
+```
+
+Example:
+
+```text
+" sup-be-001 "
+```
+
+becomes:
+
+```text
+SUP-BE-001
+```
+
+---
 
 ## BR-SUPPLIER-004 — Company name is mandatory
 
 Every supplier must have a company name.
+
 Examples:
 
 ```text
@@ -105,7 +148,14 @@ Postal code may be optional in V1.
 ## BR-SUPPLIER-006 — Email must be valid when provided
 
 The email address is optional.
+
 When provided, it must have a valid email format.
+
+Example:
+
+```text
+orders@supplier-example.be
+```
 
 ---
 
@@ -133,6 +183,19 @@ When provided, the VAT number must be:
 trimmed
 converted to uppercase
 ```
+
+Example:
+
+```text
+" be0123456789 "
+```
+
+becomes:
+
+```text
+BE0123456789
+```
+
 ---
 
 ## BR-SUPPLIER-010 — Supplier is active by default
@@ -257,10 +320,13 @@ SUP-BE-001
 SUP-BE-002
 SUP-BE-010
 ```
+
 ---
+
 ## BR-SUPPLIER-017 — Supplier lists must support pagination
 
 Supplier list endpoints must support Spring Data pagination.
+
 Example:
 
 ```http
@@ -289,6 +355,9 @@ This prevents loading the whole supplier table at once.
 ```
 
 There is no hard delete operation in V1.
+
+---
+
 ---
 
 # Authorization Rules
@@ -308,6 +377,95 @@ For V1, the proposed access model is:
 | Deactivate supplier | ✅ | ✅ | ❌ | ❌ |
 
 These permissions may evolve when procurement-specific roles are introduced.
+
+---
+
+# Planned REST API
+
+## Create Supplier
+
+```http
+POST /api/suppliers
+```
+
+Example request:
+
+```json
+{
+  "code": "SUP-BE-001",
+  "companyName": "European Food Supply",
+  "contactName": "Laura Martin",
+  "email": "orders@europeanfood-example.be",
+  "phoneNumber": "+32 2 555 30 01",
+  "address": "Industrial Park 12",
+  "city": "Brussels",
+  "postalCode": "1000",
+  "country": "Belgium",
+  "vatNumber": "BE0200000001"
+}
+```
+
+---
+
+## Get Suppliers
+
+```http
+GET /api/suppliers
+```
+
+Pagination:
+
+```http
+GET /api/suppliers?page=0&size=10
+```
+
+---
+
+## Get Supplier by ID
+
+```http
+GET /api/suppliers/{id}
+```
+
+---
+
+## Search by Company Name
+
+```http
+GET /api/suppliers/search/company-name?companyName=food
+```
+
+---
+
+## Search by Supplier Code
+
+```http
+GET /api/suppliers/search/code?code=BE
+```
+
+---
+
+## Update Supplier
+
+```http
+PUT /api/suppliers/{id}
+```
+
+---
+
+## Activate Supplier
+
+```http
+PATCH /api/suppliers/{id}/activate
+```
+
+---
+
+## Deactivate Supplier
+
+```http
+PATCH /api/suppliers/{id}/deactivate
+```
 
 ---
 
@@ -354,5 +512,18 @@ Possible future extensions include:
 - multi-address support.
 
 These features are outside the V1 scope.
+
 ---
+
+# Summary
+
+The Supplier module is the second component of the **Business Partners** domain.
+
+Its responsibilities are:
+
+- maintaining supplier master data;
+- protecting unique business identifiers;
+- supporting activation and deactivation;
+- providing search and pagination;
+- preparing supplier references for future Product, Inventory and Procurement modules.
 

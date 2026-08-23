@@ -160,6 +160,12 @@ The email address is optional.
 
 When provided, it must have a valid email format.
 
+Example:
+
+```text
+operations@carrier-example.be
+```
+
 ---
 
 ## BR-CARRIER-007 — VAT number is optional
@@ -418,6 +424,104 @@ These rules may evolve later if dedicated procurement or carrier-management role
 
 ---
 
+# Planned REST API
+
+## Create Carrier
+
+```http
+POST /api/carriers
+```
+
+Example:
+
+```json
+{
+  "code": "CAR-BE-001",
+  "companyName": "Benelux Freight Services",
+  "contactName": "Thomas Janssens",
+  "email": "operations@beneluxfreight.example",
+  "phoneNumber": "+32 2 555 40 01",
+  "address": "Transportlaan 22",
+  "city": "Brussels",
+  "postalCode": "1000",
+  "country": "Belgium",
+  "vatNumber": "BE0300000001",
+  "licenseNumber": "LIC-BE-2026-001"
+}
+```
+
+---
+
+## Get Carriers
+
+```http
+GET /api/carriers
+```
+
+Pagination:
+
+```http
+GET /api/carriers?page=0&size=10
+```
+
+---
+
+## Get Carrier by ID
+
+```http
+GET /api/carriers/{id}
+```
+
+---
+
+## Search by Company Name
+
+```http
+GET /api/carriers/search/company-name?companyName=freight
+```
+
+---
+
+## Search by Carrier Code
+
+```http
+GET /api/carriers/search/code?code=BE
+```
+
+---
+
+## Search by Licence Number
+
+```http
+GET /api/carriers/search/license?licenseNumber=LIC-BE
+```
+
+---
+
+## Update Carrier
+
+```http
+PUT /api/carriers/{id}
+```
+
+---
+
+## Activate Carrier
+
+```http
+PATCH /api/carriers/{id}/activate
+```
+
+---
+
+## Deactivate Carrier
+
+```http
+PATCH /api/carriers/{id}/deactivate
+```
+
+---
+
 # Future Relationships
 
 Carrier will initially remain an independent Business Partner entity.
@@ -481,3 +585,16 @@ Possible future extensions include:
 These features are outside the V1 scope.
 
 ---
+
+# Summary
+
+Carrier Management is the third component of the **Business Partners** domain.
+
+Its responsibilities are:
+
+- maintaining external transport partner master data;
+- protecting unique business identifiers;
+- maintaining transport licence information;
+- supporting activation and deactivation;
+- providing searchable and pageable carrier records;
+- preparing external carrier references for future Shipment, Delivery and Transport modules.
