@@ -525,5 +525,20 @@ Possible future extensions include:
 - customer-specific pricing;
 - customer shipment history;
 - customer KPIs.
+
 These features are intentionally outside the V1 Customer scope.
+
 ---
+
+# Summary
+
+The Customer module provides the first foundation of the **Business Partners**
+domain.
+
+Its main responsibilities are:
+
+- maintaining customer master data;
+- protecting unique business identifiers;
+- supporting customer activation/deactivation;
+- providing searchable and pageable customer records;
+- preparing customer references for future Shipment, Delivery and Cargo modules.
