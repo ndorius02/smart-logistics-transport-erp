@@ -345,6 +345,7 @@ foundation for future modules.
 
 ## Planned Business Modules
 ### Product & Inventory
+- Product-Category Management
 - Product Management
 - Inventory Management
 - Warehouse stock tracking
