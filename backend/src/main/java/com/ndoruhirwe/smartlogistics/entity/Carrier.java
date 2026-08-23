@@ -6,21 +6,12 @@ import lombok.*;
 import java.util.UUID;
 
 @Entity
-@Table(
-        name = "carriers",
-        uniqueConstraints = {
-                @UniqueConstraint(
-                        name = "uk_carriers_code",
-                        columnNames = "code"
-                ),
-                @UniqueConstraint(
-                        name = "uk_carriers_vat_number",
-                        columnNames = "vat_number"
-                ),
-                @UniqueConstraint(
-                        name = "uk_carriers_license_number",
-                        columnNames = "license_number"
-                )
+@Table(name = "carriers", uniqueConstraints = {
+                @UniqueConstraint(name = "uk_carriers_code", columnNames = "code"),
+                @UniqueConstraint(name = "uk_carriers_vat_number",
+                        columnNames = "vat_number"),
+                @UniqueConstraint(name = "uk_carriers_license_number",
+                        columnNames = "license_number")
         }
 )
 @Getter
