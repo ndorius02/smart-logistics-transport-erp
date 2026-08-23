@@ -394,6 +394,46 @@ public class AuthorizationRules {
                         "MANAGER"
                 )
 
+                // =========================
+                // PRODUCTS
+                // =========================
+
+                .requestMatchers(
+                        HttpMethod.GET,
+                        "/api/products",
+                        "/api/products/**"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER",
+                        "WAREHOUSE_OFFICER",
+                        "TRANSPORT_COORDINATOR"
+                )
+
+                .requestMatchers(
+                        HttpMethod.POST,
+                        "/api/products"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER"
+                )
+
+                .requestMatchers(
+                        HttpMethod.PUT,
+                        "/api/products/**"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER"
+                )
+
+                .requestMatchers(
+                        HttpMethod.PATCH,
+                        "/api/products/*/activate",
+                        "/api/products/*/deactivate"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER"
+                )
+
 
 
 

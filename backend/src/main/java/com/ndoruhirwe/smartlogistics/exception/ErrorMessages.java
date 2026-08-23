@@ -85,4 +85,13 @@ public final class ErrorMessages {
 
     public static final String DUPLICATE_PRODUCT_CATEGORY_NAME =
             "Product category name already exists";
+
+    public static final String PRODUCT_NOT_FOUND =
+            "Product not found";
+
+    public static final String DUPLICATE_PRODUCT_SKU =
+            "Product SKU already exists";
+
+    public static final String PRODUCT_CATEGORY_INACTIVE =
+            "Product category is inactive";
 }
