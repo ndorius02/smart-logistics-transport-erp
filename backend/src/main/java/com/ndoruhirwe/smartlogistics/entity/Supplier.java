@@ -6,15 +6,9 @@ import lombok.*;
 import java.util.UUID;
 
 @Entity
-@Table(
-        name = "suppliers",
-        uniqueConstraints = {
-                @UniqueConstraint(
-                        name = "uk_suppliers_code",
-                        columnNames = "code"
-                ),
-                @UniqueConstraint(
-                        name = "uk_suppliers_vat_number",
+@Table(name = "suppliers", uniqueConstraints = {
+                @UniqueConstraint(name = "uk_suppliers_code", columnNames = "code"),
+                @UniqueConstraint(name = "uk_suppliers_vat_number",
                         columnNames = "vat_number"
                 )
         }

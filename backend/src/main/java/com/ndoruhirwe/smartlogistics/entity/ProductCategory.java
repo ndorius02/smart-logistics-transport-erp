@@ -7,13 +7,8 @@ import lombok.*;
 import java.util.UUID;
 
 @Entity
-@Table(
-        name = "product_categories",
-        uniqueConstraints = {
-                @UniqueConstraint(
-                        name = "uk_product_categories_code",
-                        columnNames = "code"
-                )
+@Table(name = "product_categories", uniqueConstraints = {
+                @UniqueConstraint(name = "uk_product_categories_code", columnNames = "code")
         }
 )
 @Getter
