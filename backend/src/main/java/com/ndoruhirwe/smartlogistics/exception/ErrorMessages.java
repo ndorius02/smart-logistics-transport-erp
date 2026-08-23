@@ -94,4 +94,14 @@ public final class ErrorMessages {
 
     public static final String PRODUCT_CATEGORY_INACTIVE =
             "Product category is inactive";
+
+    public static final String INVENTORY_NOT_FOUND =
+            "Inventory not found";
+
+    public static final String DUPLICATE_INVENTORY_POSITION =
+            "Inventory already exists for this product and warehouse";
+
+    public static final String PRODUCT_INACTIVE =
+            "Product is inactive";
+
 }
