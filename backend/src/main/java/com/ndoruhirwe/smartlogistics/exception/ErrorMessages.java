@@ -76,4 +76,13 @@ public final class ErrorMessages {
 
     public static final String DUPLICATE_CARRIER_LICENSE_NUMBER =
             "Carrier license number already exists";
+
+    public static final String PRODUCT_CATEGORY_NOT_FOUND =
+            "Product category not found";
+
+    public static final String DUPLICATE_PRODUCT_CATEGORY_CODE =
+            "Product category code already exists";
+
+    public static final String DUPLICATE_PRODUCT_CATEGORY_NAME =
+            "Product category name already exists";
 }
