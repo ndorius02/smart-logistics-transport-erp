@@ -396,6 +396,64 @@ export const routes: Routes = [
       },
 
 
+      {
+        path: 'product-inventory/product-categories/new',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_MANAGER'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/product-inventory/product-categories/pages/product-category-form/product-category-form'
+            ).then(
+            m => m.ProductCategoryForm
+          )
+      },
+
+      {
+        path: 'product-inventory/product-categories/:id/edit',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_MANAGER'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/product-inventory/product-categories/pages/product-category-form/product-category-form'
+            ).then(
+            m => m.ProductCategoryForm
+          )
+      },
+
+      {
+        path: 'product-inventory/product-categories',
+
+        loadComponent: () =>
+          import(
+            './features/product-inventory/product-categories/pages/product-category-list/product-category-list'
+            ).then(
+            m => m.ProductCategoryList
+          )
+      },
+
+
+
+
 
 
 
