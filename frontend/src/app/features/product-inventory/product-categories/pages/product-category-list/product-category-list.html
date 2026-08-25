@@ -1,0 +1,314 @@
+<section class="product-category-page">
+
+  <div class="page-header">
+
+    <div>
+      <h1>Product Categories</h1>
+
+      <p>
+        Manage product classification reference data
+      </p>
+    </div>
+
+    @if (canManageCategories()) {
+
+      <button
+        mat-flat-button
+        type="button"
+        (click)="createCategory()"
+      >
+        <mat-icon>add</mat-icon>
+
+        New Category
+      </button>
+
+    }
+
+  </div>
+
+
+  <div class="filters">
+
+    <mat-form-field
+      appearance="outline"
+      class="search-type"
+    >
+
+      <mat-label>
+        Search by
+      </mat-label>
+
+      <mat-select
+        [value]="searchType()"
+        (selectionChange)="searchType.set($event.value)"
+      >
+
+        <mat-option value="name">
+          Category Name
+        </mat-option>
+
+        <mat-option value="code">
+          Category Code
+        </mat-option>
+
+      </mat-select>
+
+    </mat-form-field>
+
+
+    <mat-form-field
+      appearance="outline"
+      class="search-field"
+    >
+
+      <mat-label>
+        Search category
+      </mat-label>
+
+      <mat-icon matPrefix>
+        search
+      </mat-icon>
+
+      <input
+        matInput
+        [value]="searchTerm()"
+        (input)="searchTerm.set($any($event.target).value)"
+        (keyup.enter)="search()"
+      >
+
+    </mat-form-field>
+
+
+    <button
+      mat-flat-button
+      type="button"
+      (click)="search()"
+    >
+      Search
+    </button>
+
+
+    <button
+      mat-button
+      type="button"
+      (click)="clearFilters()"
+    >
+      Clear
+    </button>
+
+  </div>
+
+
+  <div class="table-container">
+
+    @if (loading()) {
+
+      <div class="loading">
+        Loading product categories...
+      </div>
+
+    } @else {
+
+      <table
+        mat-table
+        [dataSource]="categories()"
+      >
+
+        <ng-container matColumnDef="code">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Code
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let category"
+          >
+            <strong>
+              {{ category.code }}
+            </strong>
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="name">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Name
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let category"
+          >
+            {{ category.name }}
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="description">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Description
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let category"
+          >
+            {{ category.description || '—' }}
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="status">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Status
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let category"
+          >
+
+            <span
+              class="status"
+              [class.active]="category.active"
+              [class.inactive]="!category.active"
+            >
+              {{
+                category.active
+                  ? 'Active'
+                  : 'Inactive'
+              }}
+            </span>
+
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="actions">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Actions
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let category"
+          >
+
+            @if (canManageCategories()) {
+
+              <button
+                mat-icon-button
+                type="button"
+                title="Edit category"
+                (click)="editCategory(category)"
+              >
+                <mat-icon>
+                  edit
+                </mat-icon>
+              </button>
+
+
+              @if (category.active) {
+
+                <button
+                  mat-icon-button
+                  type="button"
+                  title="Deactivate category"
+                  (click)="deactivateCategory(category)"
+                >
+                  <mat-icon>
+                    block
+                  </mat-icon>
+                </button>
+
+              } @else {
+
+                <button
+                  mat-icon-button
+                  type="button"
+                  title="Activate category"
+                  (click)="activateCategory(category)"
+                >
+                  <mat-icon>
+                    check_circle
+                  </mat-icon>
+                </button>
+
+              }
+
+            } @else {
+
+              <span class="read-only">
+                View only
+              </span>
+
+            }
+
+          </td>
+
+        </ng-container>
+
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns"
+        ></tr>
+
+        <tr
+          mat-row
+          *matRowDef="
+            let row;
+            columns: displayedColumns
+          "
+        ></tr>
+
+      </table>
+
+
+      @if (categories().length === 0) {
+
+        <div class="empty-state">
+          No product categories found.
+        </div>
+
+      }
+
+
+      <mat-paginator
+        [length]="totalElements()"
+        [pageIndex]="pageIndex()"
+        [pageSize]="pageSize()"
+        [pageSizeOptions]="[5, 10, 20, 50]"
+        (page)="onPageChange($event)"
+        showFirstLastButtons
+      />
+
+    }
+
+  </div>
+
+</section>

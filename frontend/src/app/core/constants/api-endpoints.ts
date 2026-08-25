@@ -14,4 +14,5 @@ export const API_ENDPOINTS = {
   customers: `${environment.apiUrl}/customers`,
   suppliers: `${environment.apiUrl}/suppliers`,
   carriers: `${environment.apiUrl}/carriers`,
+  productCategories: `${environment.apiUrl}/product-categories`,
 } as const;

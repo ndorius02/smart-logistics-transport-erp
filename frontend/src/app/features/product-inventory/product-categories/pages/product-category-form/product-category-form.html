@@ -1,0 +1,185 @@
+<section class="category-form-page">
+
+  <div class="page-header">
+
+    <button
+      mat-icon-button
+      type="button"
+      (click)="cancel()"
+      aria-label="Back"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <div>
+      <h1>
+        {{
+          editMode()
+            ? 'Edit Product Category'
+            : 'New Product Category'
+        }}
+      </h1>
+
+      <p>
+        {{
+          editMode()
+            ? 'Update product category master data'
+            : 'Create a new product classification'
+        }}
+      </p>
+    </div>
+
+  </div>
+
+
+  @if (loading()) {
+
+    <div class="loading-container">
+
+      <mat-spinner
+        diameter="42"
+      />
+
+    </div>
+
+  } @else {
+
+    <mat-card>
+
+      <mat-card-content>
+
+        <form
+          [formGroup]="form"
+          (ngSubmit)="save()"
+        >
+
+          <div class="form-grid">
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Category Code
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="code"
+                maxlength="50"
+                placeholder="ELEC"
+              >
+
+              @if (
+                form.controls.code.hasError('required')
+                && form.controls.code.touched
+                ) {
+                <mat-error>
+                  Category code is required
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Category Name
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="name"
+                maxlength="100"
+                placeholder="Electronics"
+              >
+
+              @if (
+                form.controls.name.hasError('required')
+                && form.controls.name.touched
+                ) {
+                <mat-error>
+                  Category name is required
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field
+              appearance="outline"
+              class="full-width"
+            >
+
+              <mat-label>
+                Description
+              </mat-label>
+
+              <textarea
+                matInput
+                formControlName="description"
+                rows="5"
+                maxlength="500"
+                placeholder="Describe the product category"
+              ></textarea>
+
+              <mat-hint align="end">
+                {{
+                  form.controls.description.value.length
+                }}/500
+              </mat-hint>
+
+            </mat-form-field>
+
+          </div>
+
+
+          <div class="form-actions">
+
+            <button
+              mat-button
+              type="button"
+              [disabled]="saving()"
+              (click)="cancel()"
+            >
+              Cancel
+            </button>
+
+            <button
+              mat-flat-button
+              type="submit"
+              [disabled]="saving()"
+            >
+
+              @if (saving()) {
+
+                <mat-spinner
+                  diameter="20"
+                />
+
+              } @else {
+
+                <mat-icon>
+                  save
+                </mat-icon>
+
+                {{
+                  editMode()
+                    ? 'Update Category'
+                    : 'Create Category'
+                }}
+
+              }
+
+            </button>
+
+          </div>
+
+        </form>
+
+      </mat-card-content>
+
+    </mat-card>
+
+  }
+
+</section>
