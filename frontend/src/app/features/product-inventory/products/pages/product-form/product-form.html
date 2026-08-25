@@ -1,0 +1,290 @@
+<section class="product-form-page">
+
+  <div class="page-header">
+
+    <button
+      mat-icon-button
+      type="button"
+      (click)="cancel()"
+      aria-label="Back"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <div>
+
+      <h1>
+        {{
+          editMode()
+            ? 'Edit Product'
+            : 'New Product'
+        }}
+      </h1>
+
+      <p>
+        {{
+          editMode()
+            ? 'Update product master data'
+            : 'Create a new product master record'
+        }}
+      </p>
+
+    </div>
+
+  </div>
+
+
+  @if (loading()) {
+
+    <div class="loading-container">
+
+      <mat-spinner
+        diameter="42"
+      />
+
+    </div>
+
+  } @else {
+
+    <mat-card>
+
+      <mat-card-content>
+
+        <form
+          [formGroup]="form"
+          (ngSubmit)="save()"
+        >
+
+          <div class="form-grid">
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>SKU</mat-label>
+
+              <input
+                matInput
+                formControlName="sku"
+                maxlength="50"
+                placeholder="PRD-ELEC-001"
+              >
+
+              @if (
+                form.controls.sku.hasError('required')
+                && form.controls.sku.touched
+                ) {
+                <mat-error>
+                  SKU is required
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Product Name
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="name"
+                maxlength="150"
+                placeholder="Dell Latitude 5550"
+              >
+
+              @if (
+                form.controls.name.hasError('required')
+                && form.controls.name.touched
+                ) {
+                <mat-error>
+                  Product name is required
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Category
+              </mat-label>
+
+              <mat-select
+                formControlName="categoryId"
+              >
+
+                @for (
+                    category of categories();
+                  track category.id
+                  ) {
+
+                  <mat-option
+                    [value]="category.id"
+                  >
+                    {{ category.code }}
+                    —
+                    {{ category.name }}
+                  </mat-option>
+
+                }
+
+              </mat-select>
+
+              @if (
+                form.controls.categoryId.hasError('required')
+                && form.controls.categoryId.touched
+                ) {
+                <mat-error>
+                  Product category is required
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Unit of Measure
+              </mat-label>
+
+              <mat-select
+                formControlName="unitOfMeasure"
+              >
+
+                @for (
+                    unit of unitsOfMeasure;
+                  track unit
+                  ) {
+
+                  <mat-option
+                    [value]="unit"
+                  >
+                    {{ unit }}
+                  </mat-option>
+
+                }
+
+              </mat-select>
+
+              @if (
+                form.controls.unitOfMeasure.hasError('required')
+                && form.controls.unitOfMeasure.touched
+                ) {
+                <mat-error>
+                  Unit of measure is required
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Weight
+              </mat-label>
+
+              <input
+                matInput
+                type="number"
+                step="0.001"
+                min="0"
+                formControlName="weight"
+                placeholder="2.350"
+              >
+
+              <mat-hint>
+                Optional
+              </mat-hint>
+
+              @if (
+                form.controls.weight.hasError('min')
+                && form.controls.weight.touched
+                ) {
+                <mat-error>
+                  Weight cannot be negative
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field
+              appearance="outline"
+              class="full-width"
+            >
+
+              <mat-label>
+                Description
+              </mat-label>
+
+              <textarea
+                matInput
+                formControlName="description"
+                rows="5"
+                maxlength="500"
+                placeholder="Describe the product"
+              ></textarea>
+
+              <mat-hint align="end">
+                {{
+                  form.controls.description.value.length
+                }}/500
+              </mat-hint>
+
+            </mat-form-field>
+
+          </div>
+
+
+          <div class="form-actions">
+
+            <button
+              mat-button
+              type="button"
+              [disabled]="saving()"
+              (click)="cancel()"
+            >
+              Cancel
+            </button>
+
+            <button
+              mat-flat-button
+              type="submit"
+              [disabled]="saving()"
+            >
+
+              @if (saving()) {
+
+                <mat-spinner
+                  diameter="20"
+                />
+
+              } @else {
+
+                <mat-icon>save</mat-icon>
+
+                {{
+                  editMode()
+                    ? 'Update Product'
+                    : 'Create Product'
+                }}
+
+              }
+
+            </button>
+
+          </div>
+
+        </form>
+
+      </mat-card-content>
+
+    </mat-card>
+
+  }
+
+</section>

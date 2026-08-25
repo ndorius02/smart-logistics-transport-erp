@@ -1,0 +1,131 @@
+.inventory-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 6px 0 0;
+    color: #64748b;
+  }
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.product-filter {
+  width: 360px;
+}
+
+.table-container {
+  overflow-x: auto;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+table {
+  width: 100%;
+  min-width: 1150px;
+}
+
+.mat-mdc-header-cell {
+  font-weight: 600;
+  color: #111827;
+  background: #fafafa;
+}
+
+.entity-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  span {
+    color: #64748b;
+    font-size: 12px;
+  }
+}
+
+.stock-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  mat-icon {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+  }
+}
+
+.stock-status.healthy {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.stock-status.low {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+.low-stock-row {
+  background: #fffafa;
+}
+
+.read-only {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.loading,
+.empty-state {
+  padding: 36px;
+
+  text-align: center;
+  color: #64748b;
+}
+
+@media (max-width: 800px) {
+
+  .page-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .filters {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .product-filter {
+    width: 100%;
+  }
+}
