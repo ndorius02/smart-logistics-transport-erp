@@ -104,4 +104,22 @@ public final class ErrorMessages {
     public static final String PRODUCT_INACTIVE =
             "Product is inactive";
 
+    public static final String STOCK_MOVEMENT_NOT_FOUND =
+            "Stock movement not found";
+
+    public static final String DUPLICATE_STOCK_MOVEMENT_REFERENCE =
+            "Stock movement reference already exists";
+
+    public static final String ADJUSTMENT_REASON_REQUIRED =
+            "Reason is required for stock adjustment movements";
+
+    public static final String INSUFFICIENT_STOCK =
+            "Insufficient stock for this movement";
+
+    public static final String RESERVED_STOCK_EXCEEDS_AVAILABLE_STOCK =
+            "Stock movement would reduce physical stock below reserved stock";
+
+    public static final String AUTHENTICATED_USER_REQUIRED =
+            "Authenticated user is required";
+
 }

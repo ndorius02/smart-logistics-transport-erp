@@ -467,6 +467,30 @@ public class AuthorizationRules {
                         "WAREHOUSE_OFFICER"
                 )
 
+                // =========================
+                // STOCK MOVEMENTS
+                // =========================
+
+                .requestMatchers(
+                        HttpMethod.GET,
+                        "/api/stock-movements",
+                        "/api/stock-movements/**"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER",
+                        "WAREHOUSE_OFFICER",
+                        "TRANSPORT_COORDINATOR"
+                )
+
+                .requestMatchers(
+                        HttpMethod.POST,
+                        "/api/stock-movements"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER",
+                        "WAREHOUSE_OFFICER"
+                )
+
 
 
 
