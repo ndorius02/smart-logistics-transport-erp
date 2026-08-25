@@ -1,0 +1,198 @@
+<section class="minimum-stock-page">
+
+  <div class="page-header">
+
+    <button
+      mat-icon-button
+      type="button"
+      (click)="cancel()"
+      aria-label="Back"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <div>
+      <h1>Minimum Stock Level</h1>
+
+      <p>
+        Configure the low-stock threshold
+        for this inventory position
+      </p>
+    </div>
+
+  </div>
+
+
+  @if (loading()) {
+
+    <div class="loading-container">
+      <mat-spinner diameter="42" />
+    </div>
+
+  } @else if (inventory(); as item) {
+
+    <mat-card>
+
+      <mat-card-content>
+
+        <div class="inventory-context">
+
+          <div class="context-item">
+            <span>Product</span>
+
+            <strong>
+              {{ item.productName }}
+            </strong>
+
+            <small>
+              {{ item.productSku }}
+            </small>
+          </div>
+
+
+          <div class="context-item">
+            <span>Warehouse</span>
+
+            <strong>
+              {{ item.warehouseName }}
+            </strong>
+
+            <small>
+              {{ item.warehouseCode }}
+            </small>
+          </div>
+
+
+          <div class="context-item">
+            <span>Physical Stock</span>
+
+            <strong>
+              {{ item.quantity }}
+            </strong>
+          </div>
+
+
+          <div class="context-item">
+            <span>Reserved</span>
+
+            <strong>
+              {{ item.reservedQuantity }}
+            </strong>
+          </div>
+
+
+          <div class="context-item">
+            <span>Available</span>
+
+            <strong>
+              {{ item.availableQuantity }}
+            </strong>
+          </div>
+
+        </div>
+
+
+        <form
+          [formGroup]="form"
+          (ngSubmit)="save()"
+        >
+
+          <mat-form-field
+            appearance="outline"
+            class="minimum-field"
+          >
+
+            <mat-label>
+              Minimum Stock Level
+            </mat-label>
+
+            <input
+              matInput
+              type="number"
+              step="0.001"
+              min="0"
+              formControlName="minimumStockLevel"
+            >
+
+            <mat-hint>
+              Inventory below this threshold
+              will be flagged as low stock
+            </mat-hint>
+
+            @if (
+              form.controls.minimumStockLevel.touched
+              &&
+              form.controls.minimumStockLevel.hasError('required')
+              ) {
+              <mat-error>
+                Minimum stock level is required
+              </mat-error>
+            }
+
+            @if (
+              form.controls.minimumStockLevel.touched
+              &&
+              form.controls.minimumStockLevel.hasError('min')
+              ) {
+              <mat-error>
+                Minimum stock level cannot be negative
+              </mat-error>
+            }
+
+          </mat-form-field>
+
+
+          <div class="business-note">
+
+            <mat-icon>info</mat-icon>
+
+            <p>
+              This operation changes only the low-stock
+              threshold. Physical and reserved quantities
+              are not modified.
+            </p>
+
+          </div>
+
+
+          <div class="form-actions">
+
+            <button
+              mat-button
+              type="button"
+              [disabled]="saving()"
+              (click)="cancel()"
+            >
+              Cancel
+            </button>
+
+            <button
+              mat-flat-button
+              type="submit"
+              [disabled]="saving()"
+            >
+
+              @if (saving()) {
+
+                <mat-spinner diameter="20" />
+
+              } @else {
+
+                <mat-icon>save</mat-icon>
+                Update Minimum Stock
+
+              }
+
+            </button>
+
+          </div>
+
+        </form>
+
+      </mat-card-content>
+
+    </mat-card>
+
+  }
+
+</section>

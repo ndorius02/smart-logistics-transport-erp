@@ -451,13 +451,118 @@ export const routes: Routes = [
           )
       },
 
+      {
+        path: 'product-inventory/products/new',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_MANAGER'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/product-inventory/products/pages/product-form/product-form'
+            ).then(
+            m => m.ProductForm
+          )
+      },
+
+      {
+        path: 'product-inventory/products/:id/edit',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_MANAGER'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/product-inventory/products/pages/product-form/product-form'
+            ).then(
+            m => m.ProductForm
+          )
+      },
+
+      {
+        path: 'product-inventory/products',
+
+        loadComponent: () =>
+          import(
+            './features/product-inventory/products/pages/product-list/product-list'
+            ).then(
+            m => m.ProductList
+          )
+      },
 
 
+      {
+        path: 'product-inventory/inventory/new',
 
+        canActivate: [
+          roleGuard
+        ],
 
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_MANAGER',
+            'ROLE_WAREHOUSE_OFFICER'
+          ]
+        },
 
+        loadComponent: () =>
+          import(
+            './features/product-inventory/inventory/pages/inventory-create-form/inventory-create-form'
+            ).then(
+            m => m.InventoryCreateForm
+          )
+      },
 
+      {
+        path: 'product-inventory/inventory/:id/minimum-stock',
 
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_MANAGER',
+            'ROLE_WAREHOUSE_OFFICER'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/product-inventory/inventory/pages/inventory-minimum-stock-form/inventory-minimum-stock-form'
+            ).then(
+            m => m.InventoryMinimumStockForm
+          )
+      },
+
+      {
+        path: 'product-inventory/inventory',
+
+        loadComponent: () =>
+          import(
+            './features/product-inventory/inventory/pages/inventory-list/inventory-list'
+            ).then(
+            m => m.InventoryList
+          )
+      },
 
 
 
