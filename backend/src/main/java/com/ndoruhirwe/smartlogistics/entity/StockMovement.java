@@ -37,9 +37,7 @@ public class StockMovement extends Auditable {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "warehouse_id", nullable = false,
-            foreignKey = @ForeignKey(name = "fk_stock_movements_warehouse")
-    )
-
+            foreignKey = @ForeignKey(name = "fk_stock_movements_warehouse"))
     private Warehouse warehouse;
 
     @Enumerated(EnumType.STRING)
