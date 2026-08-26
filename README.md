@@ -162,8 +162,7 @@ origin, destination, assigned vehicle, driver, departure time and status.
 The warehouse module manages logistics locations used by transport operations.
 
 Features include:
-- Warehouse creation
-- Warehouse update
+- Warehouse creation and update
 - Search by warehouse name
 - Pagination
 - Capacity management
@@ -569,6 +568,7 @@ This dual background helps me approach logistics software from both perspectives
 - understanding the operational processes the software is intended to support.
 
 ## Skills Demonstrated by This Project
+
 ### Software Engineering
 - Object-oriented programming
 - REST API design
