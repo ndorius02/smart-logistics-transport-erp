@@ -1,0 +1,364 @@
+<section class="stock-movement-form-page">
+
+  <div class="page-header">
+
+    <button
+      mat-icon-button
+      type="button"
+      (click)="cancel()"
+      aria-label="Back"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <div>
+      <h1>New Stock Movement</h1>
+
+      <p>
+        Record a physical inventory change
+      </p>
+    </div>
+
+  </div>
+
+
+  @if (loadingReferenceData()) {
+
+    <div class="loading-container">
+      <mat-spinner diameter="42" />
+    </div>
+
+  } @else {
+
+    <mat-card>
+
+      <mat-card-content>
+
+        <form
+          [formGroup]="form"
+          (ngSubmit)="save()"
+        >
+
+          <div class="form-grid">
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Movement Reference
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="reference"
+                maxlength="50"
+                placeholder="SM-2026-000007"
+              >
+
+              @if (
+                form.controls.reference.touched
+                &&
+                form.controls.reference.hasError('required')
+                ) {
+                <mat-error>
+                  Movement reference is required
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Movement Type
+              </mat-label>
+
+              <mat-select
+                formControlName="movementType"
+              >
+
+                @for (
+                    type of movementTypes;
+                  track type
+                  ) {
+
+                  <mat-option
+                    [value]="type"
+                  >
+                    {{ movementLabel(type) }}
+                  </mat-option>
+
+                }
+
+              </mat-select>
+
+              @if (
+                form.controls.movementType.touched
+                &&
+                form.controls.movementType.hasError('required')
+                ) {
+                <mat-error>
+                  Movement type is required
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>Product</mat-label>
+
+              <mat-select
+                formControlName="productId"
+              >
+
+                @for (
+                    product of products();
+                  track product.id
+                  ) {
+
+                  <mat-option
+                    [value]="product.id"
+                  >
+                    {{ product.sku }}
+                    —
+                    {{ product.name }}
+                  </mat-option>
+
+                }
+
+              </mat-select>
+
+              @if (
+                form.controls.productId.touched
+                &&
+                form.controls.productId.hasError('required')
+                ) {
+                <mat-error>
+                  Product is required
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>Warehouse</mat-label>
+
+              <mat-select
+                formControlName="warehouseId"
+              >
+
+                @for (
+                    warehouse of warehouses();
+                  track warehouse.id
+                  ) {
+
+                  <mat-option
+                    [value]="warehouse.id"
+                  >
+                    {{ warehouse.code }}
+                    —
+                    {{ warehouse.name }}
+                  </mat-option>
+
+                }
+
+              </mat-select>
+
+              @if (
+                form.controls.warehouseId.touched
+                &&
+                form.controls.warehouseId.hasError('required')
+                ) {
+                <mat-error>
+                  Warehouse is required
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Quantity
+              </mat-label>
+
+              <input
+                matInput
+                type="number"
+                step="0.001"
+                min="0.001"
+                formControlName="quantity"
+                placeholder="25.500"
+              >
+
+              <mat-hint>
+                Quantity must be greater than zero
+              </mat-hint>
+
+              @if (
+                form.controls.quantity.touched
+                &&
+                form.controls.quantity.hasError('required')
+                ) {
+                <mat-error>
+                  Quantity is required
+                </mat-error>
+              }
+
+              @if (
+                form.controls.quantity.touched
+                &&
+                form.controls.quantity.hasError('min')
+                ) {
+                <mat-error>
+                  Quantity must be greater than zero
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Reason
+                @if (isAdjustment()) {
+                  *
+                }
+              </mat-label>
+
+              <input
+                matInput
+                formControlName="reason"
+                maxlength="255"
+                placeholder="Supplier receipt"
+              >
+
+              @if (
+                form.controls.reason.touched
+                &&
+                form.controls.reason.hasError('required')
+                ) {
+                <mat-error>
+                  Reason is required for adjustments
+                </mat-error>
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field
+              appearance="outline"
+              class="full-width"
+            >
+
+              <mat-label>Notes</mat-label>
+
+              <textarea
+                matInput
+                formControlName="notes"
+                rows="5"
+                maxlength="500"
+                placeholder="Additional operational information"
+              ></textarea>
+
+              <mat-hint align="end">
+                {{
+                  form.controls.notes.value.length
+                }}/500
+              </mat-hint>
+
+            </mat-form-field>
+
+          </div>
+
+
+          <div class="business-note">
+
+            <mat-icon>info</mat-icon>
+
+            <div>
+
+              <strong>
+                Stock movements are permanent
+              </strong>
+
+              <p>
+                Once created, a movement cannot be edited
+                or deleted. Corrections must be recorded
+                using Adjustment In or Adjustment Out.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          @if (
+            form.controls.movementType.value === 'STOCK_OUT'
+            ||
+            form.controls.movementType.value === 'ADJUSTMENT_OUT'
+            ) {
+
+            <div class="warning-note">
+
+              <mat-icon>warning</mat-icon>
+
+              <p>
+                The backend will reject this movement if
+                there is insufficient physical stock or if
+                it would reduce stock below the reserved
+                quantity.
+              </p>
+
+            </div>
+
+          }
+
+
+          <div class="form-actions">
+
+            <button
+              mat-button
+              type="button"
+              [disabled]="saving()"
+              (click)="cancel()"
+            >
+              Cancel
+            </button>
+
+            <button
+              mat-flat-button
+              type="submit"
+              [disabled]="saving()"
+            >
+
+              @if (saving()) {
+
+                <mat-spinner diameter="20" />
+
+              } @else {
+
+                <mat-icon>save</mat-icon>
+                Create Stock Movement
+
+              }
+
+            </button>
+
+          </div>
+
+        </form>
+
+      </mat-card-content>
+
+    </mat-card>
+
+  }
+
+</section>

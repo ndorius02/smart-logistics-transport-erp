@@ -1,0 +1,408 @@
+<section class="stock-movement-page">
+
+  <div class="page-header">
+
+    <div>
+      <h1>Stock Movements</h1>
+
+      <p>
+        Track inventory receipts, issues and stock adjustments
+      </p>
+    </div>
+
+    @if (canManageStockMovements()) {
+
+      <button
+        mat-flat-button
+        type="button"
+        (click)="createMovement()"
+      >
+        <mat-icon>add</mat-icon>
+        New Stock Movement
+      </button>
+
+    }
+
+  </div>
+
+
+  <div class="filters">
+
+    <mat-form-field appearance="outline">
+
+      <mat-label>Product</mat-label>
+
+      <mat-select
+        [value]="selectedProductId()"
+        (selectionChange)="selectedProductId.set($event.value)"
+      >
+
+        <mat-option value="">
+          All Products
+        </mat-option>
+
+        @for (
+            product of products();
+          track product.id
+          ) {
+
+          <mat-option
+            [value]="product.id"
+          >
+            {{ product.sku }} — {{ product.name }}
+          </mat-option>
+
+        }
+
+      </mat-select>
+
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+
+      <mat-label>Warehouse</mat-label>
+
+      <mat-select
+        [value]="selectedWarehouseId()"
+        (selectionChange)="selectedWarehouseId.set($event.value)"
+      >
+
+        <mat-option value="">
+          All Warehouses
+        </mat-option>
+
+        @for (
+            warehouse of warehouses();
+          track warehouse.id
+          ) {
+
+          <mat-option
+            [value]="warehouse.id"
+          >
+            {{ warehouse.code }} — {{ warehouse.name }}
+          </mat-option>
+
+        }
+
+      </mat-select>
+
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+
+      <mat-label>Movement Type</mat-label>
+
+      <mat-select
+        [value]="selectedMovementType()"
+        (selectionChange)="selectedMovementType.set($event.value)"
+      >
+
+        <mat-option value="">
+          All Types
+        </mat-option>
+
+        @for (
+            type of movementTypes;
+          track type
+          ) {
+
+          <mat-option
+            [value]="type"
+          >
+            {{ movementLabel(type) }}
+          </mat-option>
+
+        }
+
+      </mat-select>
+
+    </mat-form-field>
+
+
+    <button
+      mat-flat-button
+      type="button"
+      (click)="applyFilters()"
+    >
+      <mat-icon>filter_alt</mat-icon>
+      Apply
+    </button>
+
+
+    <button
+      mat-button
+      type="button"
+      (click)="clearFilters()"
+    >
+      Clear
+    </button>
+
+  </div>
+
+
+  <div class="table-container">
+
+    @if (loading()) {
+
+      <div class="loading">
+        Loading stock movements...
+      </div>
+
+    } @else {
+
+      <table
+        mat-table
+        [dataSource]="movements()"
+      >
+
+        <ng-container matColumnDef="reference">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Reference
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let movement"
+          >
+            <strong>
+              {{ movement.reference }}
+            </strong>
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="product">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Product
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let movement"
+          >
+
+            <div class="entity-cell">
+
+              <strong>
+                {{ movement.productName }}
+              </strong>
+
+              <span>
+                {{ movement.productSku }}
+              </span>
+
+            </div>
+
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="warehouse">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Warehouse
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let movement"
+          >
+
+            <div class="entity-cell">
+
+              <strong>
+                {{ movement.warehouseName }}
+              </strong>
+
+              <span>
+                {{ movement.warehouseCode }}
+              </span>
+
+            </div>
+
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="movementType">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Type
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let movement"
+          >
+
+            <span
+              class="movement-type"
+              [class.stock-in]="movement.movementType === 'STOCK_IN'"
+              [class.stock-out]="movement.movementType === 'STOCK_OUT'"
+              [class.adjustment-in]="movement.movementType === 'ADJUSTMENT_IN'"
+              [class.adjustment-out]="movement.movementType === 'ADJUSTMENT_OUT'"
+            >
+              {{ movementLabel(movement.movementType) }}
+            </span>
+
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="quantity">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Quantity
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let movement"
+          >
+
+            <strong
+              [class.positive-quantity]="
+                movement.movementType === 'STOCK_IN'
+                || movement.movementType === 'ADJUSTMENT_IN'
+              "
+              [class.negative-quantity]="
+                movement.movementType === 'STOCK_OUT'
+                || movement.movementType === 'ADJUSTMENT_OUT'
+              "
+            >
+
+              {{
+                movement.movementType === 'STOCK_IN'
+                || movement.movementType === 'ADJUSTMENT_IN'
+                  ? '+'
+                  : '-'
+              }}
+
+              {{ movement.quantity }}
+
+            </strong>
+
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="reason">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Reason
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let movement"
+          >
+            {{ movement.reason || '—' }}
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="movementDate">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Date
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let movement"
+          >
+            {{ movement.movementDate }}
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="createdBy">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Created By
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let movement"
+          >
+            {{ movement.createdBy }}
+          </td>
+
+        </ng-container>
+
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns"
+        ></tr>
+
+        <tr
+          mat-row
+          *matRowDef="
+            let row;
+            columns: displayedColumns
+          "
+        ></tr>
+
+      </table>
+
+
+      @if (movements().length === 0) {
+
+        <div class="empty-state">
+          No stock movements found.
+        </div>
+
+      }
+
+
+      <mat-paginator
+        [length]="totalElements()"
+        [pageIndex]="pageIndex()"
+        [pageSize]="pageSize()"
+        [pageSizeOptions]="[5, 10, 20, 50]"
+        (page)="onPageChange($event)"
+        showFirstLastButtons
+      />
+
+    }
+
+  </div>
+
+</section>

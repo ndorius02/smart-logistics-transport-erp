@@ -17,4 +17,5 @@ export const API_ENDPOINTS = {
   productCategories: `${environment.apiUrl}/product-categories`,
   products: `${environment.apiUrl}/products`,
   inventory: `${environment.apiUrl}/inventory`,
+  stockMovements: `${environment.apiUrl}/stock-movements`,
 } as const;
