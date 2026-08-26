@@ -185,17 +185,6 @@ Features include:
 - Pagination
 - Activation / deactivation
 
-#### Vehicle Types
-- TRUCK
-- VAN
-- SEMI_TRAILER
-- REFRIGERATED_TRUCK
-#### Vehicle Statuses
-- AVAILABLE
-- ASSIGNED
-- MAINTENANCE
-- OUT_OF_SERVICE
-
 ![Vehicle Management](frontend/docs/screenshots/vehicle-list.png)
 
 ### Driver Management
