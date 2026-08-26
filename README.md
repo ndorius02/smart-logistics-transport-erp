@@ -26,12 +26,13 @@ The current version implements:
 - Authentication and JWT security
 - Role-Based Access Control (RBAC)
 - User and role management
+- Operational dashboard
 - Warehouse management
 - Vehicle / fleet management
 - Driver management
 - Transport planning and lifecycle management
 - Business Partners Management
-- Operational dashboard
+- Product & Inventory Management
 - Search, filtering and pagination
 - Business-rule validation
 - Centralized exception handling
@@ -208,13 +209,9 @@ Features include:
 - Search by license number
 - Search by last name
 - Status filtering
+- Driver Statuses
 - Pagination
 - Activation / deactivation
-#### Driver Statuses
-- AVAILABLE
-- ASSIGNED
-- ON_LEAVE
-- SUSPENDED
 
 ![Driver Management](frontend/docs/screenshots/driver-list.png)
 
