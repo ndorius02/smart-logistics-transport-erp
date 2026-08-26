@@ -252,11 +252,6 @@ Transport operations enforce rules including:
 - Planned departure must occur before planned arrival
 - Transport status transitions are controlled
 - Transport execution updates operational resource availability
-#### Transport Statuses
-- PLANNED
-- IN_PROGRESS
-- COMPLETED
-- CANCELLED
 
 ## Cross-Module Business Workflow
 
@@ -388,16 +383,6 @@ The module enforces key inventory rules at the backend level:
 - Inventory adjustments require explicit business justification
 - Product activation/deactivation is separated from master-data updates
 - Stock corrections are performed through movements rather than rewriting historical inventory data
-
-### Security & Authorization
-
-Sensitive inventory operations are protected using role-based authorization.
-
-Management capabilities are restricted according to application roles such as:
-
-- `ROLE_ADMIN`
-- `ROLE_MANAGER`
-- `ROLE_WAREHOUSE_OFFICER`
 
 Read and write permissions are enforced by the backend and reflected in the Angular user interface.
 
