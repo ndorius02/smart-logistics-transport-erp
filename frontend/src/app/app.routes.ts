@@ -564,6 +564,40 @@ export const routes: Routes = [
           )
       },
 
+      {
+        path: 'product-inventory/stock-movements/new',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_MANAGER',
+            'ROLE_WAREHOUSE_OFFICER'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/product-inventory/stock-movements/pages/stock-movement-create-form/stock-movement-create-form'
+            ).then(
+            m => m.StockMovementCreateForm
+          )
+      },
+
+      {
+        path: 'product-inventory/stock-movements',
+
+        loadComponent: () =>
+          import(
+            './features/product-inventory/stock-movements/pages/stock-movement-list/stock-movement-list'
+            ).then(
+            m => m.StockMovementList
+          )
+      },
+
 
 
 
