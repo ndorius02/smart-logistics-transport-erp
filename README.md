@@ -321,13 +321,6 @@ The Business Partners module centralizes the external organizations involved in 
 ![Carrier Management](frontend/docs/screenshots/carrier-list.png)
 
 Business Partner operations are secured using JWT authentication and role-based permissions for administrative and management users.
-## ERP Roadmap
-
-Smart Logistics & Transport ERP is designed as an evolving logistics and
-supply-chain platform.
-
-The current Warehouse, Fleet, Driver and Transport modules form the operational
-foundation for future modules.
 
 ## 📦 Product & Inventory Management
 
@@ -426,6 +419,7 @@ Inventory Position ◄──── Warehouse
        ├── STOCK_OUT
        ├── ADJUSTMENT_IN
        └── ADJUSTMENT_OUT
+```
 
 ## Planned Business Modules
 
