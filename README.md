@@ -4,7 +4,7 @@ A full-stack logistics management platform combining software engineering with r
 
 Smart Logistics & Transport ERP is a full-stack enterprise application designed
 to manage core logistics and transport operations, including warehouses,
-vehicles, drivers and transport planning.
+vehicles, drivers, transport planning and business modules.
 
 The project is built as a professional portfolio project and reflects my dual
 background in **Computer Science / Application Development** and
