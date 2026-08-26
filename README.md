@@ -343,13 +343,106 @@ supply-chain platform.
 The current Warehouse, Fleet, Driver and Transport modules form the operational
 foundation for future modules.
 
+## 📦 Product & Inventory Management
+
+A complete inventory management module designed around real-world logistics and warehouse operations, with a strong focus on **stock traceability, business rules, and data consistency**.
+
+### Product Catalog Management
+
+- Product category management
+- Product master data with unique SKU identification
+- Product classification by category
+- Multiple units of measure
+- Decimal quantities for weight, volume, length, and piece-based products
+- Product activation / deactivation lifecycle
+- Search and filtering by SKU, name, and category
+- Role-based access to management operations
+
+### Multi-Warehouse Inventory
+
+- Inventory tracking by **Product × Warehouse**
+- Physical stock quantity tracking
+- Reserved quantity management
+- Automatic available stock calculation
+- Configurable minimum stock levels
+- Automatic **Low Stock** detection
+- Inventory filtering by product and warehouse
+- Operational stock overview across warehouses
+
+![Inventory Management](frontend/docs/screenshots/inventory-list.png)
+
+### Stock Movement & Traceability
+
+Inventory quantities are not directly edited after initialization.
+
+Every physical stock change is recorded through an immutable stock movement:
+
+- `STOCK_IN` — incoming inventory
+- `STOCK_OUT` — outgoing inventory
+- `ADJUSTMENT_IN` — positive inventory correction
+- `ADJUSTMENT_OUT` — negative inventory correction
+
+Each movement keeps operational information such as:
+
+- Product
+- Warehouse
+- Movement type
+- Decimal quantity
+- Business reference
+- Reason / notes
+- Movement date
+- User responsible for the operation
+
+This approach provides a clear **audit trail** and prevents uncontrolled manual modification of inventory quantities.
+
+![Stoc Movement Management](frontend/docs/screenshots/stock-movement-list.png)
+
+### Business Rules
+
+The module enforces key inventory rules at the backend level:
+
+- Stock quantities cannot become negative
+- Reserved quantities cannot exceed physical stock
+- Outgoing movements are validated against available inventory
+- Product and warehouse relationships are validated before stock operations
+- Duplicate inventory positions for the same Product × Warehouse combination are prevented
+- Inventory adjustments require explicit business justification
+- Product activation/deactivation is separated from master-data updates
+- Stock corrections are performed through movements rather than rewriting historical inventory data
+
+### Security & Authorization
+
+Sensitive inventory operations are protected using role-based authorization.
+
+Management capabilities are restricted according to application roles such as:
+
+- `ROLE_ADMIN`
+- `ROLE_MANAGER`
+- `ROLE_WAREHOUSE_OFFICER`
+
+Read and write permissions are enforced by the backend and reflected in the Angular user interface.
+
+### Architecture
+
+```text
+Product Category
+       │
+       ▼
+    Product
+       │
+       ▼
+Inventory Position ◄──── Warehouse
+       │
+       ▼
+ Stock Movement
+       │
+       ├── STOCK_IN
+       ├── STOCK_OUT
+       ├── ADJUSTMENT_IN
+       └── ADJUSTMENT_OUT
+
 ## Planned Business Modules
-### Product & Inventory
-- Product-Category Management
-- Product Management
-- Inventory Management
-- Warehouse stock tracking
-- Stock movements
+
 ### Procurement
 - Purchase Order Management
 - Supplier orders
