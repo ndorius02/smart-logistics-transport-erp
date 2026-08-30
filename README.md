@@ -15,7 +15,7 @@ The application follows a layered full-stack architecture with a **Spring Boot R
 
 ## 🎯 Project Goals
 
-- Model realistic logistics, transport, warehouse, business partners, inventory, and procurement workflows,  Cargo & Shipment, delivery and Reporting & Analytics
+- Model realistic logistics, transport, warehouse, business partners, inventory, and procurement workflows,  cargo & shipment, delivery and reporting & analytics
 - Demonstrate full-stack enterprise application development
 - Implement business rules beyond basic CRUD operations
 - Apply secure authentication and role-based authorization
@@ -532,6 +532,9 @@ This dual background helps me approach logistics software from both perspectives
 - Procurement-to-inventory integration
 - Logistics process modeling
 - Supply chain ERP concepts
+- Cargo & Shipment
+- Delivery
+- Reporting & Analytics
 
 
 ## About the Developer
