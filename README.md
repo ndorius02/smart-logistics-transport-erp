@@ -430,7 +430,8 @@ Stock Movement (STOCK_IN)
    ↓
 Inventory Update
 
-🧾 Purchase Orders
+```
+### 🧾 Purchase Orders
 Create purchase orders for active suppliers and warehouses
 Add multiple products with quantity and unit price
 Automatically calculate line totals and total order amount
@@ -438,14 +439,14 @@ Edit purchase order items while the order is in DRAFT
 Submit and approve purchase orders
 Track ordered, received, and remaining quantities
 Support cancellation according to business rules
-📥 Goods Reception
+### 📥 Goods Reception
 Receive goods from approved purchase orders
 Support partial and multiple receptions
 Prevent quantities from exceeding the ordered quantity
 Automatically update received and remaining quantities
 Automatically transition orders to PARTIALLY_RECEIVED or RECEIVED
 Record reception reference, date, notes, and authenticated user
-📊 Inventory Integration
+### 📊 Inventory Integration
 
 Goods reception is directly connected to inventory management.
 
@@ -459,9 +460,11 @@ Recalculates the purchase order status
 
 The operation is handled transactionally to maintain consistency between procurement, stock movements, and inventory.
 
-🔐 Role-Based Access Control
+### 🔐 Role-Based Access Control
 
 Procurement operations are secured using Spring Security + JWT RBAC.
+
+
 ## Planned Business Modules
 
 ### Procurement
