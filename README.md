@@ -33,6 +33,7 @@ The current version implements:
 - Transport planning and lifecycle management
 - Business Partners Management
 - Product & Inventory Management
+- Procurement Management
 - Search, filtering and pagination
 - Business-rule validation
 - Centralized exception handling
