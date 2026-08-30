@@ -3,7 +3,7 @@
 
 A full-stack enterprise logistics management platform combining modern software engineering with real-world transport, warehouse, inventory, procurement, and supply chain business processes.
 
-**Smart Logistics & Transport ERP** is designed to manage and connect core logistics operations, including warehouse management, vehicles, drivers, transport planning, business partners, products, inventory, stock movements, purchase orders, and goods receptions.
+**Smart Logistics & Transport ERP** is designed to manage and connect core logistics operations, including warehouse management, vehicles, drivers, transport planning, business partners, products, inventory, stock movements, purchase orders,  goods receptions, Cargo & Shipment, Delivery and Reporting & Analytics.
 
 The project is built as a professional portfolio project and reflects my dual background in **Computer Science / Application Development** and **Transport & Logistics**.
 
@@ -23,76 +23,52 @@ The application follows a layered full-stack architecture with a **Spring Boot R
 - Build a modular and maintainable architecture
 - Demonstrate practical knowledge of both software engineering and logistics operations
 
-
-
-# Smart Logistics & Transport ERP
-
-A full-stack logistics management platform combining software engineering with real-world transport and logistics business processes.
-
-Smart Logistics & Transport ERP is a full-stack enterprise application designed
-to manage core logistics and transport operations, including warehouses,
-vehicles, drivers, transport planning and business modules.
-
-The project is built as a professional portfolio project and reflects my dual
-background in **Computer Science / Application Development** and
-**Transport & Logistics**.
-Rather than implementing independent CRUD modules, the application models
-connected business processes with authentication, role-based authorization,
-resource availability, operational statuses and transport lifecycle rules.
-
----
-
-## Project Overview
-
-The objective of this project is to design and progressively build a
-modular logistics ERP covering operational processes commonly found in
-transport, warehousing, Cargo Operations, Import & Export and supply-chain environments.
-
-The current version implements:
-
-- Authentication and JWT security
-- Role-Based Access Control (RBAC)
-- User and role management
-- Operational dashboard
-- Warehouse management
-- Vehicle / fleet management
-- Driver management
-- Transport planning and lifecycle management
-- Business Partners Management
-- Product & Inventory Management
-- Procurement Management
-- Search, filtering and pagination
-- Business-rule validation
-- Centralized exception handling
-
-The project is under active development and additional supply-chain modules
-are planned.
-
----
-
-## Why This Project?
-
-Logistics software is not only about storing data.
-
-Real transport operations involve dependencies between warehouses, vehicles,
-drivers, schedules and operational statuses.
-
-This project demonstrates how these business constraints can be translated
-into a full-stack application.
-
-For example, creating and executing a transport operation requires:
-
-1. an origin warehouse;
-2. a different destination warehouse;
-3. an active and available vehicle;
-4. an active and available driver;
-5. valid planned departure and arrival times;
-6. controlled transport status transitions.
-
 The objective is therefore to demonstrate both **software engineering skills**
 and **understanding of logistics operations**.
 
 ---
+
+## 🚧 Project Status
+
+**Smart Logistics & Transport ERP is actively under development.**
+
+The core architecture and several business modules are already implemented, while additional logistics and supply chain capabilities are planned as the project evolves.
+
+The objective is to progressively build a realistic end-to-end logistics ERP rather than implementing disconnected features.
+
+---
+
+## 🗺️ Planned Business Modules
+
+The following modules are part of the planned development roadmap.
+
+### 📦 Cargo & Shipment
+
+- Cargo management
+- Shipment management
+- Cargo-to-transport assignment
+- Shipment lifecycle and status tracking
+- Integration with transport planning
+- Origin and destination management
+
+### 🚚 Delivery
+
+- Delivery management
+- Delivery status tracking
+- Transport-to-delivery workflow
+- Proof-of-delivery workflow
+- Delivery completion and operational traceability
+
+### 📊 Reporting & Analytics
+
+- Operational reports
+- Historical transport analysis
+- Fleet utilization
+- Warehouse activity
+- Inventory and stock movement analysis
+- Procurement activity
+- Driver activity
+- Advanced KPI dashboards
 
 ## Architecture
 
