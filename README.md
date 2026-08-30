@@ -358,8 +358,6 @@ It is fully integrated with the **Supplier, Product, Warehouse, Inventory, and S
 
 ### 🔄 Cross-Module Business Workflows
 
-The project demonstrates the implementation of interconnected business processes rather than isolated CRUD modules.
-
 ```text
 Supplier
    ↓
