@@ -356,7 +356,9 @@ The **Procurement module** manages the purchasing lifecycle from supplier purcha
 
 It is fully integrated with the **Supplier, Product, Warehouse, Inventory, and Stock Movement** modules.
 
-### 🔄 Procurement Workflow
+### 🔄 Cross-Module Business Workflows
+
+The project demonstrates the implementation of interconnected business processes rather than isolated CRUD modules.
 
 ```text
 Supplier
@@ -495,32 +497,44 @@ This dual background helps me approach logistics software from both perspectives
 - understanding the technical architecture required to build reliable software;
 - understanding the operational processes the software is intended to support.
 
-## Skills Demonstrated by This Project
+## 🧠 Skills Demonstrated by This Project
 
-### Software Engineering
-- Object-oriented programming
-- REST API design
-- Full-stack application development
-- Layered architecture
-- Relational database design
-- Authentication and authorization
-- Business-rule implementation
-- Exception handling
-- DTO mapping
-- Form validation
-- Frontend state and API integration
-- Git-based development workflow
+### 💻 Software Engineering
 
-### Logistics & Business Domain
+- Full-stack enterprise application development
+- Object-oriented programming and domain modeling
+- Layered backend architecture
+- RESTful API design
+- DTO-based API contracts and MapStruct mapping
+- Relational database modeling with PostgreSQL
+- Database versioning and migrations with Flyway
+- Authentication with JWT
+- Role-Based Access Control (RBAC) with Spring Security
+- Business-rule implementation and workflow validation
+- Transactional operations and data consistency
+- Centralized exception handling and API error responses
+- Server-side pagination, filtering, and sorting
+- Angular standalone component architecture
+- Reactive Forms and client-side validation
+- Reactive UI state management with Angular Signals
+- Frontend/backend API integration
+- Git-based feature development workflow
+
+### 🚚 Logistics & Supply Chain
+
 - Warehouse operations
-- Fleet management
-- Driver management
-- Transport planning
-- Resource allocation
-- Operational availability
-- Transport lifecycle management
+- Fleet and driver management
+- Transport planning and lifecycle management
+- Resource allocation and operational availability
+- Product and inventory management
+- Stock movement tracking
+- Supplier and business partner management
+- Purchase order lifecycle management
+- Goods reception and partial reception workflows
+- Procurement-to-inventory integration
 - Logistics process modeling
-- Supply-chain ERP concepts
+- Supply chain ERP concepts
+
 
 ## About the Developer
 Computer Science graduate in Applications Development with an additional
