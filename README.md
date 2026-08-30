@@ -3,7 +3,7 @@
 
 A full-stack enterprise logistics management platform combining modern software engineering with real-world transport, warehouse, inventory, procurement, and supply chain business processes.
 
-**Smart Logistics & Transport ERP** is designed to manage and connect core logistics operations, including warehouse management, vehicles, drivers, transport planning, business partners, products, inventory, stock movements, purchase orders,  goods receptions, Cargo & Shipment, Delivery and Reporting & Analytics.
+**Smart Logistics & Transport ERP** is designed to manage and connect core logistics operations, including warehouse management, vehicles, drivers, transport planning, business partners, products, inventory, stock movements, purchase orders,  goods receptions, cargo & shipment, delivery and reporting & analytics.
 
 The project is built as a professional portfolio project and reflects my dual background in **Computer Science / Application Development** and **Transport & Logistics**.
 
@@ -15,16 +15,13 @@ The application follows a layered full-stack architecture with a **Spring Boot R
 
 ## 🎯 Project Goals
 
-- Model realistic logistics, transport, warehouse, inventory, and procurement workflows
+- Model realistic logistics, transport, warehouse, business partners, inventory, and procurement workflows,  Cargo & Shipment, delivery and Reporting & Analytics
 - Demonstrate full-stack enterprise application development
 - Implement business rules beyond basic CRUD operations
 - Apply secure authentication and role-based authorization
 - Maintain consistency between interconnected business modules
 - Build a modular and maintainable architecture
-- Demonstrate practical knowledge of both software engineering and logistics operations
-
-The objective is therefore to demonstrate both **software engineering skills**
-and **understanding of logistics operations**.
+- Demonstrate both **software engineering skills** and understanding of **logistics operations**
 
 ---
 
