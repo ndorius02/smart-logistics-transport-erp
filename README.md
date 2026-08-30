@@ -405,6 +405,63 @@ Inventory Position ◄──── Warehouse
        └── ADJUSTMENT_OUT
 ```
 
+## 📦 Procurement Management
+
+The **Procurement module** manages the purchasing lifecycle from supplier purchase orders to warehouse goods reception and inventory updates.
+
+It is fully integrated with the **Supplier, Product, Warehouse, Inventory, and Stock Movement** modules.
+
+### 🔄 Procurement Workflow
+
+```text
+Supplier
+   ↓
+Purchase Order
+   ↓
+Purchase Order Items
+   ↓
+Submit
+   ↓
+Approve
+   ↓
+Goods Reception
+   ↓
+Stock Movement (STOCK_IN)
+   ↓
+Inventory Update
+
+🧾 Purchase Orders
+Create purchase orders for active suppliers and warehouses
+Add multiple products with quantity and unit price
+Automatically calculate line totals and total order amount
+Edit purchase order items while the order is in DRAFT
+Submit and approve purchase orders
+Track ordered, received, and remaining quantities
+Support cancellation according to business rules
+📥 Goods Reception
+Receive goods from approved purchase orders
+Support partial and multiple receptions
+Prevent quantities from exceeding the ordered quantity
+Automatically update received and remaining quantities
+Automatically transition orders to PARTIALLY_RECEIVED or RECEIVED
+Record reception reference, date, notes, and authenticated user
+📊 Inventory Integration
+
+Goods reception is directly connected to inventory management.
+
+When goods are received, the system automatically:
+
+Validates the purchase order and remaining quantity
+Creates a STOCK_IN movement
+Updates the corresponding Product × Warehouse inventory position
+Updates the received quantity of the purchase order item
+Recalculates the purchase order status
+
+The operation is handled transactionally to maintain consistency between procurement, stock movements, and inventory.
+
+🔐 Role-Based Access Control
+
+Procurement operations are secured using Spring Security + JWT RBAC.
 ## Planned Business Modules
 
 ### Procurement
