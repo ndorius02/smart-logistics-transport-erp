@@ -113,18 +113,6 @@ The application follows a layered full-stack architecture.
 ### Administration & Security
 
 The application uses JWT-based authentication and Spring Security.
-The security architecture includes:
-- JWT authentication
-- Stateless API security
-- Password-based authentication
-- Role-Based Access Control (RBAC)
-- Backend endpoint authorization
-- Angular authentication guards
-- Angular role guards
-- HTTP authentication interceptor
-
-Authorization rules are enforced on the backend. 
-Frontend role checks improve the user experience but are not considered the security boundary.
 
 ### Roles
 
@@ -161,14 +149,6 @@ origin, destination, assigned vehicle, driver, departure time and status.
 
 ### Warehouse Management
 The warehouse module manages logistics locations used by transport operations.
-
-Features include:
-- Warehouse creation and update
-- Search by warehouse name
-- Pagination
-- Capacity management
-- Activation / deactivation
-- Role-based access
   
 ![Warehouse Management](frontend/docs/screenshots/warehouse-list.png)
 
@@ -176,29 +156,11 @@ Features include:
 
 The fleet module manages vehicles used for transport operations.
 
-Features include:
-- Vehicle creation and update
-- Registration-number uniqueness
-- Search by registration number/ brand
-- Filtering by operational status
-- Pagination
-- Activation / deactivation
-
 ![Vehicle Management](frontend/docs/screenshots/vehicle-list.png)
 
 ### Driver Management
 
 The driver module manages drivers and their operational availability.
-
-Features include:
-
-- Driver creation and update
-- License-number uniqueness
-- Search by license number/last name
-- Status filtering
-- Driver Statuses
-- Pagination
-- Activation / deactivation
 
 ![Driver Management](frontend/docs/screenshots/driver-list.png)
 
@@ -441,29 +403,6 @@ Inventory Update
   5. Recalculates the purchase order status
 
 The operation is handled transactionally to maintain consistency between procurement, stock movements, and inventory.
-
-### 🔐 Role-Based Access Control
-
-Procurement operations are secured using Spring Security + JWT RBAC.
-
-## Planned Business Modules
-
-### Cargo & Shipment
-- Cargo Management
-- Shipment Management
-- Cargo-to-transport assignment
-- Shipment tracking
-### Delivery
-- Delivery Management
-- Delivery status tracking
-- Proof-of-delivery workflow
-### Reporting & Analytics
-- Operational reports
-- Historical transport analysis
-- Fleet utilization
-- Warehouse activity
-- Driver activity
-- Advanced KPI dashboards
 
 ## Future Technical Improvements
 Planned technical improvements include:
