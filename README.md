@@ -178,8 +178,7 @@ The fleet module manages vehicles used for transport operations.
 Features include:
 - Vehicle creation and update
 - Registration-number uniqueness
-- Search by registration number
-- Search by brand
+- Search by registration number/ brand
 - Filtering by operational status
 - Pagination
 - Activation / deactivation
@@ -194,8 +193,7 @@ Features include:
 
 - Driver creation and update
 - License-number uniqueness
-- Search by license number
-- Search by last name
+- Search by license number/last name
 - Status filtering
 - Driver Statuses
 - Pagination
@@ -287,30 +285,14 @@ This architecture allows business rules from multiple logistics domains to parti
 The Business Partners module centralizes the external organizations involved in logistics and transport operations.
 
 ### Customers
-- Customer creation and update
-- Customer activation/deactivation
-- Search by customer code and company name
-- Pagination
-- Role-based access control
   
 ![Customer Management](frontend/docs/screenshots/customer-list.png)
 
 ### Suppliers
-- Supplier creation and update
-- Supplier activation/deactivation
-- Search by supplier code and company name
-- Pagination
-- Role-based access control
   
 ![Supplier Management](frontend/docs/screenshots/supplier-list.png)
 
 ### Carriers
-- External carrier creation and update
-- Carrier activation/deactivation
-- Transport license management
-- Search by carrier code, company name and license number
-- Pagination
-- Role-based access control
   
 ![Carrier Management](frontend/docs/screenshots/carrier-list.png)
 
