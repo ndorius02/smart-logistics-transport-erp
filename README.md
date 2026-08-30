@@ -1,3 +1,30 @@
+
+# Smart Logistics & Transport ERP
+
+A full-stack enterprise logistics management platform combining modern software engineering with real-world transport, warehouse, inventory, procurement, and supply chain business processes.
+
+**Smart Logistics & Transport ERP** is designed to manage and connect core logistics operations, including warehouse management, vehicles, drivers, transport planning, business partners, products, inventory, stock movements, purchase orders, and goods receptions.
+
+The project is built as a professional portfolio project and reflects my dual background in **Computer Science / Application Development** and **Transport & Logistics**.
+
+Rather than implementing isolated CRUD modules, the application models interconnected business workflows with authentication, role-based access control (RBAC), resource availability, operational statuses, inventory tracking, procurement workflows, and transport lifecycle rules.
+
+For example, the procurement workflow connects **Suppliers → Purchase Orders → Goods Receptions → Stock Movements → Inventory**, ensuring that received goods automatically generate stock movements and update the corresponding warehouse inventory.
+
+The application follows a layered full-stack architecture with a **Spring Boot REST API**, **Angular frontend**, **PostgreSQL database**, **JWT-based security**, and business rules designed around realistic logistics operations.
+
+## 🎯 Project Goals
+
+- Model realistic logistics, transport, warehouse, inventory, and procurement workflows
+- Demonstrate full-stack enterprise application development
+- Implement business rules beyond basic CRUD operations
+- Apply secure authentication and role-based authorization
+- Maintain consistency between interconnected business modules
+- Build a modular and maintainable architecture
+- Demonstrate practical knowledge of both software engineering and logistics operations
+
+
+
 # Smart Logistics & Transport ERP
 
 A full-stack logistics management platform combining software engineering with real-world transport and logistics business processes.
