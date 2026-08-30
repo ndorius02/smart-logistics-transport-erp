@@ -432,31 +432,30 @@ Inventory Update
 
 ```
 ### 🧾 Purchase Orders
-Create purchase orders for active suppliers and warehouses
-Add multiple products with quantity and unit price
-Automatically calculate line totals and total order amount
-Edit purchase order items while the order is in DRAFT
-Submit and approve purchase orders
-Track ordered, received, and remaining quantities
-Support cancellation according to business rules
+- Create purchase orders for active suppliers and warehouses
+- Add multiple products with quantity and unit price
+- Automatically calculate line totals and total order amount
+- Edit purchase order items while the order is in DRAFT
+- Submit and approve purchase orders
+- Track ordered, received, and remaining quantities
+- Support cancellation according to business rules
 ### 📥 Goods Reception
-Receive goods from approved purchase orders
-Support partial and multiple receptions
-Prevent quantities from exceeding the ordered quantity
-Automatically update received and remaining quantities
-Automatically transition orders to PARTIALLY_RECEIVED or RECEIVED
-Record reception reference, date, notes, and authenticated user
+- Receive goods from approved purchase orders
+- Support partial and multiple receptions
+- Prevent quantities from exceeding the ordered quantity
+- Automatically update received and remaining quantities
+- Automatically transition orders to PARTIALLY_RECEIVED or RECEIVED
+- Record reception reference, date, notes, and authenticated user
+  
 ### 📊 Inventory Integration
 
-Goods reception is directly connected to inventory management.
-
-When goods are received, the system automatically:
-
-Validates the purchase order and remaining quantity
-Creates a STOCK_IN movement
-Updates the corresponding Product × Warehouse inventory position
-Updates the received quantity of the purchase order item
-Recalculates the purchase order status
+- Goods reception is directly connected to inventory management.
+- When goods are received, the system automatically:
+  1. Validates the purchase order and remaining quantity
+  2. Creates a STOCK_IN movement
+  3. Updates the corresponding Product × Warehouse inventory position
+  4. Updates the received quantity of the purchase order item
+  5. Recalculates the purchase order status
 
 The operation is handled transactionally to maintain consistency between procurement, stock movements, and inventory.
 
@@ -464,13 +463,8 @@ The operation is handled transactionally to maintain consistency between procure
 
 Procurement operations are secured using Spring Security + JWT RBAC.
 
-
 ## Planned Business Modules
 
-### Procurement
-- Purchase Order Management
-- Supplier orders
-- Goods reception
 ### Cargo & Shipment
 - Cargo Management
 - Shipment Management
