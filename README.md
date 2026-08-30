@@ -536,13 +536,10 @@ This dual background helps me approach logistics software from both perspectives
 - Delivery
 - Reporting & Analytics
 
+## 👨‍💻 About the Developer
 
-## About the Developer
-Computer Science graduate in Applications Development with an additional
-academic background in Transport & Logistics.
+Computer Science graduate specialized in **Application Development**, with an additional academic background in **Transport & Logistics**.
 
-Interested in opportunities where software engineering, enterprise applications,
-logistics, transport and supply-chain operations intersect.
+Interested in opportunities at the intersection of **software engineering, enterprise applications, logistics, transport, and supply chain operations**.
 
-This project was created to demonstrate my ability to transform real business
-requirements into a structured full-stack software solution.
+This project demonstrates my ability to translate real-world business requirements into secure, structured, and interconnected full-stack software solutions.
