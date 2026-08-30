@@ -59,6 +59,9 @@ public final class ErrorMessages {
     public static final String SUPPLIER_NOT_FOUND =
             "Supplier not found";
 
+    public static final String SUPPLIER_INACTIVE =
+            "Supplier is inactive";
+
     public static final String DUPLICATE_SUPPLIER_CODE =
             "Supplier code already exists";
 
@@ -121,5 +124,75 @@ public final class ErrorMessages {
 
     public static final String AUTHENTICATED_USER_REQUIRED =
             "Authenticated user is required";
+
+    // PURCHASE ORDER
+
+    public static final String PURCHASE_ORDER_NOT_FOUND =
+            "Purchase order not found";
+
+    public static final String DUPLICATE_PURCHASE_ORDER_NUMBER =
+            "Purchase order number already exists";
+
+    public static final String PURCHASE_ORDER_MUST_BE_DRAFT =
+            "Purchase order must be in DRAFT status";
+
+    public static final String PURCHASE_ORDER_MUST_BE_SUBMITTED =
+            "Only SUBMITTED purchase orders can be approved";
+
+    public static final String PURCHASE_ORDER_WITHOUT_ITEMS =
+            "Purchase order cannot be submitted without items";
+
+    public static final String PURCHASE_ORDER_CANNOT_BE_CANCELLED =
+            "Purchase order cannot be cancelled from its current status";
+
+    public static final String PURCHASE_ORDER_HAS_RECEIVED_GOODS =
+            "Purchase order cannot be cancelled because goods have already been received";
+
+    public static final String EXPECTED_DELIVERY_DATE_INVALID =
+            "Expected delivery date cannot be before order date";
+
+
+    // PURCHASE ORDER ITEM
+
+    public static final String PURCHASE_ORDER_ITEM_NOT_FOUND =
+            "Purchase order item not found";
+
+    public static final String DUPLICATE_PURCHASE_ORDER_PRODUCT =
+            "Product already exists in purchase order";
+
+    public static final String ORDERED_QUANTITY_INVALID =
+            "Ordered quantity must be greater than zero";
+
+    public static final String UNIT_PRICE_INVALID =
+            "Unit price must be zero or greater";
+
+    public static final String ORDERED_QUANTITY_BELOW_RECEIVED =
+            "Ordered quantity cannot be lower than received quantity";
+
+    public static final String RECEIVED_ITEM_CANNOT_BE_REMOVED =
+            "Cannot remove an item that has already been received";
+
+    // GOODS RECEPTION
+
+    public static final String GOODS_RECEPTION_NOT_FOUND =
+            "Goods reception not found";
+
+    public static final String DUPLICATE_GOODS_RECEPTION_REFERENCE =
+            "Goods reception reference already exists";
+
+    public static final String GOODS_RECEPTION_REFERENCE_REQUIRED =
+            "Goods reception reference is required";
+
+    public static final String GOODS_RECEPTION_NOT_ALLOWED =
+            "Goods reception is only allowed for APPROVED or PARTIALLY_RECEIVED purchase orders";
+
+    public static final String GOODS_RECEPTION_QUANTITY_INVALID =
+            "Goods reception quantity must be greater than zero";
+
+    public static final String GOODS_RECEPTION_EXCEEDS_ORDERED_QUANTITY =
+            "Received quantity cannot exceed ordered quantity";
+
+    public static final String INVENTORY_POSITION_REQUIRED_FOR_RECEPTION =
+            "Inventory position is required before receiving goods";
 
 }

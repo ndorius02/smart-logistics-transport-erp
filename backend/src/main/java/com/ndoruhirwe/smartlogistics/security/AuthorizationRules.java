@@ -491,6 +491,86 @@ public class AuthorizationRules {
                         "WAREHOUSE_OFFICER"
                 )
 
+                // =========================
+                // PURCHASE ORDERS
+                // =========================
+
+                .requestMatchers(
+                        HttpMethod.GET,
+                        "/api/purchase-orders",
+                        "/api/purchase-orders/**"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER",
+                        "WAREHOUSE_OFFICER",
+                        "TRANSPORT_COORDINATOR"
+                )
+
+                .requestMatchers(
+                        HttpMethod.POST,
+                        "/api/purchase-orders",
+                        "/api/purchase-orders/*/items"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER"
+                )
+
+                .requestMatchers(
+                        HttpMethod.PUT,
+                        "/api/purchase-orders/**"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER"
+                )
+
+                .requestMatchers(
+                        HttpMethod.DELETE,
+                        "/api/purchase-orders/*/items/*"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER"
+                )
+
+                .requestMatchers(
+                        HttpMethod.PATCH,
+                        "/api/purchase-orders/*/submit",
+                        "/api/purchase-orders/*/approve",
+                        "/api/purchase-orders/*/cancel"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER"
+                )
+
+                // =========================
+                // GOODS RECEPTIONS
+                // =========================
+
+
+                .requestMatchers(
+                        HttpMethod.GET,
+                        "/api/goods-receptions",
+                        "/api/goods-receptions/**"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER",
+                        "WAREHOUSE_OFFICER",
+                        "TRANSPORT_COORDINATOR"
+                )
+
+                .requestMatchers(
+                        HttpMethod.POST,
+                        "/api/goods-receptions"
+                ).hasAnyRole(
+                        "ADMIN",
+                        "MANAGER",
+                        "WAREHOUSE_OFFICER"
+                )
+
+
+
+
+
+
 
 
 
