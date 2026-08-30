@@ -536,55 +536,7 @@ rules, integration scenarios and security behavior.
 - IntelliJ IDEA
 - Visual Studio Code
 
-## Project Structure
-```text
-smart-logistics-transport-erp/
-│
-├── backend/
-│   └── src/
-│       ├── main/
-│       │   ├── java/
-│       │   │   └── com/ndoruhirwe/smartlogistics/
-│       │   │       ├── config/
-│       │   │       ├── controller/
-│       │   │       ├── dto/
-│       │   │       ├── entity/
-│       │   │       ├── exception/
-│       │   │       ├── mapper/
-│       │   │       ├── repository/
-│       │   │       ├── security/
-│       │   │       └── service/
-│       │   │
-│       │   └── resources/
-│       │       └── db/migration/
-│       │
-│       └── test/
-│
-├── frontend/
-│   └── src/
-│       └── app/
-│           ├── core/
-│           │   ├── auth/
-│           │   ├── guards/
-│           │   ├── interceptors/
-│           │   ├── models/
-│           │   └── services/
-│           │
-│           ├── features/
-│           │   ├── auth/
-│           │   ├── dashboard/
-│           │   ├── warehouses/
-│           │   ├── vehicles/
-│           │   ├── drivers/
-│           │   └── transports/
-│           │
-│           └── layout/
-│
-├── docs/
-│   └── screenshots/
-│
-└── README.md
-```
+
 ## Getting Started
 ### Prerequisites
 Install:
