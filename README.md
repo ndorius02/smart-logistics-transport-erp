@@ -516,26 +516,6 @@ Database schema changes are managed with Flyway.
 Migration scripts are versioned with the application to provide reproducible
 database evolution across environments.
 
-## Professional Context
-This project reflects the combination of two areas of my academic background:
-
-Recently graduated (Bachelor) with distinction in Computer Science – Applications Development
-Haute École de Namur-Liège-Luxembourg (Hénallux), Belgium
-2022–2026
-
-Diploma in Transport & Logistics
-EAFC Namur-Cadets, Belgium
-2020–2021
-
-My objective is to apply software engineering to real operational and business
-problems, particularly in logistics, transport, supply chain and enterprise
-information systems.
-
-This dual background helps me approach logistics software from both perspectives:
-
-- understanding the technical architecture required to build reliable software;
-- understanding the operational processes the software is intended to support.
-
 ## 🧠 Skills Demonstrated by This Project
 
 ### 💻 Software Engineering
