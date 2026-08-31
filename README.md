@@ -310,8 +310,6 @@ Each movement keeps operational information such as:
 
 This approach provides a clear **audit trail** and prevents uncontrolled manual modification of inventory quantities.
 
-![Stoc Movement Management](frontend/docs/screenshots/stock-movement-list.png)
-
 ### Business Rules
 
 The module enforces key inventory rules at the backend level:
@@ -381,6 +379,9 @@ Inventory Update
 - Submit and approve purchase orders
 - Track ordered, received, and remaining quantities
 - Support cancellation according to business rules
+
+![Purchase orders Management](frontend/docs/screenshots/purchase-order.png)
+
 ### 📥 Goods Reception
 - Receive goods from approved purchase orders
 - Support partial and multiple receptions
@@ -388,6 +389,8 @@ Inventory Update
 - Automatically update received and remaining quantities
 - Automatically transition orders to PARTIALLY_RECEIVED or RECEIVED
 - Record reception reference, date, notes, and authenticated user
+
+![Purchase orders details ](frontend/docs/screenshots/purchase-oder-detail.png) 
   
 ### 📊 Inventory Integration
 
@@ -398,6 +401,8 @@ Inventory Update
   3. Updates the corresponding Product × Warehouse inventory position
   4. Updates the received quantity of the purchase order item
   5. Recalculates the purchase order status
+
+![Stoc Movement Management](frontend/docs/screenshots/stock-movement-list.png)
 
 The operation is handled transactionally to maintain consistency between procurement, stock movements, and inventory.
 
