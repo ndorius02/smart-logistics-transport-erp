@@ -1,0 +1,312 @@
+<mat-card class="page-card">
+
+  <div class="page-header">
+
+    <div>
+
+      <h1>
+        {{
+          editMode()
+            ? 'Edit Purchase Order'
+            : 'New Purchase Order'
+        }}
+      </h1>
+
+      <p>
+        {{
+          editMode()
+            ? 'Update the purchase order information.'
+            : 'Create a new supplier purchase order.'
+        }}
+      </p>
+
+    </div>
+
+  </div>
+
+
+  @if (
+    loading() ||
+    loadingReferenceData()
+    ) {
+
+    <div class="loading-container">
+
+      <mat-spinner
+        diameter="40"
+      ></mat-spinner>
+
+      <span>
+        Loading...
+      </span>
+
+    </div>
+
+  } @else if (errorMessage()) {
+
+    <div class="error-state">
+
+      <mat-icon>
+        error_outline
+      </mat-icon>
+
+      <h3>
+        Unable to load form data
+      </h3>
+
+      <p>
+        {{ errorMessage() }}
+      </p>
+
+      <button
+        mat-stroked-button
+        type="button"
+        (click)="cancel()"
+      >
+        <mat-icon>
+          arrow_back
+        </mat-icon>
+
+        Back
+      </button>
+
+    </div>
+
+  } @else {
+
+    <form
+      [formGroup]="form"
+      (ngSubmit)="save()"
+    >
+
+      <div class="form-grid">
+
+        <mat-form-field appearance="outline">
+
+          <mat-label>
+            Order Number
+          </mat-label>
+
+          <input
+            matInput
+            formControlName="orderNumber"
+            placeholder="PO-2026-000002"
+          >
+
+          @if (
+            form.controls.orderNumber
+              .hasError('required')
+            ) {
+
+            <mat-error>
+              Order number is required.
+            </mat-error>
+
+          }
+
+
+          @if (
+            form.controls.orderNumber
+              .hasError('maxlength')
+            ) {
+
+            <mat-error>
+              Order number cannot exceed 50 characters.
+            </mat-error>
+
+          }
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+
+          <mat-label>
+            Supplier
+          </mat-label>
+
+          <mat-select
+            formControlName="supplierId"
+          >
+
+            @for (
+                supplier of suppliers();
+              track supplier.id
+              ) {
+
+              <mat-option
+                [value]="supplier.id"
+              >
+                {{ supplier.code }}
+                -
+                {{ supplier.companyName }}
+              </mat-option>
+
+            }
+
+          </mat-select>
+
+
+          @if (
+            form.controls.supplierId
+              .hasError('required')
+            ) {
+
+            <mat-error>
+              Supplier is required.
+            </mat-error>
+
+          }
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+
+          <mat-label>
+            Warehouse
+          </mat-label>
+
+          <mat-select
+            formControlName="warehouseId"
+          >
+
+            @for (
+                warehouse of warehouses();
+              track warehouse.id
+              ) {
+
+              <mat-option
+                [value]="warehouse.id"
+              >
+                {{ warehouse.code }}
+                -
+                {{ warehouse.name }}
+              </mat-option>
+
+            }
+
+          </mat-select>
+
+
+          @if (
+            form.controls.warehouseId
+              .hasError('required')
+            ) {
+
+            <mat-error>
+              Warehouse is required.
+            </mat-error>
+
+          }
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+
+          <mat-label>
+            Expected Delivery Date
+          </mat-label>
+
+          <input
+            matInput
+            type="date"
+            formControlName="expectedDeliveryDate"
+          >
+
+        </mat-form-field>
+
+        <mat-form-field
+          appearance="outline"
+          class="full-width"
+        >
+
+          <mat-label>
+            Notes
+          </mat-label>
+
+          <textarea
+            matInput
+            rows="4"
+            formControlName="notes"
+          ></textarea>
+
+
+          <mat-hint align="end">
+            {{
+              form.controls.notes.value.length
+            }}/500
+          </mat-hint>
+
+
+          @if (
+            form.controls.notes
+              .hasError('maxlength')
+            ) {
+
+            <mat-error>
+              Notes cannot exceed 500 characters.
+            </mat-error>
+
+          }
+
+        </mat-form-field>
+
+      </div>
+
+      <div class="form-actions">
+
+        <button
+          mat-button
+          type="button"
+          [disabled]="saving()"
+          (click)="cancel()"
+        >
+
+          <mat-icon>
+            arrow_back
+          </mat-icon>
+
+          Cancel
+
+        </button>
+
+
+        <button
+          mat-flat-button
+          type="submit"
+          [disabled]="
+            form.invalid ||
+            saving()
+          "
+        >
+
+          @if (saving()) {
+
+            <span>
+              Saving...
+            </span>
+
+          } @else {
+
+            <mat-icon>
+              save
+            </mat-icon>
+
+            <span>
+              {{
+                editMode()
+                  ? 'Update Order'
+                  : 'Create Order'
+              }}
+            </span>
+
+          }
+
+        </button>
+
+      </div>
+
+    </form>
+
+  }
+
+</mat-card>

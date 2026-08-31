@@ -599,6 +599,107 @@ export const routes: Routes = [
       },
 
 
+      {
+        path: 'procurement/purchase-orders/new',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_MANAGER'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/procurement/pages/purchase-order-form/purchase-order-form'
+            ).then(
+            m => m.PurchaseOrderForm
+          )
+      },
+
+      {
+        path: 'procurement/purchase-orders/:id/edit',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_MANAGER'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/procurement/pages/purchase-order-form/purchase-order-form'
+            ).then(
+            m => m.PurchaseOrderForm
+          )
+      },
+
+      {
+        path: 'procurement/purchase-orders/:id',
+
+        loadComponent: () =>
+          import(
+            './features/procurement/pages/purchase-order-detail/purchase-order-detail'
+            ).then(
+            m => m.PurchaseOrderDetail
+          )
+      },
+
+      {
+        path: 'procurement/purchase-orders',
+
+        loadComponent: () =>
+          import(
+            './features/procurement/pages/purchase-order-list/purchase-order-list'
+            ).then(
+            m => m.PurchaseOrderList
+          )
+      },
+
+      {
+        path: 'procurement/goods-receptions/new',
+
+        canActivate: [
+          roleGuard
+        ],
+
+        data: {
+          roles: [
+            'ROLE_ADMIN',
+            'ROLE_MANAGER',
+            'ROLE_WAREHOUSE_OFFICER'
+          ]
+        },
+
+        loadComponent: () =>
+          import(
+            './features/procurement/pages/goods-reception-form/goods-reception-form'
+            ).then(
+            m => m.GoodsReceptionForm
+          )
+      },
+
+      {
+        path: 'procurement/goods-receptions',
+
+        loadComponent: () =>
+          import(
+            './features/procurement/pages/goods-reception-list/goods-reception-list'
+            ).then(
+            m => m.GoodsReceptionList
+          )
+      },
+
+
 
 
       {

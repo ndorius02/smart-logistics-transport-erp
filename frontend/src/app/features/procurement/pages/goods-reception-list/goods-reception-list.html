@@ -1,0 +1,287 @@
+<mat-card class="page-card">
+  <div class="page-header">
+
+    <div class="page-title">
+
+      <h1>
+        Goods Receptions
+      </h1>
+
+      <p>
+        Track received goods from approved purchase orders.
+      </p>
+
+    </div>
+
+    <button
+      mat-flat-button
+      type="button"
+      (click)="createGoodsReception()"
+    >
+      <mat-icon>
+        add
+      </mat-icon>
+
+      <span>
+        New goods reception
+      </span>
+    </button>
+
+  </div>
+
+  @if (loading()) {
+
+    <div class="loading-container">
+
+      <mat-spinner
+        diameter="40"
+      ></mat-spinner>
+
+      <p>
+        Loading goods receptions...
+      </p>
+
+    </div>
+
+  } @else if (errorMessage()) {
+
+    <div class="error-state">
+
+      <mat-icon>
+        error_outline
+      </mat-icon>
+
+      <h3>
+        Unable to load goods receptions
+      </h3>
+
+      <p>
+        {{ errorMessage() }}
+      </p>
+
+      <button
+        mat-stroked-button
+        type="button"
+        (click)="loadGoodsReceptions()"
+      >
+        Retry
+      </button>
+
+    </div>
+
+  } @else if (goodsReceptions().length === 0) {
+
+    <div class="empty-state">
+
+      <mat-icon>
+        inventory_2
+      </mat-icon>
+
+      <h3>
+        No goods receptions
+      </h3>
+
+      <p>
+        No received goods have been recorded yet.
+      </p>
+
+    </div>
+
+  } @else {
+
+    <div class="table-container">
+
+      <table
+        mat-table
+        [dataSource]="goodsReceptions()"
+      >
+
+        <ng-container matColumnDef="reference">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Reference
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let reception"
+          >
+            <strong>
+              {{ reception.reference }}
+            </strong>
+          </td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="purchaseOrder">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Purchase Order
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let reception"
+          >
+
+            <button
+              mat-button
+              type="button"
+              matTooltip="Open purchase order"
+              (click)="
+                openPurchaseOrder(
+                  reception.purchaseOrderId
+                )
+              "
+            >
+              {{ reception.purchaseOrderNumber }}
+            </button>
+
+          </td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="product">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Product
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let reception"
+          >
+
+            <div class="main-value">
+              {{ reception.productName }}
+            </div>
+
+            <div class="secondary-value">
+              {{ reception.productSku }}
+            </div>
+
+          </td>
+
+        </ng-container>
+        <ng-container matColumnDef="warehouse">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Warehouse
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let reception"
+          >
+
+            <div class="main-value">
+              {{ reception.warehouseName }}
+            </div>
+
+            <div class="secondary-value">
+              {{ reception.warehouseCode }}
+            </div>
+
+          </td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Quantity
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let reception"
+          >
+            {{
+              reception.quantity
+                | number:'1.0-3'
+            }}
+          </td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="receptionDate">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Reception Date
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let reception"
+          >
+            {{
+              reception.receptionDate
+                | date:'dd/MM/yyyy HH:mm'
+            }}
+          </td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="createdBy">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Received By
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let reception"
+          >
+            {{ reception.createdBy }}
+          </td>
+
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns"
+        ></tr>
+
+        <tr
+          mat-row
+          *matRowDef="
+            let row;
+            columns: displayedColumns
+          "
+        ></tr>
+
+      </table>
+
+    </div>
+
+    <mat-paginator
+      [length]="totalElements()"
+      [pageIndex]="pageIndex"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 20, 50]"
+      showFirstLastButtons
+      (page)="onPageChange($event)"
+    ></mat-paginator>
+  }
+
+</mat-card>

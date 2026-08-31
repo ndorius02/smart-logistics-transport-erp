@@ -1,0 +1,375 @@
+<mat-card class="page-card">
+
+  <div class="page-header">
+
+    <div class="page-title">
+
+      <h1>
+        Purchase Orders
+      </h1>
+
+      <p>
+        Manage supplier purchase orders and procurement workflow.
+      </p>
+
+    </div>
+
+
+    <button
+      mat-flat-button
+      type="button"
+      (click)="createPurchaseOrder()"
+    >
+      <mat-icon>
+        add
+      </mat-icon>
+
+      <span>
+        New purchase order
+      </span>
+    </button>
+
+  </div>
+
+
+  @if (loading()) {
+
+    <div class="loading-container">
+
+      <mat-spinner
+        diameter="40"
+      ></mat-spinner>
+
+      <p>
+        Loading purchase orders...
+      </p>
+
+    </div>
+
+  } @else if (errorMessage()) {
+
+    <div class="error-state">
+
+      <mat-icon>
+        error_outline
+      </mat-icon>
+
+      <h3>
+        Unable to load purchase orders
+      </h3>
+
+      <p>
+        {{ errorMessage() }}
+      </p>
+
+      <button
+        mat-stroked-button
+        type="button"
+        (click)="loadPurchaseOrders()"
+      >
+        Retry
+      </button>
+
+    </div>
+
+  } @else if (purchaseOrders().length === 0) {
+
+    <div class="empty-state">
+
+      <mat-icon>
+        receipt_long
+      </mat-icon>
+
+      <h3>
+        No purchase orders
+      </h3>
+
+      <p>
+        No purchase orders have been created yet.
+      </p>
+
+    </div>
+
+  } @else {
+
+    <div class="table-container">
+
+      <table
+        mat-table
+        [dataSource]="purchaseOrders()"
+      >
+
+        <ng-container matColumnDef="orderNumber">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Order Number
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let purchaseOrder"
+          >
+
+            <button
+              mat-button
+              type="button"
+              (click)="
+                viewPurchaseOrder(
+                  purchaseOrder.id
+                )
+              "
+            >
+              {{ purchaseOrder.orderNumber }}
+            </button>
+
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="supplier">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Supplier
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let purchaseOrder"
+          >
+
+            <div class="main-value">
+              {{ purchaseOrder.supplierName }}
+            </div>
+
+            <div class="secondary-value">
+              {{ purchaseOrder.supplierCode }}
+            </div>
+
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="warehouse">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Warehouse
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let purchaseOrder"
+          >
+
+            <div class="main-value">
+              {{ purchaseOrder.warehouseName }}
+            </div>
+
+            <div class="secondary-value">
+              {{ purchaseOrder.warehouseCode }}
+            </div>
+
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="orderDate">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Order Date
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let purchaseOrder"
+          >
+            {{
+              purchaseOrder.orderDate
+                | date:'dd/MM/yyyy'
+            }}
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="expectedDeliveryDate">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Expected Delivery
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let purchaseOrder"
+          >
+
+            @if (purchaseOrder.expectedDeliveryDate) {
+
+              {{
+                purchaseOrder.expectedDeliveryDate
+                  | date:'dd/MM/yyyy'
+              }}
+
+            } @else {
+
+              <span>
+                -
+              </span>
+
+            }
+
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="status">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Status
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let purchaseOrder"
+          >
+
+            <mat-chip>
+              {{
+                statusLabel(
+                  purchaseOrder.status
+                )
+              }}
+            </mat-chip>
+
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="totalAmount">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Total
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let purchaseOrder"
+          >
+            {{
+              purchaseOrder.totalAmount
+                | number:'1.2-2'
+            }}
+          </td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="actions">
+
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Actions
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let purchaseOrder"
+          >
+
+            <button
+              mat-icon-button
+              type="button"
+              matTooltip="View purchase order"
+              (click)="
+                viewPurchaseOrder(
+                  purchaseOrder.id
+                )
+              "
+            >
+              <mat-icon>
+                visibility
+              </mat-icon>
+            </button>
+
+
+            @if (canEdit(purchaseOrder)) {
+
+              <button
+                mat-icon-button
+                type="button"
+                matTooltip="Edit purchase order"
+                (click)="
+                  editPurchaseOrder(
+                    purchaseOrder.id
+                  )
+                "
+              >
+                <mat-icon>
+                  edit
+                </mat-icon>
+              </button>
+
+            }
+
+          </td>
+
+        </ng-container>
+
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns"
+        ></tr>
+
+        <tr
+          mat-row
+          *matRowDef="
+            let row;
+            columns: displayedColumns
+          "
+        ></tr>
+
+      </table>
+
+    </div>
+
+
+    <mat-paginator
+      [length]="totalElements()"
+      [pageIndex]="pageIndex"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 20, 50]"
+      showFirstLastButtons
+      (page)="onPageChange($event)"
+    ></mat-paginator>
+
+  }
+
+</mat-card>

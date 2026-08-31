@@ -1,0 +1,209 @@
+.page-card {
+  padding: 24px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 24px;
+
+  margin-bottom: 24px;
+}
+
+.page-header h1 {
+  margin: 8px 0 0;
+}
+
+.page-header p {
+  margin: 6px 0 0;
+
+  opacity: 0.7;
+}
+
+.back-button {
+  margin-left: -12px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.loading-container,
+.error-state,
+.empty-state {
+  min-height: 220px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  text-align: center;
+}
+
+.loading-container p,
+.error-state p,
+.empty-state p {
+  margin: 0;
+
+  opacity: 0.7;
+}
+
+.error-state mat-icon,
+.empty-state mat-icon {
+  width: 48px;
+  height: 48px;
+
+  font-size: 48px;
+
+  opacity: 0.6;
+}
+
+.error-state h3,
+.empty-state h3 {
+  margin: 4px 0 0;
+}
+
+.order-summary {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+        minmax(180px, 1fr)
+    );
+
+  gap: 24px;
+
+  padding: 24px 0;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  opacity: 0.65;
+}
+
+.secondary-value {
+  font-size: 12px;
+
+  opacity: 0.65;
+}
+
+.main-value {
+  font-weight: 500;
+}
+
+.notes-section {
+  padding-bottom: 24px;
+}
+
+.notes-section p {
+  margin: 8px 0 0;
+
+  white-space: pre-line;
+}
+
+.items-section {
+  padding-top: 24px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 16px;
+
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  margin: 0;
+}
+
+.section-header p {
+  margin: 5px 0 0;
+
+  opacity: 0.7;
+}
+
+.item-form-container {
+  margin-bottom: 24px;
+  padding: 20px;
+
+  border: 1px solid rgba(0, 0, 0, 0.12);
+
+  border-radius: 8px;
+}
+
+.item-form-header h3 {
+  margin: 0 0 20px;
+}
+
+.item-form-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(250px, 2fr)
+    minmax(160px, 1fr)
+    minmax(160px, 1fr);
+
+  gap: 16px;
+}
+
+.item-form-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 12px;
+}
+
+.table-container {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+
+  .item-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .page-header,
+  .section-header {
+    flex-direction: column;
+  }
+
+  .header-actions {
+    width: 100%;
+
+    flex-wrap: wrap;
+  }
+}
