@@ -1,0 +1,422 @@
+<mat-card class="page-card">
+  <div class="page-header">
+    <div>
+      <h1>
+        New Goods Reception
+      </h1>
+      <p>
+        Record received goods for an approved purchase order.
+      </p>
+    </div>
+  </div>
+  @if (loading()) {
+    <div class="loading-container">
+      <mat-spinner
+        diameter="40"
+      ></mat-spinner>
+      <span>
+        Loading eligible purchase orders...
+      </span>
+    </div>
+  } @else if (errorMessage()) {
+    <div class="error-state">
+      <mat-icon>
+        error_outline
+      </mat-icon>
+      <h3>
+        Unable to load purchase orders
+      </h3>
+      <p>
+        {{ errorMessage() }}
+      </p>
+      <button
+        mat-stroked-button
+        type="button"
+        (click)="cancel()"
+      >
+        <mat-icon>
+          arrow_back
+        </mat-icon>
+        Back
+      </button>
+    </div>
+  } @else {
+    <form
+      [formGroup]="form"
+      (ngSubmit)="save()"
+    >
+      <div class="form-grid">
+        <mat-form-field appearance="outline">
+          <mat-label>
+            Reception reference
+          </mat-label>
+          <input
+            matInput
+            formControlName="reference"
+            placeholder="GR-2026-000004"
+          >
+          @if (
+            form.controls.reference
+              .hasError('required')
+            ) {
+            <mat-error>
+              Reception reference is required.
+            </mat-error>
+          }
+          @if (
+            form.controls.reference
+              .hasError('maxlength')
+            ) {
+            <mat-error>
+              Reference cannot exceed 50 characters.
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>
+            Purchase Order
+          </mat-label>
+          <mat-select
+            formControlName="purchaseOrderId"
+            (selectionChange)="
+              onPurchaseOrderChange($event.value)
+            "
+          >
+            @for (
+                purchaseOrder of purchaseOrders();
+              track purchaseOrder.id
+              ) {
+              <mat-option
+                [value]="purchaseOrder.id"
+              >
+                {{
+                  purchaseOrderLabel(
+                    purchaseOrder
+                  )
+                }}
+              </mat-option>
+            }
+          </mat-select>
+
+          @if (
+            form.controls.purchaseOrderId
+              .hasError('required')
+            ) {
+            <mat-error>
+              Purchase order is required.
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>
+            Purchase Order Item
+          </mat-label>
+          <mat-select
+            formControlName="purchaseOrderItemId"
+            [disabled]="
+              !selectedPurchaseOrder()
+            "
+            (selectionChange)="
+              onItemChange($event.value)
+            "
+          >
+            @for (
+                item of availableItems();
+              track item.id
+              ) {
+
+              <mat-option
+                [value]="item.id"
+              >
+                {{ itemLabel(item) }}
+              </mat-option>
+
+            }
+
+          </mat-select>
+
+
+          @if (
+            form.controls.purchaseOrderItemId
+              .hasError('required')
+            ) {
+            <mat-error>
+              Purchase order item is required.
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+
+          <mat-label>
+            Quantity received
+          </mat-label>
+
+          <input
+            matInput
+            type="number"
+            min="0.001"
+            step="0.001"
+            formControlName="quantity"
+            [max]="
+              selectedItem()?.remainingQuantity ?? 0
+            "
+          >
+
+          @if (
+            form.controls.quantity
+              .hasError('required')
+            ) {
+
+            <mat-error>
+              Quantity is required.
+            </mat-error>
+
+          }
+
+          @if (
+            form.controls.quantity
+              .hasError('min')
+            ) {
+
+            <mat-error>
+              Quantity must be greater than zero.
+            </mat-error>
+
+          }
+
+          @if (selectedItem(); as item) {
+
+            <mat-hint>
+              Maximum: {{ item.remainingQuantity }}
+            </mat-hint>
+
+          }
+
+        </mat-form-field>
+
+        @if (selectedPurchaseOrder(); as po) {
+
+          <div
+            class="purchase-order-summary full-width"
+          >
+
+            <div class="summary-item">
+
+              <span class="label">
+                Purchase Order
+              </span>
+
+              <strong>
+                {{ po.orderNumber }}
+              </strong>
+
+            </div>
+
+            <div class="summary-item">
+
+              <span class="label">
+                Supplier
+              </span>
+
+              <strong>
+                {{ po.supplierName }}
+              </strong>
+
+              <span class="secondary-value">
+                {{ po.supplierCode }}
+              </span>
+
+            </div>
+
+            <div class="summary-item">
+
+              <span class="label">
+                Warehouse
+              </span>
+
+              <strong>
+                {{ po.warehouseName }}
+              </strong>
+              <span class="secondary-value">
+                {{ po.warehouseCode }}
+              </span>
+
+            </div>
+
+            <div class="summary-item">
+
+              <span class="label">
+                Status
+              </span>
+
+              <strong>
+                {{ po.status }}
+              </strong>
+
+            </div>
+
+          </div>
+
+        }
+
+        @if (selectedItem(); as item) {
+
+          <div
+            class="reception-summary full-width"
+          >
+
+            <div class="summary-item">
+              <span class="label">
+                Product
+              </span>
+
+              <strong>
+                {{ item.productName }}
+              </strong>
+
+              <span class="secondary-value">
+                {{ item.productSku }}
+              </span>
+
+            </div>
+            <div class="summary-item">
+
+              <span class="label">
+                Ordered
+              </span>
+
+              <strong>
+                {{ item.orderedQuantity }}
+              </strong>
+
+            </div>
+
+            <div class="summary-item">
+
+              <span class="label">
+                Already received
+              </span>
+
+              <strong>
+                {{ item.receivedQuantity }}
+              </strong>
+
+            </div>
+            <div class="summary-item">
+
+              <span class="label">
+                Remaining
+              </span>
+              <strong>
+                {{ item.remainingQuantity }}
+              </strong>
+
+            </div>
+
+          </div>
+
+        }
+
+        <mat-form-field
+          appearance="outline"
+          class="full-width"
+        >
+          <mat-label>
+            Notes
+          </mat-label>
+
+          <textarea
+            matInput
+            rows="4"
+            formControlName="notes"
+          ></textarea>
+          <mat-hint align="end">
+            {{
+              form.controls.notes.value.length
+            }}/500
+          </mat-hint>
+          @if (
+            form.controls.notes
+              .hasError('maxlength')
+            ) {
+
+            <mat-error>
+              Notes cannot exceed 500 characters.
+            </mat-error>
+
+          }
+
+        </mat-form-field>
+
+      </div>
+
+      @if (
+        purchaseOrders().length === 0
+        ) {
+
+        <div class="empty-state">
+
+          <mat-icon>
+            inventory_2
+          </mat-icon>
+
+          <h3>
+            No purchase orders available
+          </h3>
+
+          <p>
+            There are no approved or partially received
+            purchase orders with remaining quantities.
+          </p>
+
+        </div>
+
+      }
+
+      <div class="form-actions">
+
+        <button
+          mat-button
+          type="button"
+          [disabled]="saving()"
+          (click)="cancel()"
+        >
+
+          <mat-icon>
+            arrow_back
+          </mat-icon>
+          Cancel
+        </button>
+        <button
+          mat-flat-button
+          type="submit"
+          [disabled]="
+            form.invalid ||
+            saving() ||
+            purchaseOrders().length === 0
+          "
+        >
+
+          @if (saving()) {
+
+            Saving...
+
+          } @else {
+
+            <mat-icon>
+              inventory
+            </mat-icon>
+
+            Record reception
+
+          }
+
+        </button>
+
+      </div>
+
+    </form>
+
+  }
+
+</mat-card>
