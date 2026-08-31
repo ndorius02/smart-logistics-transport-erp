@@ -147,17 +147,6 @@ origin, destination, assigned vehicle, driver, departure time and status.
 
 ![Smart Logistics ERP Dashboard](frontend/docs/screenshots/dashboard.png)
 
-### Warehouse Management
-The warehouse module manages logistics locations used by transport operations.
-  
-![Warehouse Management](frontend/docs/screenshots/warehouse-list.png)
-
-### Fleet Management
-
-The fleet module manages vehicles used for transport operations.
-
-![Vehicle Management](frontend/docs/screenshots/vehicle-list.png)
-
 ### Driver Management
 
 The driver module manages drivers and their operational availability.
@@ -245,21 +234,50 @@ This architecture allows business rules from multiple logistics domains to parti
 
 ## Business Partners Management
 
-The Business Partners module centralizes the external organizations involved in logistics and transport operations.
+## 🤝 Business Partners Management
 
-### Customers
-  
-![Customer Management](frontend/docs/screenshots/customer-list.png)
+The Business Partners module centralizes the external organizations involved in logistics and supply chain operations.
 
-### Suppliers
-  
-![Supplier Management](frontend/docs/screenshots/supplier-list.png)
+The application distinguishes between **Customers, Suppliers, and Carriers**, each with dedicated business information and lifecycle management.
 
-### Carriers
-  
-![Carrier Management](frontend/docs/screenshots/carrier-list.png)
+### 👥 Customers
 
-Business Partner operations are secured using JWT authentication and role-based permissions for administrative and management users.
+Customers represent companies receiving logistics and transport services.
+
+Key capabilities:
+
+- Create and maintain customer records
+- Manage company and contact information
+- Store address, country, and VAT information
+- Search customers by business information
+- Activate or deactivate customer accounts
+- Use customer data across logistics business processes
+
+### 🏭 Suppliers
+
+Suppliers represent companies providing products or materials to the organization.
+
+Key capabilities:
+
+- Create and maintain supplier records
+- Manage company, contact, address, and VAT information
+- Search and filter suppliers
+- Activate or deactivate suppliers
+- Validate supplier availability before procurement operations
+- Integrate suppliers with the **Purchase Order** workflow
+
+Supplier integration with Procurement:
+
+```text
+Supplier
+   ↓
+Purchase Order
+   ↓
+Purchase Order Items
+   ↓
+Goods Reception
+   ↓
+Inventory
 
 ## 📦 Product & Inventory Management
 
