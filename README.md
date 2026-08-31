@@ -213,7 +213,6 @@ Transport operations enforce rules including:
 - Transport execution updates operational resource availability
 
 
-
 ## 🤝 Business Partners Management
 
 The Business Partners module centralizes the external organizations involved in logistics and supply chain operations.
