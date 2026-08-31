@@ -67,48 +67,7 @@ The following modules are part of the planned development roadmap.
 - Driver activity
 - Advanced KPI dashboards
 
-## Architecture
 
-The application follows a layered full-stack architecture.
-
-```text
-┌───────────────────────────────────────┐
-│            Angular Frontend           │
-│                                       │
-│ Components • Services • Guards        │
-│ Interceptors • Reactive Forms         │
-└──────────────────┬────────────────────┘
-                   │
-                   │ REST / JSON
-                   │ JWT
-                   ▼
-┌───────────────────────────────────────┐
-│          Spring Boot REST API         │
-│                                       │
-│ Controllers • DTOs • Validation       │
-│ Security • Exception Handling         │
-└──────────────────┬────────────────────┘
-                   │
-                   ▼
-┌───────────────────────────────────────┐
-│            Service Layer              │
-│                                       │
-│ Business Rules • Transactions         │
-│ Resource Validation                   │
-└──────────────────┬────────────────────┘
-                   │
-                   ▼
-┌───────────────────────────────────────┐
-│          Persistence Layer            │
-│                                       │
-│ Spring Data JPA • Hibernate           │
-└──────────────────┬────────────────────┘
-                   │
-                   ▼
-┌───────────────────────────────────────┐
-│              PostgreSQL               │
-└───────────────────────────────────────┘
-```
 ## Implemented Modules
 ### Administration & Security
 
@@ -240,44 +199,8 @@ PLANNED → IN_PROGRESS → COMPLETED
 
 This integration demonstrates how logistics resources are coordinated through business rules rather than managed as isolated CRUD entities.
 
-### Transport Management
-
-Transport Management connects the main operational resources of the ERP.
-
-Each transport references:
-- Origin warehouse
-- Destination warehouse
-- Vehicle
-- Driver
-- Planned departure
-- Planned arrival
-- Actual departure
-- Actual arrival
-- Operational status
-
 ![Transport Management](frontend/docs/screenshots/transport-list.png)
 
-#### Transport Lifecycle
-```text
-                 ┌───────────┐
-                 │  PLANNED  │
-                 └─────┬─────┘
-                       │
-                Start transport
-                       │
-                       ▼
-                ┌─────────────┐
-                │ IN_PROGRESS │
-                └──────┬──────┘
-                       │
-               Complete transport
-                       │
-                       ▼
-                 ┌───────────┐
-                 │ COMPLETED │
-                 └───────────┘
-PLANNED ───────────────► CANCELLED
-```
 ### Business Rules
 
 Transport operations enforce rules including:
@@ -289,35 +212,7 @@ Transport operations enforce rules including:
 - Transport status transitions are controlled
 - Transport execution updates operational resource availability
 
-## Cross-Module Business Workflow
 
-One of the main objectives of this project is to model relationships between
-business modules rather than implementing isolated CRUD operations.
-
-```text
-                   ┌─────────────────┐
-                   │    Transport    │
-                   └────────┬────────┘
-                            │
-          ┌─────────────────┼─────────────────┐
-          │                 │                 │
-          ▼                 ▼                 ▼
-     Warehouses          Vehicle           Driver
-          │                 │                 │
-          │                 │                 │
-     Origin /          Availability      Availability
-    Destination          & Status          & Status
-          │                 │                 │
-          └─────────────────┼─────────────────┘
-                            │
-                            ▼
-                  Transport Lifecycle
-                            │
-                  ┌─────────┴─────────┐
-                  ▼                   ▼
-             COMPLETED            CANCELLED
-```
-This architecture allows business rules from multiple logistics domains to participate in the same operational workflow.
 
 ## 🤝 Business Partners Management
 
@@ -521,6 +416,50 @@ Planned technical improvements include:
 - Mobile-friendly interface
 - Multi-language support
 - Mapping / geolocation integration
+
+## Architecture
+
+The application follows a layered full-stack architecture.
+
+```text
+┌───────────────────────────────────────┐
+│            Angular Frontend           │
+│                                       │
+│ Components • Services • Guards        │
+│ Interceptors • Reactive Forms         │
+└──────────────────┬────────────────────┘
+                   │
+                   │ REST / JSON
+                   │ JWT
+                   ▼
+┌───────────────────────────────────────┐
+│          Spring Boot REST API         │
+│                                       │
+│ Controllers • DTOs • Validation       │
+│ Security • Exception Handling         │
+└──────────────────┬────────────────────┘
+                   │
+                   ▼
+┌───────────────────────────────────────┐
+│            Service Layer              │
+│                                       │
+│ Business Rules • Transactions         │
+│ Resource Validation                   │
+└──────────────────┬────────────────────┘
+                   │
+                   ▼
+┌───────────────────────────────────────┐
+│          Persistence Layer            │
+│                                       │
+│ Spring Data JPA • Hibernate           │
+└──────────────────┬────────────────────┘
+                   │
+                   ▼
+┌───────────────────────────────────────┐
+│              PostgreSQL               │
+└───────────────────────────────────────┘
+```
+
   
 ## Tech Stack
 ### Backend
