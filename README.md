@@ -147,11 +147,98 @@ origin, destination, assigned vehicle, driver, departure time and status.
 
 ![Smart Logistics ERP Dashboard](frontend/docs/screenshots/dashboard.png)
 
-### Driver Management
+## 🚚 Transport & Resource Management
 
-The driver module manages drivers and their operational availability.
+The transport domain connects **warehouses, vehicles, drivers, and transport operations** to model realistic logistics planning and resource allocation.
 
-![Driver Management](frontend/docs/screenshots/driver-list.png)
+### 🏭 Warehouse Management
+
+Warehouses represent the logistics locations used across transport, inventory, and procurement operations.
+
+Key capabilities:
+
+- Create and maintain warehouse locations
+- Manage warehouse code, address, city, country, and capacity
+- Activate or deactivate warehouses
+- Use warehouses as transport origins and destinations
+- Maintain Product × Warehouse inventory positions
+- Receive purchased goods into the appropriate warehouse
+- Integrate warehouses with Transport, Inventory, Stock Movement, and Procurement workflows
+
+### 🚛 Vehicle Management
+
+The vehicle module manages fleet resources used for transport operations.
+
+Key capabilities:
+
+- Register and maintain fleet vehicles
+- Manage vehicle identification and operational information
+- Track vehicle availability
+- Activate or deactivate vehicles
+- Assign available vehicles to transport operations
+- Prevent conflicting resource allocation through business rules
+
+### 👨‍✈️ Driver Management
+
+The driver module manages drivers participating in transport operations.
+
+Key capabilities:
+
+- Create and maintain driver records
+- Manage driver identification and operational information
+- Track driver availability
+- Activate or deactivate drivers
+- Assign available drivers to transport operations
+- Prevent conflicting driver allocation through business rules
+
+### 🗺️ Transport Management
+
+Transport operations coordinate warehouses, vehicles, and drivers through a controlled operational lifecycle.
+
+A transport defines:
+
+- Origin warehouse
+- Destination warehouse
+- Assigned vehicle
+- Assigned driver
+- Planned departure and arrival
+- Operational status
+
+Transport lifecycle:
+
+```text
+PLANNED
+   │
+   │ Start transport
+   ▼
+IN_PROGRESS
+   │
+   │ Complete transport
+   ▼
+COMPLETED
+
+PLANNED ──────→ CANCELLED
+```
+
+The transport workflow enforces business rules related to **resource availability, assignment, operational status, and lifecycle transitions**.
+
+### 🔗 Cross-Module Integration
+
+```text
+Origin Warehouse
+       │
+       ▼
+   Transport
+   ├── Vehicle
+   ├── Driver
+   └── Destination Warehouse
+       │
+       ▼
+Transport Lifecycle
+PLANNED → IN_PROGRESS → COMPLETED
+```
+
+This integration demonstrates how logistics resources are coordinated through business rules rather than managed as isolated CRUD entities.
 
 ### Transport Management
 
@@ -231,8 +318,6 @@ business modules rather than implementing isolated CRUD operations.
              COMPLETED            CANCELLED
 ```
 This architecture allows business rules from multiple logistics domains to participate in the same operational workflow.
-
-## Business Partners Management
 
 ## 🤝 Business Partners Management
 
