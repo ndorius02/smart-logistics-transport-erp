@@ -258,7 +258,7 @@ Purchase Order Items
 Goods Reception
    ↓
 Inventory
-
+```
 ## 📦 Product & Inventory Management
 
 A complete inventory management module designed around real-world logistics and warehouse operations, with a strong focus on **stock traceability, business rules, and data consistency**.
