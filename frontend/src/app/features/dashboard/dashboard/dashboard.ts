@@ -1,21 +1,10 @@
-import {
-  Component,
-  inject,
-  OnInit,
-  signal
-} from '@angular/core';
-
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
-
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
-
-import {
-  DashboardService,
-  DashboardStats
-} from '../services/dashboard.service';
+import { DashboardService, DashboardStats } from '../services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',

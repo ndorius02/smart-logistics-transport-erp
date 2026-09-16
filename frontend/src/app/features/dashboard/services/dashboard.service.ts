@@ -1,6 +1,5 @@
 import { inject, Injectable } from '@angular/core';
 import { forkJoin, map, Observable } from 'rxjs';
-
 import { WarehouseService } from '../../warehouses/services/warehouse.service';
 import { VehicleService } from '../../vehicles/services/vehicle.service';
 import { VehicleStatus } from '../../vehicles/models/vehicle-status.model';

@@ -16,10 +16,6 @@ export class AuthService {
 
   private readonly TOKEN_KEY = 'access_token';
 
-  /**
-   * Authenticate the user with the backend.
-   * The JWT returned by Spring Boot is stored in localStorage.
-   */
   login(request: LoginRequest): Observable<LoginResponse> {
     return this.http
       .post<LoginResponse>(
@@ -33,24 +29,13 @@ export class AuthService {
       );
   }
 
-  /**
-   * Remove the authentication token.
-   */
   logout(): void {
     localStorage.removeItem(this.TOKEN_KEY);
   }
-
-  /**
-   * Return the JWT stored in localStorage.
-   */
   getToken(): string | null {
     return localStorage.getItem(this.TOKEN_KEY);
   }
 
-  /**
-   * Check whether the user currently has
-   * a valid and non-expired JWT.
-   */
   isAuthenticated(): boolean {
     const token = this.getToken();
 
@@ -66,35 +51,18 @@ export class AuthService {
     return true;
   }
 
-  /**
-   * Return the authorities contained in the JWT.
-   *
-   * Example:
-   * ["ROLE_ADMIN"]
-   */
   getAuthorities(): string[] {
     return this.getPayload()?.authorities ?? [];
   }
 
-  /**
-   * Check whether the authenticated user
-   * has a specific role.
-   */
   hasRole(role: string): boolean {
     return this.getAuthorities().includes(role);
   }
 
-  /**
-   * Check whether the authenticated user
-   * has at least one of the provided roles.
-   */
   hasAnyRole(roles: string[]): boolean {
     return roles.some(role => this.hasRole(role));
   }
 
-  /**
-   * Store the JWT in localStorage.
-   */
   private setToken(token: string): void {
     localStorage.setItem(
       this.TOKEN_KEY,
@@ -102,13 +70,6 @@ export class AuthService {
     );
   }
 
-  /**
-   * Decode the JWT payload.
-   *
-   * A JWT has the following structure:
-   *
-   * header.payload.signature
-   */
   private getPayload(): JwtPayload | null {
     const token = this.getToken();
 
@@ -139,13 +100,6 @@ export class AuthService {
     }
   }
 
-  /**
-   * Check the JWT expiration date.
-   *
-   * JWT "exp" is expressed in seconds.
-   * Date.now() is expressed in milliseconds,
-   * therefore we divide it by 1000.
-   */
   private isTokenExpired(): boolean {
     const payload = this.getPayload();
 
